@@ -1,0 +1,1175 @@
+﻿<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="In diesem Thema erfahren Sie, wie Sie ein Live-Event auf eine Brightcove Beacon-App streamen." />
+
+    <title>Streaming eines Live-Events</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link data-react-helmet="true" rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500&amp;display=swap">
+      <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://support.brightcove.com/site-assets/css/site/prism.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://support.brightcove.com/site-assets/css/site/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://support.brightcove.com/site-assets/css/site/landing-page.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://support.brightcove.com/site-assets/css/site/tabs.css"
+    />
+    <link rel="stylesheet" href="/assets/css/local.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/381443caa8.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://support.brightcove.com/site-assets/js/site/google-analytics.js"></script>
+    <script src="/assets/js/sajari-head.js"></script>
+  </head>
+
+  <body class="body"></body>
+</html>
+
+<header>
+  <div class="div-header">
+    <a href="/"><img class="product-logo" src="https://support.brightcove.com/site-assets/images/site/product-logos/Beacon_Logo.svg" alt="Produkt-Logo" style="max-height: 100px;max-width: 232px;"/></a>
+<!-- GTranslate: https://gtranslate.io/ -->
+<select onchange="doGTranslate(this);"><option value="">Sprache wählen</option><option value="en|en" translate="No">English</option><option value="en|zh-TW" translate="No">繁體中文</option><option value="en|fr" translate="No">Français</option><option value="en|de" translate="No">Deutsche</option><option value="en|ja" translate="No">日本語</option><option value="en|ko" translate="No">한국어</option><option value="en|es" translate="No">Español</option></select>
+
+<script>
+/* <![CDATA[ */
+function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];var plang=location.hostname.split('.')[0];if(plang.length !=2 && plang.toLowerCase() != 'zh-cn' && plang.toLowerCase() != 'zh-tw')plang='en';location.href=location.protocol+'//'+(lang == 'en' ? '' : lang+'.')+location.hostname.replace('www.', '').replace(RegExp('^' + plang + '\\.'), '')+location.pathname+location.search;}
+/* ]]> */
+</script>
+
+    
+
+
+    <span class="secondary-nav"><a href="https://supportportal.brightcove.com/s/login/?"><img src="https://support.brightcove.com/site-assets/images/site/support.png" alt="Support"/> Kontaktieren Sie Support</a> <span style="vertical-align: top;margin-left:1em;margin-right:1em;">|</span> <a href="https://status.brightcove.com/"><img src="https://support.brightcove.com/site-assets/images/site/status.png" alt="Systemstatus"/> Systemstatus</a></span> <br/>
+    
+  </div>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb arr-right">
+      
+      <li class="breadcrumb-item"><a href="/">Nach Hause</a></li>
+      
+      
+      
+      <li class="breadcrumb-item"><a href="/using-brightcove-beacon/">Verwenden von Brightcove Beacon</a></li>
+      
+      <li class="breadcrumb-item active" aria-current="page">Streaming eines Live-Events</li>
+    </ol>
+  </nav>
+</header>
+<div class="container">
+  <div class="row">
+          <div class="col-sm-3 left-side-bar">
+        <select id="site_select" class="bcls-select" style="margin-right: 1rem;">
+          <option value="">Weitere Brightcove Docs</option>
+          
+            
+              <option value="https://support.brightcove.com">Dokumentation Home</option>
+            
+          
+            
+              <option value="https://audience.support.brightcove.com">Brightcove Publikum</option>
+            
+          
+            
+              <option value="https://beacon.support.brightcove.com">Brightcove Leuchtfeuer</option>
+            
+          
+            
+              <option value="https://campaign.support.brightcove.com">Brightcove Kampagne</option>
+            
+          
+            
+              <option value="https://engage.support.brightcove.com">Brightcove Engage</option>
+            
+          
+            
+              <option value="https://live.support.brightcove.com">Brightcove Live</option>
+            
+          
+            
+              <option value="https://gallery.support.brightcove.com">Brightcove Gallery</option>
+            
+          
+            
+              <option value="https://ssai.support.brightcove.com">Brightcove SSAI</option>
+            
+          
+            
+              <option value="https://social.support.brightcove.com">Brightcove Social</option>
+            
+          
+            
+              <option value="https://studio.support.brightcove.com">Video Cloud Studio</option>
+            
+          
+            
+              <option value="https://player.support.brightcove.com">Brightcove Spieler-Entwicklung</option>
+            
+          
+            
+              <option value="https://apis.support.brightcove.com">APIs für Video Cloud-Plattform</option>
+            
+          
+            
+              <option value="https://sdks.support.brightcove.com">Videocloud-Geräte-SDKs</option>
+            
+          
+            
+              <option value="https://integrations.support.brightcove.com">Integrationen und CMS-Konnektoren</option>
+            
+          
+            
+              <option value="https://general.support.brightcove.com">Video Cloud — Allgemeine Informationen</option>
+            
+          
+            
+              <option value="https://zencoder.support.brightcove.com">Zencoder</option>
+            
+          
+        </select>
+
+      <nav class="sidenav" id="side_nav">
+        
+        
+        <h5><a href="/index.html">Nach Hause</a></h5>
+        
+        
+        
+        <h5 class="submenu-header"><a href="/getting-started/index.html">Erste Schritte <strong>+</strong></a></h5>
+        <ul class="sidenav-submenu" style="display:none;">
+          
+          
+          <li><a href="/getting-started/learning-guide-bc-beacon.html">Leitfaden für das</a></li>
+          
+          
+          
+          <li><a href="/getting-started/implementation-phases.html">Phasen der Implementierung</a></li>
+          
+          
+          
+          <li><a href="/getting-started/app-design-considerations.html">Überlegungen zum Anwendungsdesign</a></li>
+          
+          
+          
+          <li><a href="/getting-started/creating-your-app-design-info-architecture.html">App-Design - Info-Architektur</a></li>
+          
+          
+          
+          <li><a href="/getting-started/creating-your-app-design-layout-options.html">App-Design — Layout-Optionen</a></li>
+          
+          
+          
+          <li><a href="/getting-started/design-best-practices.html">Best Practices</a></li>
+          
+          
+        </ul>
+        
+        
+        
+        <h5 class="submenu-header"><a href="/syncing-with-video-cloud/index.html">Synchronisierung mit Video Cloud <strong>+</strong></a></h5>
+        <ul class="sidenav-submenu" style="display:none;">
+          
+          
+          <li><a href="/syncing-with-video-cloud/vc-custom-fields.html">Erstellen benutzerdefinierter Felder für die Vide</a></li>
+          
+          
+          
+          <li><a href="/syncing-with-video-cloud/forcing-a-sync.html">Erzwingen einer Synchronisierung</a></li>
+          
+          
+        </ul>
+        
+        
+        
+        <h5 class="submenu-header"><a href="/using-brightcove-beacon/index.html">Verwenden von Brightcove Beacon <strong>+</strong></a></h5>
+        <ul class="sidenav-submenu" style="display:none;">
+          
+          
+          <li><a href="/using-brightcove-beacon/adding-to-page.html">Hinzufügen eines Karussells zu einer Seite</a></li>
+          
+          
+          
+          <li><a href="/using-brightcove-beacon/creating-a-channel.html">Einen Channel erstellen</a></li>
+          
+          
+          
+          <li><a href="/using-brightcove-beacon/electronic-program-guides.html">Erstellen eines elektronischen Programmleitfadens (EPG)</a></li>
+          
+          
+          
+          <li><a href="/using-brightcove-beacon/creating-a-page.html">Eine neue Seite erstellen</a></li>
+          
+          
+          
+          <li><a href="/using-brightcove-beacon/creating-a-playlist.html">Erstellen einer Playlist</a></li>
+          
+          
+          
+          <li><a href="/using-brightcove-beacon/creating-subscription-package.html">Erstellen eines Abonnementpakets</a></li>
+          
+          
+          
+          <li><a href="/using-brightcove-beacon/promo-codes.html">Erstellen von Promo-Codes</a></li>
+          
+          
+          
+          <li><a href="/using-brightcove-beacon/series-seasons-episodes.html">Erstellen von Serie/Saisonen/Episoden</a></li>
+          
+          
+          
+          <li><a href="/using-brightcove-beacon/configuring-server-side-ad-settings.html">Konfigurieren der serverseitigen Anzeigeneinstellungen</a></li>
+          
+          
+          
+          <li><a href="/using-brightcove-beacon/implementing-authvod.html">Implementierung von AuthVod</a></li>
+          
+          
+          
+          <li><a href="/using-brightcove-beacon/live-ssai.html">Implementierung von Live-SSAI</a></li>
+          
+          
+          
+          <li><a href="/using-brightcove-beacon/vod-ssai.html">Implementierung von VOD SSAI</a></li>
+          
+          
+          
+          <li><a href="/using-brightcove-beacon/including-non-configurable-pages.html">Einschließlich nicht konfigurierbarer Seiten</a></li>
+          
+          
+          
+          <li><a href="/using-brightcove-beacon/introducing-pages.html">Einführung von Seiten</a></li>
+          
+          
+          
+          <li><a href="/using-brightcove-beacon/streaming-live-event.html">Streaming eines Live-Events</a></li>
+          
+          
+          
+          <li><a href="/using-brightcove-beacon/streaming-vods-to-a-channel.html">VODs auf einen Channel streamen</a></li>
+          
+          
+          
+          <li><a href="/using-brightcove-beacon/monetization-options.html">Verstehen der Monetarisierungsoptionen</a></li>
+          
+          
+          
+          <li><a href="/using-brightcove-beacon/using-subscription-package.html">Verwendung eines Abonnementpakets</a></li>
+          
+          
+          
+          <li><a href="/using-brightcove-beacon/tools.html">Verwenden der Tools</a></li>
+          
+          
+          
+          <li><a href="/using-brightcove-beacon/viewing-analytics-data.html">Analytics-Daten anzeigen</a></li>
+          
+          
+        </ul>
+        
+        
+        
+        <h5 class="submenu-header"><a href="/creating-your-apps/index.html">Erstellen Sie Ihre Apps <strong>+</strong></a></h5>
+        <ul class="sidenav-submenu" style="display:none;">
+          
+          
+          <li class="submenu-header">
+            <a href="/creating-your-apps/android/index.html">Androide <strong>+</strong></a>
+            <ul class="sidenav-subsubmenu" style="display:none;">
+              
+              <li><a href="/creating-your-apps/android/submitting-to-android.html">Neue Apps beim Android Store einreichen</a></li>
+              
+              <li><a href="/creating-your-apps/android/updating-android-apps-to-bcb.html">Aktualisieren von Android-Apps auf Brightcove Beacon</a></li>
+              
+              <li><a href="/creating-your-apps/android/adding-subscriptions-in-android.html">Hinzufügen von Abonnements zu Android</a></li>
+              
+              <li><a href="/creating-your-apps/android/improving-relevance-android.html">Verbesserung der Search-Relevanz im Android Play Store</a></li>
+              
+              <li><a href="/creating-your-apps/android/installing-android-test-build.html">Installieren eines Android Test-Builds</a></li>
+              
+            </ul>
+          </li>
+          
+          
+          
+          <li class="submenu-header">
+            <a href="/creating-your-apps/fire-tv/index.html">Feuer TV <strong>+</strong></a>
+            <ul class="sidenav-subsubmenu" style="display:none;">
+              
+              <li><a href="/creating-your-apps/fire-tv/installing-fire-tv-test-build.html">Installieren eines Fire TV Test Builds</a></li>
+              
+              <li><a href="/creating-your-apps/fire-tv/submitting-to-amazon.html">Einreichung an den Amazon-Shop</a></li>
+              
+            </ul>
+          </li>
+          
+          
+          
+          <li class="submenu-header">
+            <a href="/creating-your-apps/ios-tvos/index.html">iOS/tvOS <strong>+</strong></a>
+            <ul class="sidenav-subsubmenu" style="display:none;">
+              
+              <li><a href="/creating-your-apps/ios-tvos/installing-ios-test-build.html">Installieren eines iOS/tvOS-Test-Builds</a></li>
+              
+              <li><a href="/creating-your-apps/ios-tvos/submitting-to-apple.html">Einreichen im Apple Store</a></li>
+              
+            </ul>
+          </li>
+          
+          
+          
+          <li class="submenu-header">
+            <a href="/creating-your-apps/panasonic/index.html"> <strong>Panasonik+</strong></a>
+            <ul class="sidenav-subsubmenu" style="display:none;">
+              
+              <li><a href="/creating-your-apps/panasonic/submitting-to-panasonic.html">Einreichen beim Panasonic Store</a></li>
+              
+            </ul>
+          </li>
+          
+          
+          
+          <li class="submenu-header">
+            <a href="/creating-your-apps/roku/index.html"> <strong>roku+</strong></a>
+            <ul class="sidenav-subsubmenu" style="display:none;">
+              
+              <li><a href="/creating-your-apps/roku/configuring-inchannel-products.html">Konfigurieren von In-Kanal-Produkten in Roku</a></li>
+              
+              <li><a href="/creating-your-apps/roku/installing-roku-test-build.html">Installieren eines Roku-Test-Builds</a></li>
+              
+              <li><a href="/creating-your-apps/roku/submitting-to-roku.html">Einreichung an den Roku Store</a></li>
+              
+            </ul>
+          </li>
+          
+          
+          
+          <li class="submenu-header">
+            <a href="/creating-your-apps/samsung/index.html"> <strong>Samsung+</strong></a>
+            <ul class="sidenav-subsubmenu" style="display:none;">
+              
+              <li><a href="/creating-your-apps/samsung/samsung-partner.html">Ein Samsung-Partner werden</a></li>
+              
+              <li><a href="/creating-your-apps/samsung/submitting-to-samsung.html">Einreichung an den Samsung Store</a></li>
+              
+            </ul>
+          </li>
+          
+          
+          
+          <li><a href="/creating-your-apps/common-required-info.html">Allgemeine erforderliche Informationen</a></li>
+          
+          
+          
+          <li><a href="/creating-your-apps/device-apps-validation-guide.html">Leitfaden zur Validierung von Dev</a></li>
+          
+          
+        </ul>
+        
+        
+        
+        <h5 class="submenu-header"><a href="/references/index.html">Referenzen <strong>+</strong></a></h5>
+        <ul class="sidenav-submenu" style="display:none;">
+          
+          
+          <li><a href="/references/common-configuration-settings.html">Allgemeine Konfigurationseinstellungen</a></li>
+          
+          
+          
+          <li><a href="/references/creating-stripe-account.html">Erstellen eines Stripe-Kontos</a></li>
+          
+          
+          
+          <li><a href="/references/glossary.html">Glossar</a></li>
+          
+          
+          
+          <li><a href="/references/image-requirements.html">Bilder und ihre Spezifikationen</a></li>
+          
+          
+          
+          <li><a href="/references/known-issues.html">Bekannte Probleme</a></li>
+          
+          
+          
+          <li><a href="/references/product-updates.html">Produkt-Updates</a></li>
+          
+          
+        </ul>
+        
+        
+        
+        <h5 class="submenu-header"><a href="/training/index.html">Schulung <strong>+</strong></a></h5>
+        <ul class="sidenav-submenu" style="display:none;">
+          
+          
+          <li><a href="/training/training-demand-custom-fields.html">Verwenden von Video Cloud-Videos/benutzerdefinierten Feldern</a></li>
+          
+          
+          
+          <li><a href="/training/training-demand-design-layout.html">Entwerfen des Anwendungslayouts</a></li>
+          
+          
+          
+          <li><a href="/training/training-demand-playlists.html">Erstellen und Verwenden von Wiedergabelisten</a></li>
+          
+          
+          
+          <li><a href="/training/training-demand-series-seasons-episodes.html">Erstellen von Serien, Staffeln und Episoden</a></li>
+          
+          
+          
+          <li><a href="/training/training-demand-vod-ssai.html">Implementierung von serverseitigen VOD-Anzeigen</a></li>
+          
+          
+          
+          <li><a href="/training/training-demand-publish-android-app.html">Veröffentlichen der Android App im Play Store</a></li>
+          
+          
+          
+          <li><a href="/training/training-demand-viewing-analytics.html">Analytics-Daten anzeigen</a></li>
+          
+          
+        </ul>
+        
+        
+        
+        <h5 class="submenu-header"><a href="/support/index.html">unterstützung <strong>+</strong></a></h5>
+        <ul class="sidenav-submenu" style="display:none;">
+          
+          
+          
+          
+          
+          
+          <li><a href="/support/viewing-brightcove-system-status-page.html">Anzeigen der Seite „Systemstatus von Brightcove“</a></li>
+          
+          
+          
+          <li><a href="/support/contact-sales.html">Kontakt mit dem Vertrieb</a></li>
+          
+          
+          
+          <li><a href="/support/opening-case-with-brightcove-support.html">Einen Supportfall öffnen</a></li>
+          
+          
+        </ul>
+        
+        
+      </nav>
+    </div>
+    <div class="col-lg-7" style="background-color: white;color: #333333;margin-top: -1em;margin-bottom: -1em;padding-bottom:1em;">
+      <!-- bootstrap layout -->
+<p id="bc_veggie_burger_wrapper" style="display: none;"><img id="bc_veggie_burger" src="/assets/images/feather/menu.svg" alt="Menü „Navigation"/></p>
+
+<!-- search bar -->
+<div id="nav-search-box" style="margin-top: 1rem;"></div>
+<!-- in-page navigation for narrow screens -->
+<details class="centered-inpage-nav" id="centered_inpage_nav">
+  <summary><h6 class="toc">Inhalt der Seite</h6></summary>
+  <nav id="centered_toc"></nav>
+  <ul id="centered_in_page_toc" class="list-none"></ul>
+</details>
+<!-- open in new tab/window -->
+<a id="open_new_tab" href="#" target="_blank" style="display: none;"><img src="/assets/images/feather/external-link.svg" alt="in neuem Tab öffnen" style="margin-top:4em;width: 1.5em;"/></a>
+
+
+<h1>Streaming eines Live-Events</h1>
+<article class="bcls-article">
+  <summary>In diesem Thema erfahren Sie, wie Sie ein Live-Event auf eine Brightcove Beacon-App streamen.</summary>
+
+  <section class="bcls-section">
+    <h2 id="overview">Übersicht</h2>
+
+    <p>
+      Um ein Live-Event auf Ihre Anwendung zu streamen, müssen Sie eine Reihe von Schritten ausführen, um Ihr Video Cloud Live-Konto mit Brightcove Beacon zu verbinden.
+    </p>
+    <p>Eine allgemeine Sicht auf den Prozess ist:</p>
+    <ol>
+      <li>
+        Erstelle in Brightcove Beacon ein Event und eine Playlist.
+      </li>
+      <li>
+        Greifen Sie in Video Cloud auf das Live-Modul zu, um Ihre Veranstaltung zu erstellen und eine Job-ID zu erhalten.
+      </li>
+      <li>
+        Registrieren Sie in Brightcove Beacon Ihre Live-Veranstaltung mit der Job-ID aus Video Cloud.
+      </li>
+      <li>
+        Das Live-Video beginnt mit dem Streaming in der Brightcove Beacon App.
+      </li>
+    </ol>
+    <p>
+      Im letzten Abschnitt dieses Dokuments sehen Sie die Schritte zum Erstellen einer anderen Art von Ereignis in Live mithilfe eines statischen Einstiegspunkts. Dies ermöglicht wiederkehrende Live-Events, die aktiviert und deaktiviert werden können und nur einmal konfiguriert werden müssen.
+    </p>
+    <p>
+      Der Rest dieses Dokuments enthält Details für jeden der oben genannten Schritte.
+    </p>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="create">Erstellen eines Live-Events in Brightcove Beacon</h2>
+    <p>Befolgen Sie diese Schritte, um ein Event in Brightcove Beacon zu erstellen.</p>
+
+    <aside class="bcls-aside bcls-aside--information">
+      Nur bei aktivierten Konten mit <strong>Brightcove Beacon Live</strong> sind die <strong>Playlists</strong> und <strong>Events</strong> im Tabs-Bereich verfügbar. Bitte wenden Sie sich an den Brightcove Support, falls Sie sie nicht aktiviert haben.
+    </aside>
+    <ol class="bcls-tasklist">
+      <li>
+        Klicken Sie in Brightcove Beacon auf die Registerkarte <strong>Events</strong> , um die Einrichtung eines Events zu starten.
+      </li>
+      <li>
+        Klicke auf <strong>Ein neues Event hinzufügen</strong>.
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/streaming-live-event/1-add-new-event.png"/>
+        </figure>
+      </li>
+      <li>
+        Geben Sie dem Live-Event einen <strong>Namen</strong> und ein <strong>Startdatum für das Ereignis</strong>.
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/streaming-live-event/2-beacon-basic-data.png"/>
+        </figure>
+      </li>
+      <li>
+        Geben Sie auf der Registerkarte <strong>Textdaten</strong> Ihre Veranstaltungsinformationen ein.
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/streaming-live-event/3-beacon-textual-data.png"/>
+        </figure>
+      </li>
+      <li>Klicken Sie auf die Registerkarte <strong>Nicht-Textdaten</strong> .</li>
+      <li>
+        Geben Sie ein Bild für das <strong>Hochformatposter</strong> und das <strong>Landschaftsposter</strong> an, das den folgenden Anforderungen entspricht. Sie müssen KEINE Bilder für <strong>Thumbnails</strong> und <strong>Wide-Banner</strong>bereitstellen.
+        <table class="bcls-table">
+          <thead class="bcls-table__head">
+            <tr>
+              <th>Image</th>
+              <th>Anforderungen</th>
+            </tr>
+          </thead>
+          <tbody class="bcls-table__body">
+            <tr>
+              <td>Hochformat-Plak</td>
+              <td>
+                Plakatbild (2:3)
+                <table>
+                  <tr>
+                    <td>Mindest</td>
+                    <td>Weite: 1000 px</td>
+                    <td>Höhe: 563px</td>
+                  </tr>
+                  <tr>
+                    <td>Maximale</td>
+                    <td>Weite: 4000px</td>
+                    <td>Höhe: 2250 px</td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td>Landschaft-Pl</td>
+              <td>
+                Landschaftsbild (16:9)
+                <table>
+                  <tr>
+                    <td>Mindest</td>
+                    <td>Weite: 1000 px</td>
+                    <td>Höhe: 563px</td>
+                  </tr>
+                  <tr>
+                    <td>Maximale</td>
+                    <td>Weite: 4000px</td>
+                    <td>Höhe: 2250 px</td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+      <li>
+        Klicken Sie auf die Registerkarte „ <strong>Rechte und Planung</strong> “, wie hier gezeigt:
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/streaming-live-event/5-beacon-right-schedualing.png"/>
+        </figure>
+      </li>
+      <li>
+        Fügen Sie Werte für die folgenden Felder hinzu:
+        <ul>
+          <li>
+            <strong>Rechte-Typ</strong>: Wählen Sie die Art der Rechte zwischen <em>Werbung</em>, <em>Abonnement</em> oder <em>Kostenlos</em>.
+          </li>
+          <li>
+            <strong>Startzeit</strong>: Stellen Sie das Startdatum Ihrer Veranstaltung ein.
+          </li>
+          <li><strong>End-Zeit</strong>: Stellen Sie das Enddatum Ihrer Veranstaltung ein.</li>
+          <li>
+            <strong>Max. Streams</strong>: Legen Sie die maximale Anzahl von Streams fest, die das Live-Event anzeigen dürfen. Die Standardzahl ist 0 (Null).
+          </li>
+          <li>
+            <strong>Zu veröffentlichenden Geräte</strong>: Fügen Sie die Geräte hinzu, auf denen Sie veröffentlichen möchten. Klicken <strong>Sie auf „Alle Geräte auswählen/Auswahl aufheben“</strong> , um eine Liste der verfügbaren Geräte anzuzeigen.
+          </li>
+          <li>
+            <strong>Zulässige Standorte</strong>: Wählen Sie die Orte aus, an denen Sie Ihre Inhalte streamen möchten, wenn keine Einschränkungen in <em>World</em>eintreten.
+          </li>
+          <li>
+            <strong>Verweigerte Standorte</strong>: Wählen Sie die Orte aus, an denen Sie Ihre Inhalte NICHT streamen möchten.
+          </li>
+        </ul>
+      </li>
+      <li>
+        Klicken Sie auf die Schaltfläche „ <strong>Neues Ereignis</strong> erstellen“, um Ihre Veranstaltung zu erstellen.
+      </li>
+    </ol>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Playlist">Hinzufügen des Brightcove Beacon Events zu einer Playlist</h2>
+    <p>
+      Sobald Sie ein Ereignis erstellt haben, besteht die nächste Aufgabe darin, das Ereignis zu einer Playlist hinzuzufügen. Die folgenden Schritte führen Sie durch diesen Prozess.
+    </p>
+    <ol class="bcls-tasklist">
+      <li>
+        Klicke in Brightcove Beacon auf den Tab <strong>Playlists</strong> .
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/streaming-live-event/7-playlist-menu.png"/>
+        </figure>
+      </li>
+      <li>
+        Klicken Sie auf den Button <strong>Neue Playlist hinzufügen</strong> .
+        <aside class="bcls-aside bcls-aside--warning">
+          Du musst eine Wiedergabeliste in Brightcove Beacon erstellen, die deine Live-Events enthält. Verwenden<strong>Sie keine</strong> Wiedergabeliste aus Video Cloud. Die Verwendung einer Video Cloud-Wiedergabeliste kann Ihre Brightcove Beacon Live-Aufnahmen überschreiben und löschen.
+        </aside>
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/streaming-live-event/8-playlist.png"/>
+        </figure>
+      </li>
+
+      <li>
+        Wählen Sie in <strong>Wiedergabelisten</strong> aus den Registerkarten für Inhaltstypen die Registerkarte <strong>Ereignisse</strong> aus.
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/streaming-live-event/9-playlist-events.png"/>
+        </figure>
+      </li>
+
+      <li>
+        Suche in der Inhaltsliste nach deinem Event und klicke auf den (+) -Button, um es zur linken Playlist hinzuzufügen. Sie können die Reihenfolge der Ereignisse so positionieren, wie sie in der App angezeigt werden sollen.
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/streaming-live-event/10-playlist-select-event.png"/>
+        </figure>
+      </li>
+
+      <li>
+        Passe die Einstellungen deiner Wiedergabeliste (Zeit, Geräte, Standort usw.) auf der Registerkarte „ <strong>Rechte und Planung</strong> “ an, wie du es bei deiner Veranstaltung getan hast.
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/streaming-live-event/10.2-scheduling-playlist.png"/>
+        </figure>
+      </li>
+
+      <li>Klicken Sie auf die Schaltfläche <strong>Änderungen in Playlist speichern</strong> .</li>
+
+      <li>
+        Klicken Sie oben rechts auf dem Bildschirm auf die Schaltfläche <strong>Extras</strong> (Schraubenschlüssel). Leeren Sie dann den Cache.
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/streaming-live-event/12-clear-cache.png"/>
+        </figure>
+      </li>
+    </ol>
+    <p>
+      Zu diesem Zeitpunkt wird Ihre Veranstaltung als Container in der Brightcove Beacon-App erstellt, wie im linken Bild gezeigt (die Ereignisnamen und Bilder auf dem Bild dienen nur zum Beispiel), klicken Sie auf Ihr Event und Sie sehen etwas Ähnliches wie das Bild auf der rechten Seite. Um tatsächlich mit dem Streamen eines Live-Videos zu beginnen, müssen Sie Ihre Übertragung in der Video Cloud Live Platform einrichten.
+    </p>
+    <figure class="bcls-figure">
+      <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/streaming-live-event/13-beacon-apps-white.png"/>
+    </figure>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Live">Erstellen einer Live-Veranstaltung in Studio</h2>
+    <p>
+      Befolgen Sie diese Schritte, um das eigentliche Live-Event zu erstellen, das zu Brightcove Beacon gestreamt wird.
+    </p>
+
+    <ol class="bcls-tasklist">
+      <li>
+        Melden Sie sich bei Video Cloud Studio an und klicken Sie im Navigationsheader auf <strong>Live</strong> .
+      </li>
+      <li>
+        Klicken Sie auf der Seite <strong>„Ereignisse verwalten</strong> “ auf „ <strong>Ereignis erstellen</strong>“. Die Seite <strong>„Live-Ereignis erstellen</strong> “ wird geöffnet.
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/streaming-live-event/15-live-event.png"/>
+        </figure>
+      </li>
+      <li>
+        Geben Sie die Veranstaltungsdetails ein.
+        <ul>
+          <li>
+            <strong>Ereignisname</strong> - Name für das Ereignis; dieser Name wird auch im Medienmodul angezeigt, wenn das Live-Ereignis als Video-Asset (max. 255 Zeichen) gespeichert wird
+          </li>
+          <li>
+            <strong>Kurzbeschreibung</strong> - Beschreibung des Ereignisses (max. 250 Zeichen)
+          </li>
+          <li>
+            <strong>Tags</strong> - Tags, die mit dem Ereignis verknüpft werden sollen; Tags werden dem Video zugewiesen, wenn das Live-Ereignis als Video-Asset gespeichert wird (maximal 128 Zeichen und 1200 Tags)
+          </li>
+          <li>
+            <strong>Referenz-ID</strong> - Referenz-ID für das Ereignis; muss eindeutig sein (max. 150 Zeichen)
+          </li>
+        </ul>
+      </li>
+      <li>
+        Klicken Sie auf <strong>Erlaubt</strong> , wenn Sie das Streamen der Live-Veranstaltung auf Social-Media-Plattformen aktivieren möchten, andernfalls klicken Sie auf <strong>Nicht zulässig</strong>. Dies kann erfolgen, <a href="https://live.support.brightcove.com/live-module/creating-and-managing-live-events-using-live-module.html#social">sobald das Ereignis mit dem Streaming begonnen hat</a> oder mithilfe des <a href="https://live.support.brightcove.com/live-module/publishing-live-event-facebook.html">Social-Moduls</a>.
+      </li>
+      <li>
+        Wählen Sie ein <strong>Live-Ingest-Profil</strong>aus. In der Dropdown-Liste werden alle Live-Aufgaufen-Profile aufgeführt. Das Aufgabe-Profil steuert die Qualität und Anzahl der erstellten Live-Darstellungen. Wenn Sie auf den Link <strong>Profile verwalten</strong> klicken, wird der Ingest-Profileditor in einem anderen Browser-Tab geöffnet. Beachten Sie, dass Sie Kontoadministrator sein müssen, um auf den Ingest-Profileditor zugreifen zu können. Klicken Sie auf den Link <strong>RENDITIONS</strong> , um die Formatvarianten anzuzeigen, die mit dem ausgewählten Ingest-Profil erstellt werden.
+        <aside class="bcls-aside bcls-aside--information">
+          Die Bitrate und die Rechnungsdetails der drei Stufen lauten wie folgt:
+          <ul>
+            <li>
+              Tier 1 erlaubt bis zu 5.500 Kbit/s und wird mit 1,0 x Stunden aufgeladen
+            </li>
+            <li>
+              Tier 2 erlaubt bis zu 10.000 Kbit/s und wird mit 1,5 x Stunden aufgeladen
+            </li>
+            <li>
+              Tier 3 erlaubt bis zu 20.000 Kbit/s und wird mit 2,0x Stunden aufgeladen
+            </li>
+          </ul>
+        </aside>
+      </li>
+      <li>
+        Wählen Sie <strong>Event nach Abschluss des Ereignisses in Video-Asset konvertieren</strong> , um eine VOD-Version des Live-Events in Ihrem Video Cloud-Konto zu speichern. Wenn diese Option ausgewählt ist, wird die höchste Wiedergabeversion aus dem ausgewählten <strong>Live Ingest-Profil</strong> als Quelle für das VOD-Video verwendet. Das standardmäßige Auftrittenprofil für das Konto wird beim Erstellen von Formatvarianten verwendet. <strong>Beachten Sie, dass die VOD-Version nicht verfügbar ist, sobald das Live-Ereignis endet, das Video nach Abschluss des Aufnahmvorgangs verfügbar ist.</strong>
+        <aside class="bcls-aside bcls-aside--information">
+          Hinweis: Diese Option wird bei Verwendung eines wiederkehrenden Ereignisses nicht unterstützt.
+        </aside>
+      </li>
+      <li>
+        Klicken Sie auf <strong>ADVANCED OPTIONS</strong> und sehen Sie sich Nur einer davon wird Ihre Aufmerksamkeit benötigen.
+      </li>
+      <li>
+        Klicken Sie in das Kontrollkästchen <strong>Benachrichtigungen zum Stream-Status aktivieren</strong> und fügen Sie die Benachrichtigungs-URL von Brightcove Beacon CMS hinzu (Ihr Brightcove Support-Mitarbeiter wird diese URL bereitstellen).
+
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/streaming-live-event/16-enable-notifications.png"/>
+        </figure>
+      </li>
+      <li>
+        Klicken Sie auf <strong>Create Event</strong> , um das Live-Event zu starten. Die Control Room-Seite wird mit Details zum Live-Ereignis geöffnet, einschließlich des <strong>Streaming-Endpunkts (RTMP-URL)</strong> und <strong>des Stream-Namens</strong> , die von Ihrem Encoder verwendet werden. Die Verarbeitung Ihrer Streams dauert ungefähr eine Minute.
+        <aside class="bcls-aside bcls-aside--information">
+          Um mit dem Streaming auf der Live-Plattform zu beginnen, benötigen Sie einen Encoder. Informationen zur Verwendung eines Encoders finden Sie in der folgenden Dokumentation:
+          <p>
+            <a href="https://live.support.brightcove.com/get-started/step-step-using-live-module-telestream-wirecast.html" target="_blank">Schritt für Schritt: Verwenden des Live-Moduls mit Telestream Wirecast</a>
+          </p>
+          <p>
+            <a href="https://live.support.brightcove.com/get-started/step-step-using-live-module-open-broadcaster-software-obs.html" target="_blank">Schritt für Schritt: Verwenden des Live-Moduls mit Open Broadcaster Software (OBS)</a>
+          </p>
+        </aside>
+      </li>
+      <li>
+        Kopieren Sie im <strong>Kontrollraum</strong> die <strong>Job-ID</strong> und die <strong>Video-ID</strong> aus dem <strong>Testereignisfenster</strong>. Sie benötigen beide, um das Live-Ereignis in den Brightcove Beacon-Plattformeinstellungen zu konfigurieren.
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/streaming-live-event/16.2-control-room.png"/>
+        </figure>
+      </li>
+      <li>
+        Gehen Sie als Nächstes zurück zu Brightcove Beacon und klicken Sie auf die Registerkarte <strong>Event</strong> . Wählen Sie das Ereignis aus, das Sie zuvor dort erstellt haben, und fügen Sie in den Einstellungen der <strong>Grunddaten</strong> die <em>Job-ID</em> Ihres Live-Ereignisses ein.
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/streaming-live-event/17-beacon-job-id.png"/>
+        </figure>
+      </li>
+      <li>
+        Wechseln Sie zur Registerkarte <strong>Streams</strong> und erstellen Sie einen neuen Stream, indem Sie auf die Schaltfläche <strong> + Neuen Stream hinzufügen</strong> klicken.
+      </li>
+      <li>
+        Fügen Sie im Feld <strong>Stream Video ID</strong> die <strong>Video-ID aus dem Video</strong> Cloud-Ereignis ein, das Sie zuvor erstellt haben. Geben Sie auch die folgenden Informationen über den Stream ein:
+        <ul>
+          <li>
+            Wählen Sie die Anzahl der Geräte aus, auf denen Sie Ihr Video veröffentlichen können.
+          </li>
+          <li>
+            Stellen Sie den <strong>Streamtyp</strong> im Dropdown-Menü auf <strong>Live</strong> ein.
+          </li>
+          <li>
+            Und klicken Sie auf die Schaltfläche <strong>Ereignis aktualisieren</strong> , bevor Sie die Seite verlassen.
+          </li>
+        </ul>
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/streaming-live-event/18-beacon-stream-id.png"/>
+        </figure>
+      </li>
+
+      <li>
+        Klicken Sie oben rechts auf dem Bildschirm auf die Schaltfläche <strong>Extras</strong> (Schraubenschlüssel). Leeren Sie dann den Cache.
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/streaming-live-event/12-clear-cache.png"/>
+        </figure>
+      </li>
+
+      <li>
+        Öffnen Sie Ihre Brightcove Beacon App und wählen Sie Ihre Veranstaltung aus (die Ereignisnamen und Bilder auf dem Bild dienen nur zum Beispiel).
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" width="400" height="700" src="/assets/images/using-bcb/streaming-live-event/18.5-app-event.png"/>
+        </figure>
+      </li>
+
+      <li>
+        Klicken Sie auf die Schaltfläche „ <strong>Abspielen</strong> “, und Sie sollten jetzt in der Brightcove Beacon App Ihr Live-Event-Streaming von Video Cloud sehen können.
+
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" width="400" height="700" src="/assets/images/using-bcb/streaming-live-event/19-app-play.png"/>
+        </figure>
+      </li>
+    </ol>
+    <p>
+      Sobald Ihr Event endet, können Sie es ganz oder teilweise als Clip speichern, der zu einem Video-Asset in Video Cloud oder einem abspielbaren Stream wird, der in Brightcove Beacon angezeigt werden kann. Der Prozess wird im nächsten Abschnitt dieses Dokuments beschrieben.
+    </p>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Clip">Erstellen eines Clips aus Ihrem Live-Event</h2>
+    <aside class="bcls-aside bcls-aside--information">
+      Sie müssen einen Clip Ihres Brightcove Beacon Live-Events erstellen, wenn Sie das Video zum späteren Streaming als aufgezeichnetes VOD-Video behalten möchten.
+    </aside>
+    <p>
+      Das Live-Modul bietet die Möglichkeit, Videoclips aus abgeschlossenen Ereignissen zu erstellen. Clips können auch erstellt werden, während ein Live-Event läuft.
+    </p>
+    <p>
+      Eine vollständige Liste der Clipping-Funktionen finden Sie in der Dokumentation <a href="https://live.support.brightcove.com/live-module/creating-video-clip-using-live-module.html">Erstellen eines Videoclips mit dem Live-Modul</a> .
+    </p>
+
+    <ol class="bcls-tasklist-restart">
+      <li>
+        Wechseln Sie im Live-Modul auf die Registerkarte <strong>Clip erstellen</strong> im linken Bereich.
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/streaming-live-event/20-create-clip.png"/>
+        </figure>
+      </li>
+      <li>
+        Legen Sie mit den Clipping-Tasten oder Tastenkombinationen die Start- und Endpunkte für den Clip fest. Sie können auch einfach auf die Schaltfläche <strong>Speichern</strong> klicken, um das gesamte Video beizubehalten.
+      </li>
+      <li>
+        Geben Sie die Eigenschaften des Clip-Videos ein.
+        <ul>
+          <li><strong>Clipname</strong> - Name des Clips</li>
+          <li><strong>Kurzbeschreibung</strong> - Beschreibung des Clips</li>
+          <li><strong>Schlagworte</strong> - Tags, die mit dem Clip verknüpft werden sollen</li>
+          <li>
+            <strong>Referenz-ID</strong> - Referenz-ID zum Zuweisen zum Clip
+          </li>
+          <li>
+            <strong>Quellenwerbeblengeninhalt entfernen</strong> - Diese Option entfernt Werbeblöcke, die innerhalb des Clips ausgelöst werden, wobei nur Programminhalte beibehalten werden
+            <aside class="bcls-aside bcls-aside--information">
+              Hinweis: Das Kontrollkästchen „Quellenwerbebruch entfernen“ wird nur angezeigt, wenn der Stream SSAI-aktiviert ist.
+            </aside>
+          </li>
+        </ul>
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/streaming-live-event/21-create-clip-menu.png"/>
+        </figure>
+      </li>
+      <li>
+        Klicken Sie auf „ <strong>Clip erstellen</strong> Der Transcodierungsprozess für den Clip beginnt. Clips werden unter Verwendung des standardmäßigen Aufgabe-Profils für das Konto transcodiert.
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/streaming-live-event/22-clip-name.png"/>
+        </figure>
+      </li>
+    </ol>
+  </section>
+  <section class="bcls-section">
+    <h2 id="ClipToBeacon">
+      Hinzufügen Ihres Clips zu Brightcove Beacon als spielbares Stream-Video
+    </h2>
+    <p>
+      Hier verwenden Sie die ID Ihres neu erstellten Clip-Videos und machen es zu einem Stream, der in Brightcove Beacon abgespielt werden kann.
+    </p>
+    <ol class="bcls-tasklist-restart">
+      <li>
+        Kopieren Sie die <strong>Nummern-ID</strong> Ihres erstellten Clips, während Sie sich noch im Live-Modul von Video Cloud Studio befinden.
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/streaming-live-event/23-control-room-id.png"/>
+        </figure>
+      </li>
+      <li>
+        Wechseln Sie auf der Brightcove Beacon-Plattform zum Tab <strong>Ereignisse</strong> und wählen Sie das <strong>Streams-Menü</strong> aus. Sie sehen das folgende Formular:
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/streaming-live-event/24-beacon-stream-id.png"/>
+        </figure>
+      </li>
+      <li>
+        Fügen Sie die <strong>ID</strong> , die Sie gerade von der Live-Plattform von Studio kopiert haben, in das Feld <strong>Stream Video ID</strong> ein.
+      </li>
+      <li>
+        Wechseln Sie aus dem Dropdown-Menü <strong>Streamtyp</strong> <strong>Live</strong> in <strong>Stream</strong>.
+      </li>
+      <li>
+        Klicken Sie auf die Registerkarte <strong>Grunddaten</strong> und ändern Sie den <strong>Status</strong> von <strong>Beendet</strong> in <strong>Fertig</strong>.
+      </li>
+      <li>
+        Bevor Sie fortfahren, klicken Sie unten auf der Seite auf die Schaltfläche „ <strong>Ereignis aktualisieren</strong> “. Dadurch wird die Schaltfläche „ <strong>Abspielen</strong> “ in der Brightcove Beacon-App verfügbar, um die Aufzeichnung des Events anzuzeigen.
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" width="400" height="700" src="/assets/images/using-bcb/streaming-live-event/25-beacon-app-play-button.png"/>
+        </figure>
+      </li>
+    </ol>
+  </section>
+  <section class="bcls-section">
+    <h2 id="SEP">(Statischer Einstiegspunkt) SEP Live-Ereignisse</h2>
+    <p>
+      SEP Live Events sind wiederkehrende Events, die Sie beispielsweise bei einem wöchentlichen Programm immer wieder aktivieren/deaktivieren können, wenn Ihre Veranstaltung immer wieder beginnt. Dieses Ereignis kann als eine für alle <strong>Live Job ID</strong> verwendet werden, die in der Brightcove Beacon-App an mehrere Kanäle übertragen werden können.
+    </p>
+
+    <aside class="bcls-aside bcls-aside--information">
+      <ul>
+        <li>
+          Beachten Sie, dass beim Erstellen eines wiederkehrenden Ereignisses automatisch ein Video im Medienmodul dafür erstellt wird. Löschen Sie dieses Video nicht, da es jedes Mal benötigt wird, wenn das Ereignis erneut stattfindet.
+        </li>
+        <li>
+          Das wiederkehrende Ereignis sollte aktiviert werden, bevor der Encoder gestartet wird.
+        </li>
+      </ul>
+    </aside>
+
+    <p>
+      Befolgen Sie diese Schritte, um ein SEP (Static Entry Point) Live-Event in Brightcove Beacon zu erstellen.
+    </p>
+    <ol class="bcls-tasklist-restart">
+      <li>
+         <strong>Erstellen Sie auf der Live-Plattform eine neue Veranstaltung</strong>. Weitere Informationen zum Erstellen einer Veranstaltung finden Sie im Abschnitt <a href="https://live.support.brightcove.com/live-module/creating-and-managing-live-events-using-live-module.html#create"> Erstellen einer neuen Veranstaltung </a> im Dokument <em>Erstellen und Verwalten von Live-Events mit dem Live Module</em> .
+      </li>
+      <li>
+        Erweitern Sie die <strong>ERWEITERTEN OPTIONEN</strong> und aktivieren <strong>Sie die Option Dies als wiederkehrendes Ereignis mit einem statischen Einstiegspunkt (SEP) erstellen</strong>.  Weitere Informationen zu SEP finden Sie im Abschnitt <a href="https://live.support.brightcove.com/live-module/creating-and-managing-live-events-using-live-module.html#work_recurring">Arbeiten mit wiederkehrenden Ereignissen </a> im Dokument <em>Erstellen und Verwalten von Live-Events mit dem Live-Modul</em> .
+
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/streaming-live-event/26-sep.png"/>
+        </figure>
+      </li>
+
+      <li>
+        Wenn Sie bereits ein SEP-Event haben, klicken Sie auf den Reiter <strong>Standby</strong> , und Sie können es im Live Control Room <strong>aktivieren/deaktivieren</strong> .
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/streaming-live-event/27-control-room-activate.png"/>
+        </figure>
+      </li>
+      <li>
+        Kopieren Sie Ihre <strong>Live-Job-ID</strong>.
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/streaming-live-event/28-control-room-jobid.png"/>
+        </figure>
+      </li>
+      <li>
+        Kehren Sie zur Brightcove Beacon-Plattform zurück und konfigurieren Sie Ihr Ereignis, indem Sie die <strong>Job-ID</strong> des wiederkehrenden Ereignisses einfügen. Geben Sie auch einen <strong>Namen</strong> und ein <strong>Startdatum für das Ereignis</strong>ein.
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/streaming-live-event/29-beacon-calendar.png"/>
+        </figure>
+      </li>
+      <li>
+        Das Datum und die Uhrzeit Ihrer Veranstaltung müssen im folgenden Format vorliegen.
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" width="300" height="200" src="/assets/images/using-bcb/streaming-live-event/30-date-format.png"/>
+        </figure>
+      </li>
+      <li>Klicken Sie auf die Schaltfläche „ <strong>Ereignis aktualisieren</strong> “.</li>
+    </ol>
+    <aside class="bcls-aside bcls-aside--warning">Brightcove Beacon CMS automatisiert die <strong>Statusübergänge</strong> für Live-Ereignisse, aber in Static Entry Points haben Sie möglicherweise mehrere Brightcove Beacon-Ereignisse mit demselben SEP verknüpft. Wenn es Probleme mit der Automatisierung gibt, die zu spät kommt und sich überschneidet, können Sie den CMS-Übergang anpassen, indem Sie den <strong>Status</strong>manuell ändern. Zum Beispiel von <strong>Verfügbar</strong> bis <strong>Fertig</strong> im Feld <strong>Status</strong> . </aside>
+
+    <p>
+      Sie können diesen Prozess für alle gewünschten Live-Events auf der Brightcove Beacon-Plattform durchführen. Alle von ihnen werden von derselben Live-Übertragung gestreamt, aber jede mit dem unterschiedlichen Datum und der anderen Uhrzeit, die Sie in den Ereigniseinstellungen angepasst haben.
+    </p>
+
+  </section>
+</article>
+
+<!-- complete bootstrap layout -->
+    </div>
+    <div class="col-sm-2 right-side-bar">
+      
+      <nav class="right-side-nav" id="right_side_nav">
+        <h6 class="toc">Inhalt der Seite</h6>
+        <ul id="in_page_nav" class="list-none"></ul>
+      </nav>
+      
+    </div>
+  </div>
+</div>
+
+<hr>
+<div class="last-updated">
+  Seite zuletzt aktualisiert am 14 Juli 2020
+</div>
+
+
+
+<footer class="bcls-footer" role="contentinfo">
+  <div class="row">
+    <div class="region region-footer-top-center col-md-12">
+      <nav role="navigation" aria-labelledby="block-brightcovesupport-menu" id="block-brightcovesupport" class="footer-menu">
+
+        <h2>Brightcove Support-Service</h2>
+
+        <ul class="menu">
+          <li>
+            <a href="https://status.brightcove.com">Systemstatus</a>
+          </li>
+          <li>
+            <a href="https://supportportal.brightcove.com/s/login/?">Kontakt mit dem Support</a>
+          </li>
+          <li>
+            <a href="https://support.brightcove.com/">DOKUMENTATION</a>
+          </li>
+        </ul>
+
+      </nav>
+      <nav role="navigation" aria-labelledby="block-training-menu" id="block-training" class="footer-menu">
+
+        <h2>Schulungen</h2>
+
+        <ul class="menu">
+          <li>
+            <a href="https://studio.support.brightcove.com/training/online-training-courses.html">Online-Kurse</a>
+          </li>
+          <li>
+            <a href="https://studio.support.brightcove.com/training/register-training.html">Für einen Kurs anmelden</a>
+          </li>
+          <li>
+            <a href="https://university.brightcove.com/">Brightcove Universität</a>
+          </li>
+        </ul>
+
+      </nav>
+      <nav role="navigation" aria-labelledby="block-brightcove-menu" class="footer-menu">
+
+        <h2>Brightcove</h2>
+
+        <ul class="menu">
+          <li>
+            <a href="https://www.brightcove.com">brightcove.com</a>
+          </li>
+          <li>
+            <a href="https://supportportal.brightcove.com/s/login/?">Kontaktiere uns</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <div class="row">
+    <div class="region region-footer-bottom-center col-md-12">
+      <div class="bcls-copyright footer-menu">
+        <table>
+          <tr>
+            <td>
+              <div id="bc_copyright" class="field field--name-field-copyright-year field--type-string field--label-hidden field--item" style="float: left;"> Brightcove Inc. Alle Rechte vorbehalten.</div>
+            </td>
+            <td><a href="https://www.brightcove.com/en/legal/privacy">Privacy</a> | <a href="https://www.brightcove.com/en/terms-and-conditions">Allgemeine Geschäftsbedingungen</a></td>
+            <td>
+              <div class="gf-links-cols footer-menu">
+                <div class="gf-social"><a href="https://www.linkedin.com/company/16439" title="LinkedIn" newtab="newtab" class="gf-social-linkedin"><i class="fab fa-linkedin-in" style="font-size: 1.5rem;"></i></a><a href="https://twitter.com/brightcove" title="Twitter" newtab="newtab" class="gf-social-twitter"><i class="fab fa-twitter" style="font-size: 1.5rem;"></i></a><a href="https://www.facebook.com/Brightcove" title="Facebook" newtab="newtab" class="gf-social-facebook"><i class="fab fa-facebook-f" style="font-size: 1.5rem;"></i></a>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</footer>
+<div id="talla_wrapper">
+  <p style="text-align: right;position: relative;"><button style="background:rgb(2, 28, 146);color:Snow;padding:.3rem;position:fixed;right:0;bottom:1em;z-index:9999999" onclick="javascript:displayChat()">Fragen? </button> </p>
+  <div id="talla_chat">
+</div>
+</div>
+<script>
+      
+  var searchBox = sajari.init({
+    mode: "search-box",
+    project: "1588255093746585379", // Set this to your project.
+    collection: "brightcove-documenation", // Set this to your collection.
+    instantPipeline: "autocomplete", // Pipeline used as you type
+    inputPlaceholder: "Search", // Input element placeholder
+    maxSuggestions: 5, // Maximum number of suggestions to show
+    attachSearchBox: document.getElementById("nav-search-box") // DOM element to attach to
+  });
+  
+    searchBox("sub", "pipeline.search-sent", function (_, query) {
+      window.location = "/search.html?q=" + encodeURIComponent(query.q);
+    });
+  
+
+</script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/https-fix.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/setDate.js"></script>
+  
+  <script src="https://support.brightcove.com/site-assets/js/site/prism.js"></script>
+  
+  <script src="https://support.brightcove.com/site-assets/js/site/site.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/tabs.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/toc.js"></script>
+  <script src="/assets/js/sites_nav.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/bcls-utils.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/local-link-fix.js"></script>
+  <script src="/assets/js/feedback.js"></script>
+  
+  <script src="/assets/js/sajari-search-foot.js"></script>
+  
+  <!-- <script src="/assets/js/sajari-index.js"></script> -->
+  <script src="https://assets.talla.com/latest/embeddedjs/talla.js"></script>
+  <script src="/assets/js/talla-init.js"></script>
+  <style>
+    a.sj-paginator__page-number.sj-paginator__page-number--current.css-so0ov7 {
+      background-color: lightblue;
+    }
+    div.sj-tabs__tab {
+      margin-top: 3rem;
+      margin-left: .3rem;
+      border-top-left-radius: .4rem;
+      border-top-right-radius: .4rem;
+      background-color:#e8e8e8;
+    }
+
+    div.sj-tabs__tab.sj-tabs__tab--selected {
+      border-bottom-color: crimson;
+      background-color: #f8f8f8;
+    }
+
+    p.sj-results__result__description.css-p9jvyt {
+      font-size: 1rem;
+    }
+
+    .sj-result__text.css-31l7gp h3 {
+      color: navy;
+      font-size: 1.4rem;
+    }
+    </style>
+
+</body>
+
+</html>
