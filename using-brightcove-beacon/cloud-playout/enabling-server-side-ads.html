@@ -1,0 +1,89 @@
+---
+title: Beschreibung der Monetarisierung von Cloud Playout: In diesem Thema erfahren Sie, wie eine Sammlung von VOD-Videos und Live-Events als linearer Live-Kanal gestreamt werden kann.
+parent: Cloud Playout
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+	<section class="bcls-section">
+		<h2 id="introduction">Einführung</h2>
+		<p>Eine Möglichkeit, einen Cloud Playout-Kanal zu monetarisieren, ist Werbung. Die zuverlässigste Methode zur Auslieferung von Anzeigen ist die serverseitige Anzeigeneinfügung oder SSAI.</p>
+		<aside class="bcls-aside bcls-aside--information">Wenn Sie daran interessiert sind, Ihrem Konto SSAI-Funktionen hinzuzufügen, wenden Sie sich an Ihren Kundenbetreuer.</aside>
+		<p>In diesem Thema werden die Aktivierung von SSAI für einen Cloud Playout-Kanal und das Einrichten von Pre-Roll- und Post-Roll-Anzeigeneinfügungen behandelt. Da das Einfügen von Mid-Roll-Anzeigen anders funktioniert, wird dies in behandelt <a href="/cloud-playout/mid-roll-ad-insertion.html">Hinzufügen von Mid-Roll-Anzeigen zu einem Kanal</a>. Pre-Roll-, Post-Roll- und Mid-Roll-Anzeigen können alle in einen Kanal mit VOD-Inhalten eingefügt werden.</p>
+    <aside class="bcls-aside bcls-aside--information"> Für SSAI-aktivierte Kanäle muss das Ziel auf ein werbeaktiviertes RTP-Live-Ereignis eingestellt sein:
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/cloud-playout/advanced-options-for-live-job.png" alt="Live Settings for SSAI Channel">
+          <figcaption class="bcls-caption--image">Live-Einstellungen für SSAI-Kanal</figcaption>
+        </figure>
+    </aside>
+	</section>
+  <section class="bcls-section">
+    <h2 id="requirements">Anforderungen</h2>
+    <p>Um serverseitige Anzeigeneinfügung (SSAI) mit Cloud Playout zu verwenden, ist Folgendes erforderlich:</p>
+    <ul>
+      <li>Das Konto muss für Brightcove Live und Live with SSAI aktiviert sein.</li>
+      <li>Als Ziel für den Kanal muss Brightcove Live und/oder S3 verwendet werden.</li>
+    </ul>
+  </section>
+  <section class="bcls-section">
+    <h2 id="ads">Serverseitige Werbung aktivieren</h2>
+    <p>Wenn Sie einen Kanal erstellen, haben Sie die Möglichkeit, SSAI zu aktivieren, sodass serverseitige Anzeigen mithilfe der serverseitigen Anzeigeneinfügungstechnologie von Brightcove angezeigt werden. Sie können auch aktivieren </p>
+		<figure class="bcls-figure">
+			<img class="bcls-image" src="/assets/images/cloud-playout/new-channel-with-ssai.png" alt="Enable SSAI">
+			<figcaption class="bcls-caption--image">SSAI aktivieren</figcaption>
+		</figure>
+    <aside class="bcls-aside bcls-aside--information">Anmerkungen: 
+      <ul>
+        <li>Bei Verwendung der Anzeigeneinfügung kann der Kanal nur an ein Brightcove-Liveereignis ausgegeben werden.</li>
+        <li>Wenn Sie die Anzeigeneinfügung aktivieren, dürfen Live-Eingaben im Kanal nicht verwendet werden.</li>
+      </ul>
+      </aside>
+    <h3>Anzeigen-Tags konfigurieren und Slates ausfüllen</h3>
+    <p>Stellen Sie sicher, dass Sie im Rahmen Ihrer Kontoverwaltung Anzeigen-Tags und Fülltafeln konfiguriert haben. Informationen zum Konfigurieren von Anzeigen-Tags finden Sie unter <a href="/admin/configuring-server-side-ad-settings.html">Serverseitige Anzeigeneinstellungen konfigurieren</a>. Fill Slates sind Inhalte, die bei Lücken in einer Livestream-Werbeunterbrechung bereitgestellt werden können. Informationen zum Erstellen von Fülltafeln finden Sie unter <a href="https://live.support.brightcove.com/admin/managing-live-settings.html">Live-Einstellungen verwalten</a>.</p>
+    <p>
+      <aside class="bcls-aside bcls-aside--information">Notiz: Cloud Playout verwendet die standardmäßige Anzeigentafel, die als Teil der <a href="https://live.support.brightcove.com/admin/managing-live-settings.html">Live-Einstellungen</a>.</aside>
+    </p>
+    <h3>Platzhalter-Videos für Werbeunterbrechungen erstellen</h3>
+    <p>Sie müssen angeben, welche Videos als "Platzhalter"-Videos verwendet werden sollen. "Platzhalter"-Videos werden in den Programmeintrag eingefügt, um anzugeben, dass eine Anzeige geschaltet werden soll und wie lang die Anzeige ist. Dies ist erforderlich, da bei Verwendung der serverseitigen Anzeigeneinfügung mit Brightcove Live das "Platzhalter"-Video durch Anzeigeninhalt ersetzt wird. Wenn Sie kein "Platzhalter"-Video für die Anzeige einfügen, werden Teile des eigentlichen Videos durch Anzeigeninhalte ersetzt. Wenn die Anzeigendauer kürzer ist als die zurückgegebene Anzeige, zeigt SSAI die Anzeigentafel an. Wenn die Anzeigendauer länger ist als die zurückgegebenen Anzeigen, werden die Anzeigen gefolgt von der Anzeigentafel angezeigt. </p>
+    <p>Möglicherweise müssen Sie Videoquelldateien erstellen/hochladen, deren Videolänge der gewünschten Dauer der Werbeunterbrechung entspricht (dh 2 Minuten, 4 Minuten usw.). Der Inhalt dieser Videos spielt keine Rolle, da sie nicht als Teil eines Programms abgespielt werden. </p>
+    <p>Um ein Video als "Platzhalter"-Video zu markieren, verwenden Sie das Medienmodul, um die Videoeigenschaften für diese Videos zu bearbeiten und mit Tags zu versehen <code translate="No">cp-ad-holder</code>.
+      <figure class="bcls-figure"><img class="bcls-image--no-border" alt="report switcher" src="/assets/images/cloud-playout/playout-ad-tag-video.png" /></figure>
+    </p>
+    <h3>Serverseitige Anzeigen für einen Kanal aktivieren</h3>
+    <p>Stellen Sie beim Erstellen eines Kanals die <strong>Anzeigenschaltung</strong> Option zu <strong>Auf</strong>.</p>
+    <figure class="bcls-figure"><img class="bcls-image--no-border" alt="report switcher" src="/assets/images/cloud-playout/playout-ad-insertion-option.png" /></figure>
+    <aside class="bcls-aside bcls-aside--information">Notiz: Bei bestehenden Channels kann die Einstellung für die Anzeigenschaltung nicht geändert werden.</aside>
+    <h3>Einfügen von Anzeigenplatzhaltern in ein Programm</h3>
+    <p>Sie müssen Anzeigenplatzhalter in den Programmeintrag einfügen, in dem Anzeigen angezeigt werden sollen. Führen Sie diese Schritte aus, um Anzeigenplatzhalter einzufügen.</p>
+    <ol class="bcls-tasklist-restart" style="--s:1">
+      <li>Klicken Sie auf einen Kanalnamen, um ihn zu bearbeiten.</li>
+      <li>Klicken Sie in der Programmliste auf das Kontrollkästchen neben dem Video <strong>nach</strong> die eine Anzeige abgespielt werden soll.</li>
+      <li>Klicken <strong>Anzeigen einfügen</strong> und wählen Sie eine <strong>Anzeigendauer</strong>. Die Liste der Anzeigendauern wird basierend auf der Länge aller "Platzhalter"-Videos für Werbeunterbrechungen (getaggt <code translate="No">cp-ad-holder</code>).
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="report switcher" src="/assets/images/cloud-playout/playout-insert-ads-button.png" /></figure>
+      </li>
+      <li>Klicken <strong>Okay</strong>. Das "Platzhalter"-Video mit der ausgewählten Länge wird nach dem ausgewählten Video in das Programm eingefügt.
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="report switcher" src="/assets/images/cloud-playout/playout-ad-break-inserted.png" /></figure>
+        <aside class="bcls-aside bcls-aside--information">Notiz: Das als "Platzhalter" eingefügte Video <strong>wird nicht</strong> als Teil des Programms gespielt werden. Dieses Video wird nur verwendet, um anzugeben, wo eine Anzeigenanfrage gestellt wird und die Anzeigenlänge.</aside>
+      </li>
+      <li>Klicken <strong>Speichern</strong> um die Programmänderungen zu speichern.</li>
+    </ol>
+    <h3>Auswahl der Anzeigenkonfiguration</h3>
+    <p>Sobald das Programm mit der Wiedergabe beginnt, klicken Sie auf <strong>In Brightcove Live ansehen</strong> um den Kanal im Live-Modul anzuzeigen. Das Dropdown-Menü unter dem Player kann verwendet werden, um die zu verwendende Anzeigenkonfiguration auszuwählen.</p>
+    <figure class="bcls-figure"><img class="bcls-image--no-border" alt="report switcher" src="/assets/images/cloud-playout/playout-live-select-ad-config.png" /></figure>
+    <figure class="bcls-figure"></figure>
+    <p>Vollständige Informationen zur serverseitigen Anzeigenschaltung finden Sie im <a href="https://ssai.support.brightcove.com/getting-started/video-cloud-ssai-overview.html">Übersicht über die Video Cloud-SSAI</a> Thema.</p>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Related_topics">verwandte Themen</h2>
+    <ul>
+      <li><a href="/cloud-playout/cloud-playout-overview.html">Überblick: Cloud-Playout</a></li>
+      <li><a href="/cloud-playout/cloud-playout-stream-vod.html">Erstellen eines Cloud-Playout-Kanals</a></li>
+      <li><a href="/cloud-playout/using-channel-actions.html">Verwenden von Kanalaktionen</a></li>
+      <li><a href="/cloud-playout/viewing-channel-output-and-analytics.html">Anzeigen von Kanalausgaben und -analysen</a></li>
+      <li><a href="/cloud-playout/generating-channel-embed-code.html">Generieren des Kanaleinbettungscodes</a></li>
+      <li><a href="https://apis.support.brightcove.com/cloud-playout-apis/getting-started/overview-epg-api.html">Überblick: EPG-API</a></li>
+      <li><a href="https://apis.support.brightcove.com/cloud-playout-apis/references/reference-epg.html">EPG API-Referenz</a></li>
+      <li><a href="https://apis.support.brightcove.com/cloud-playout-apis/references/reference-channels.html">Kanal-API-Referenz</a></li>
+    </ul>
+  </section>
+</article>

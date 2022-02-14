@@ -1,0 +1,241 @@
+---
+title: Erstellen eines Beacon-Kanals
+description: 'In diesem Thema erfahren Sie, wie Sie einen Kanal mithilfe der Registerkarte Kanäle in Brightcove Beacon erstellen.'
+parent: Managing Channels
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+  <aside class="bcls-aside bcls-aside--information">HINWEIS: In diesem Thema werden alle Schritte in Beacon Classic ausgeführt.</aside>
+
+  <section class="bcls-section">
+    <h2 id="overview">Beschreibung</h2>
+    <p>Kanäle werden erstellt, um Live-Events rund um die Uhr zu streamen, genau wie ein normaler TV-Kanal. Der Inhalt des Kanals kann durch eine Reihe von VODs generiert werden, die solange gesendet werden, wie der Kanal verfügbar ist, oder durch direktes Übertragen eines Live-Ereignisses. Weitere Informationen zum Erstellen von Live-Ereignissen finden Sie unter <a href="/live/streaming-live-event.html#Live" target="_blank">Brightcove Beacon Live-Dokumentation</a>.</p>
+    <p>Zusätzlich zum klassischen Beacon-Kanal können Sie jetzt a <a href="/cloud-playout/cloud-playout-overview.html">Cloud-Playout-Kanal</a> um den Inhalt für Ihren Kanal bereitzustellen. Der Hauptvorteil von Cloud Playout-Kanälen besteht darin, dass Brightcove den EPG generiert – Sie benötigen dafür keinen Drittanbieterdienst.</p>
+  </section>
+  <section class="bcls-section">
+    <h2 id="basic-data">Abschnitt Grunddaten</h2>
+    <p>Gehen Sie folgendermaßen vor, um einen Kanal in Brightcove Beacon zu erstellen:</p>
+    <ol class="bcls-tasklist">
+      <li>Melden Sie sich bei Beacon Classic an.</li>
+      <li>Wählen Sie in der oberen Navigation <strong>Kanäle</strong>.</li>
+      <li>Drücke den <strong>Neuen Kanal hinzufügen</strong> Taste.
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" src="/assets/images/channels/creating-channels/1-add-new-channel.png" alt="" width="" height="" />
+        </figure>
+      </li>
+      <li>In dem <strong>Grundinformationen</strong> Registerkarte, definieren Sie a <strong>Name</strong> für deinen Kanal.
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" src="/assets/images/channels/creating-channels/2-basic-data.png" alt="" />
+        </figure>
+      </li>
+      <li>
+        Wenn Sie einen Cloud Playout-Kanal als Quelle für Ihren Beacon-Kanal verwenden, geben Sie die Cloud Playout-Kanal-ID ein: <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/cloud-playout/enter-cloud-playout-channel-id.png" alt="Enter Cloud Playout Channel ID">
+          <figcaption class="bcls-caption--image">Geben Sie die Cloud Playout-Kanal-ID ein</figcaption>
+        </figure>
+        <p>Um die Cloud Playout-Kanal-ID zu finden, siehe <a href="/cloud-playout/cloud-playout-stream-vod.html#Get_information_for_the_Beacon_Channel">Holen Sie sich Informationen für den Beacon Channel</a>.</p>
+      </li>
+      <li>In dem <strong>Inhaltsbewertung</strong> Wählen Sie im Dropdown-Menü die Inhaltsbewertung Ihres Kanals basierend auf dem Inhaltsbewertungssystem des Landes aus, in dem Ihr Kanal gestreamt wird. Im Beispielbild ist es für die USA <strong>TV-Y</strong>.
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" src="/assets/images/channels/creating-channels/2.2-basic-data-options.png" alt="" width="" height="" />
+        </figure>
+      </li>
+      <li>In dem <strong>Genre-Details</strong> Abschnitt, klicken Sie auf <strong>Genres</strong> Dropdown-Menü, um ein Genre für Ihren Kanal auszuwählen. (Beispiel: Horror, Drama usw.)</li>
+      <li>Wenn du nicht das richtige Genre für deinen Kanal findest, kannst du zusätzliche erstellen, indem du auf klickst <strong>Genre erstellen</strong> Taste.</li>
+      <aside class="bcls-aside bcls-aside--information">Die <strong>Untergeordnetes Genre</strong> Dropdown-Menü, ist derzeit nicht funktionsfähig.</aside>
+    </ol>
+  </section>
+  <section class="bcls-section">
+    <h2 id="textual-data">Textdaten</h2>
+    <p>Die <strong>Textdaten</strong> Im Abschnitt können Sie anzeigbaren Text für Ihren Kanal hinzufügen.</p>
+    <ol class="bcls-tasklist-restart">
+      <li>Wähle aus <strong>Textdaten</strong> Tab.
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" src="/assets/images/channels/creating-channels/3-textual-data.png" alt="" width="" height="" />
+        </figure>
+      </li>
+      <li>In dem <strong>Titel</strong> Definieren Sie einen Titel für Ihren Kanal.</li>
+      <li>In dem <strong>Beschreibung</strong> Definieren Sie im Feld eine Beschreibung für Ihren Kanal.</li>
+      <li>In dem <strong>Zusammenfassung</strong> Definieren Sie eine Zusammenfassung für Ihren Kanal.
+      </li>
+      <aside class="bcls-aside bcls-aside--information">Sie können hinzufügen <strong>Textdaten</strong> Abschnitt für jede andere Sprache, die du in deinem Kanal verwenden wirst. </aside>
+    </ol>
+  </section>
+  <section class="bcls-section">
+    <h2 id="non-textual-data">Nicht-textuelle Daten</h2>
+    <p>Die <strong>Nicht-textuelle Daten</strong> Im Abschnitt können Sie Bilder im Hoch- und Querformat für Ihren Kanal hinzufügen. Sie liefern Bilder im Hoch- und Querformat. Stellen Sie sicher, dass die Bilder diese Anforderungen erfüllen:
+    <table class="bcls-table">
+      <thead class="bcls-table__head">
+        <tr>
+          <th>Bild</th>
+          <th>Anforderungen</th>
+        </tr>
+      </thead>
+      <tbody class="bcls-table__body">
+        <tr>
+          <td>Porträt-Poster</td>
+          <td>
+            Posterbild (2:3)
+            <table>
+              <tr>
+                <td>Minimum</td>
+                <td>Breite: 1000px</td>
+                <td>Höhe: 563px</td>
+              </tr>
+              <tr>
+                <td>Maximal</td>
+                <td>Breite: 4000px</td>
+                <td>Höhe: 2250px</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td>Landschaftsposter</td>
+          <td>
+            Querformat (16:9):
+            <table>
+              <tr>
+                <td>Minimum</td>
+                <td>Breite: 1000px</td>
+                <td>Höhe: 563px</td>
+              </tr>
+              <tr>
+                <td>Maximal</td>
+                <td>Breite: 4000px</td>
+                <td>Höhe: 2250px</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    </p>
+    <ol class="bcls-tasklist-restart">
+      <li>Wähle aus <strong>Nicht-textuelle Daten</strong> Tab.</li>
+      <li>Füge hinzu ein <strong>Porträt-Poster</strong> Bild für Ihren Kanal, indem Sie das Bild per Drag &amp; Drop in den Kastenbereich ziehen.
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" src="/assets/images/channels/creating-channels/4-non-textual-data.png" alt="" width="" height="" />
+        </figure>
+      </li>
+      <li>Füge hinzu ein <strong>Landschaftsposter</strong> Bild für Ihren Kanal, indem Sie das Bild per Drag &amp; Drop in den Kastenbereich ziehen.</li>
+    </ol>
+    <aside class="bcls-aside bcls-aside--information">Sie können für jede Sprache, die Sie in Ihrem Kanal verwenden, unterschiedliche Bilder im Hoch- und Querformat hinzufügen, indem Sie einfach die gewünschte Sprachregisterkarte auswählen.</aside>
+  </section>
+  <section class="bcls-section">
+    <h2 id="tags">Stichworte</h2>
+    <p>Die <strong>Stichworte</strong> Registerkarte ist zu diesem Zeitpunkt nicht funktionsfähig.</p>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Metadata">Metadaten</h2>
+    <p>Die <strong>Metadaten</strong> Registerkarte ist zu diesem Zeitpunkt nicht funktionsfähig.</p>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Streams">Streams</h2>
+    <p>Die <strong>Strom</strong> Im Abschnitt können Sie die Optionen und Berechtigungen für die Wiedergabe-URL festlegen.</p>
+    <ol class="bcls-tasklist-restart">
+      <li>Wähle aus <strong>Streams</strong> Tab.
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" src="/assets/images/channels/creating-channels/5-streams.png" alt="" width="" height="" />
+        </figure>
+      </li>
+      <li>Wähle Deine <strong>Anbieter</strong>. Höchstwahrscheinlich haben Sie nur einen Anbieter, der auf Ihr Brightcove Video Cloud-Konto verweist.</li>
+      <li>Drücke den <strong>Neuen Stream hinzufügen</strong> Taste.</li>
+      <li>In dem <strong>Stream-Video-ID</strong> fügen Sie die Video-ID aus Ihrem Video Cloud-Liveereignis ein. Wenn Sie einen Cloud Playout-Kanal als Quelle für Ihren Beacon-Kanal verwenden, lesen Sie <a href="/cloud-playout/cloud-playout-stream-vod.html#Get_information_for_the_Beacon_Channel">Holen Sie sich Informationen für den Beacon-Kanal.</a> </li>
+      <li>In dem <strong>Zu veröffentlichende Geräte</strong> fügen Sie die Geräte hinzu, auf denen Sie veröffentlichen möchten. Wähle aus <strong>Alle Geräte auswählen / abwählen</strong> um eine Liste der verfügbaren Geräte anzuzeigen. </li>
+      <li>In dem <strong>Stream-Typ</strong> auswählen <strong>Live</strong>.</li>
+      <li>Notiere dass der <strong>DRM-Typ</strong> und <strong>Stream-Format</strong> Werte müssen nicht geändert werden.</li>
+    </ol>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Rights_and_Scheduling">Rechte &amp; Planung</h2>
+    <p>
+      Die <strong>Rechte &amp; Planung</strong> Im Abschnitt legen Sie den Veröffentlichungsstatus und die Verfügbarkeit fest.
+    </p>
+    <ol class="bcls-tasklist-restart">
+      <li>
+        <p>Wähle aus <strong>Rechte &amp; Planung</strong> Tab.</p>
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" src="/assets/images/channels/creating-channels/6-rights-schedualing.png" alt="" width="" height="" />
+        </figure>
+      </li>
+      <li>
+        Seien Sie sicher, dass <strong>Status</strong> ist eingestellt auf <strong>Veröffentlicht</strong> für deinen Kanal.
+      </li>
+      <li>
+        Für die <strong>Verfügbarkeitsdetails</strong> , verwenden Sie Folgendes als Leitfaden, um die Informationen zu vervollständigen:
+        <table class="bcls-table">
+          <thead class="bcls-table__head">
+            <tr>
+              <th>Gebiet</th>
+              <th>Erforderlich</th>
+              <th>Anmerkungen</th>
+            </tr>
+          </thead>
+          <tbody class="bcls-table__body">
+            <tr>
+              <td>Rechtetyp</td>
+              <td>Jawohl</td>
+              <td>Wählen Sie je nach Monetarisierungsmodell aus: <ul>
+                  <li><strong>Kostenlos</strong></li>
+                  <li><strong>Werbung - AVOD </strong>: Für Kanäle, die mit Werbung monetarisiert werden.</li>
+                  <li><strong>Abonnement - SVOD</strong>: Für Kanäle, die mit einem Abonnement monetarisiert wurden.</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>Startzeit</td>
+              <td>Jawohl</td>
+              <td>Plane eine Startzeit für deinen Kanal.</td>
+            </tr>
+            <tr>
+              <td>Endzeit</td>
+              <td>Jawohl</td>
+              <td>Plane eine Endzeit für deinen Kanal.</td>
+            </tr>
+            <tr>
+              <td>Max. Streams</td>
+              <td>N / A</td>
+              <td>Zur Zeit nicht funktionsfähig.</td>
+            </tr>
+            <tr>
+              <td>Zu veröffentlichende Geräte</td>
+              <td>Jawohl</td>
+              <td>
+                Fügen Sie die Geräte hinzu, auf denen Sie veröffentlichen möchten. Wähle aus <strong>Alle Geräte auswählen/abwählen</strong> um eine Liste der verfügbaren Geräte anzuzeigen.
+              </td>
+            </tr>
+            <tr>
+              <td>Zulässige Standorte</td>
+              <td>Jawohl</td>
+              <td>
+                Wählen Sie die Orte aus, an denen Sie Ihre Inhalte streamen möchten.
+              </td>
+            </tr>
+            <tr>
+              <td>Abgelehnte Standorte</td>
+              <td>Nein</td>
+              <td>
+                Wählen Sie die Orte aus, an denen Sie Ihre Inhalte NICHT streamen möchten.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <br />
+        <aside class="bcls-aside bcls-aside--tip"> Um geografische Standorte hinzuzufügen oder zu bearbeiten, navigieren Sie zu <strong>Einstellungen</strong> und dann <strong>Standorte</strong> . </aside>
+      </li>
+      <li>
+        Klicken Sie unbedingt auf <strong>Neuen Kanal erstellen</strong> Schaltfläche, um Ihre Arbeit zu speichern.
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" src="/assets/images/channels/creating-channels/7-create-button.png" alt="" width="" height="" />
+        </figure>
+      </li>
+    </ol>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Add-Channel-to-EPG">Hinzufügen Ihres Kanals zu einem elektronischen Programmführer (EPG)</h2>
+    <p>Nachdem Ihr Kanal erstellt wurde, besteht der letzte Schritt darin, ihn zum Brightcove Beacon EPG-Zeitplan hinzuzufügen. Informationen dazu finden Sie unter <a href="https://beacon.support.brightcove.com/using-brightcove-beacon/electronic-program-guides.html" target="_blank">Erstellen eines elektronischen Programmführers (EPG)</a> Dokumentation. </p>
+    <aside class="bcls-aside bcls-aside--information">Beachten Sie, dass Brightcove den EPG für Sie erstellt, wenn Sie einen Cloud Playout-Kanal als Quelle für Ihren Beacon-Kanal verwenden, und Sie keine weiteren Maßnahmen ergreifen müssen.</aside>
+  </section>
+</article>

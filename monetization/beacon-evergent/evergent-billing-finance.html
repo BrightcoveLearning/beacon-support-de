@@ -1,0 +1,244 @@
+Evergent:---
+title: ' Abrechnung und Finanzen'
+description: Dieses Thema enthält eine Anleitung zum Verwalten von Abrechnungs- und Finanzdatensätzen für Ihre Benutzer.
+parent: Beacon Advanced Monetization
+layout: staging
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+  <section class="bcls-section">
+    <h2 id="introduction">Einführung</h2>
+		<p>Um zum Finanz- und Rechnungsverlauf eines Benutzers zu gelangen, müssen Sie sich beim Evergent CRM-System anmelden und das Konto suchen, an dem Sie arbeiten möchten. Sehen <a href="/monetization/beacon-evergent/evergent-finding-accounts.html">Auffinden von Konten im Evergent CRM</a> für Details.</p>
+		<p>Die <strong>Abrechnung und Finanzen</strong> Registerkarte der Benutzerkontoinformationen wird verwendet, um den Abrechnungs- und Finanzverlauf Ihrer Zuschauer anzuzeigen. Sie können Ihren Kunden über die Registerkarte "Abrechnung und Finanzen" Zahlungen, Korrekturen und Rückerstattungen ausstellen.</p>
+		<figure class="bcls-figure">
+			<img class="bcls-image" src="/assets/images/beacon-evergent/billing-finance-tab.png" alt="Billing and Finance Tab">
+			<figcaption class="bcls-caption--image">Registerkarte "Abrechnung und Finanzen"</figcaption>
+		</figure>
+		<p>Die folgenden Funktionen können bereitgestellt werden:</p>
+		<ul>
+			<li>Laufbalance</li>
+			<li>Rechnungen</li>
+			<li>Zahlungen</li>
+			<li>Anpassungen</li>
+			<li>Rückerstattungen</li>
+		</ul>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Running_Balance">Laufbalance</h2>
+		<p>Laufender Saldo ist ein dynamischer Sachkontostand, der alle Kredit- und Solltransaktionen dieses Benutzerkontos basierend auf dem ausgewählten Bereich mit dem neuesten Datensatz anzeigt.</p>
+		<figure class="bcls-figure">
+			<img class="bcls-image" src="/assets/images/beacon-evergent/running-balance.png" alt="Running Balance">
+			<figcaption class="bcls-caption--image">Laufbalance</figcaption>
+		</figure>
+		<!-- <h3>Make a payment</h3>
+		<p>This module is used to make payment for a user account by an existing payment method and a new  payment method. To make a payment, do the following:</p>
+		<figure class="bcls-figure">
+			<img class="bcls-image" src="/assets/images/beacon-evergent/make-payment.png" alt="Make a Payment">
+			<figcaption class="bcls-caption--image">Make a Payment</figcaption>
+		</figure>
+		<ol class="bcls-tasklist-restart">
+			<li>Click the <strong>Running Balance</strong> hyperlink under the Billing and Finance tab.</li>
+			<li>Click the <strong>Make a Payment</strong> button.</li>
+			<li>Select the payment mode that you want to make a payment.</li>
+			<li>Enter the card number in the <strong>Card Number</strong> field.</li>
+			<li>Enter the type of card in the <strong>Card Type</strong> field.</li>
+			<li>Enter the name of a cardholder in the <strong>Name on Card</strong> field.</li>
+			<li>Enter the card expiry date in the <strong>Expiry (MM/YYYY)</strong> field.</li>
+			<li>Enter the security code in the <strong>Security Code</strong> field.</li>
+			<li>Enter the required amount in the <strong>Amount</strong> field.</li>
+			<li>Click the <strong>Make Payment</strong> button. The payment line-item will be added to Payment History.</li>
+		</ol> -->
+
+		<h3>Anpassungen</h3>
+		<p>Dieses Modul ist eine Transaktion, die die Zahlungskorrekturen einer Zahlungsbuchung eines Kundenkontos bereitstellt. Gehen Sie wie folgt vor, um die Zahlungsanpassungen für das Konto vorzunehmen:</p>
+		<figure class="bcls-figure">
+			<img class="bcls-image" src="/assets/images/beacon-evergent/make-adjustment.png" alt="Make an Adjustment">
+			<figcaption class="bcls-caption--image">Nehmen Sie eine Anpassung vor</figcaption>
+		</figure>
+		<ol class="bcls-tasklist-restart">
+			<li>Drücke den <strong>Laufbalance</strong> Hyperlink unter der Registerkarte Abrechnung und Finanzen.</li>
+			<li>Drücke den <strong>Nehmen Sie eine Anpassung vor</strong> Taste.</li>
+			<li>Wähle aus <strong>Anpassungstyp</strong> aus der Dropdown-Liste.</li>
+			<li>Geben Sie den Betrag ein, den Sie im anpassen möchten <strong>Betragen</strong> Gebiet.</li>
+			<li>Wählen Sie den Grund für die Zahlungsanpassungen aus dem <strong>Grund auswählen</strong> Dropdown-Liste.</li>
+			<li>Wählen Sie die Rechnung aus dem <strong>Auf Rechnung</strong> Dropdown-Liste, für die Sie die Anpassungen vornehmen möchten.</li>
+			<li>Wähle aus <strong>Ausfallstartdatum</strong> und <strong>Enddatum des Ausfalls</strong> aus dem Kalender.</li>
+			<li>Geben Sie die Kommentare in die ein <strong>Kommentar</strong> Gebiet.</li>
+			<li>Drücke den <strong>Fertig</strong> Taste. Die Anpassungen werden im Abschnitt Liste der Anpassungen hinzugefügt.</li>
+		</ol>
+		<h3>Abschreiben</h3>
+		<p>Die Schaltfläche Ausbuchen im laufenden Kontostand des jeweiligen Kontos wird nur angezeigt, wenn der Kontostand positiv ist, dh der Kunde muss den Betrag bezahlen. Beim Klicken auf die Schaltfläche Abschreiben, wenn der Kunde den Betrag bezahlt hat und <strong>Fügen Sie einen negativen Anpassungsbetrag hinzu, um den Saldo auf Null zu stellen</strong>.</p>
+  </section>
+	<section class="bcls-section">
+		<h2 id="Invoices">Rechnungen</h2>
+		<p>Im Abschnitt Rechnungen werden alle allgemeinen Rechnungen angezeigt, die für ein Konto erstellt wurden. Es zeigt im Detail für jede Rechnung.</p>
+		<figure class="bcls-figure">
+			<img class="bcls-image" src="/assets/images/beacon-evergent/invoices.png" alt="Invoices">
+			<figcaption class="bcls-caption--image">Rechnungen</figcaption>
+		</figure>
+	</section>
+	<section class="bcls-section">
+		<h2 id="Payments">Zahlungen</h2>
+		<p>Zeigen Sie den bestehenden Zahlungsverlauf des Kunden an, der eine Aufzeichnung der Kreditkartendetails, der bestellten Produkt-ID, des Zahlungseingangsdatums, des Betrags, des Status sowie der Option zur Rückerstattung der Zahlung an den Kunden enthält.</p>
+		<figure class="bcls-figure">
+			<img class="bcls-image" src="/assets/images/beacon-evergent/payments.png" alt="Payments">
+			<figcaption class="bcls-caption--image">Zahlungen</figcaption>
+		</figure>
+		<h3>Rückerstattung des Betrags </h3>
+		<p>Um den Betrag zurückzuerstatten, gehen Sie wie folgt vor:</p>
+		<ol class="bcls-tasklist-restart">
+			<li>Drücke den <strong>Zahlungen</strong> Hyperlink unter dem <strong>Abrechnung und Finanzen</strong> Tab.</li>
+			<li>Klicken Sie auf dem Bildschirm Zahlungsverlauf auf das <strong>Erstattung</strong> Knopf im <strong>Aktionen</strong> Spaltenüberschrift, die Sie für das Konto erstatten möchten.</li>
+			<li>
+				Ein Dialogfeld, <strong>"Bist du sicher?"</strong> erscheint wie unten gezeigt.
+				<figure class="bcls-figure">
+					<img class="bcls-image" src="/assets/images/beacon-evergent/confirm-refund.png" alt="Confirm Refund">
+					<figcaption class="bcls-caption--image">Rückerstattung bestätigen</figcaption>
+				</figure>
+			</li>
+			<li>Wählen Sie im einen Grund für die Rückerstattung aus <strong>Grund auswählen</strong> Dropdown-Liste.</li>
+			<li>Geben Sie die Kommentare für die Zahlungsrückerstattung in das ein <strong>Kommentare</strong> Kasten.</li>
+			<li>Drücke den <strong>Ja, Rückerstattung</strong> Schaltfläche, um eine Rückerstattung zu leisten, oder klicken Sie auf <strong>Geh zurück</strong> die Änderungen zu verwerfen.</li>
+		</ol>
+	</section>
+	<section class="bcls-section">
+		<h2 id="Adjustments">Anpassungen</h2>
+		<p>Dieses Modul ist eine Transaktion, die die Zahlungskorrekturen einer Zahlungsbuchung eines Kundenkontos bereitstellt.</p>
+		<h3>Zahlungsanpassung vornehmen</h3>
+		<p>Gehen Sie wie folgt vor, um Zahlungsanpassungen vorzunehmen:</p>
+		<ol class="bcls-tasklist-restart">
+			<li>Drücke den <strong>Anpassungen</strong> Hyperlink unter dem <strong>Abrechnung und Finanzen</strong> Tab.</li>
+			<li>Drücke den <strong>Nehmen Sie eine Anpassung vor</strong> Schaltfläche, um Zahlungen anzupassen.</li>
+			<li>
+				Die <strong>Anpassungen</strong> Bildschirm wird wie unten gezeigt angezeigt.
+				<figure class="bcls-figure">
+					<img class="bcls-image" src="/assets/images/beacon-evergent/adjustments.png" alt="Adjustments">
+					<figcaption class="bcls-caption--image">Anpassungen</figcaption>
+				</figure>
+			</li>
+			<li>Wähle aus <strong>Anpassungstyp</strong> aus der verfügbaren Dropdown-Liste.</li>
+			<li>Geben Sie den Betrag ein, den Sie im anpassen möchten <strong>Betragen</strong> Gebiet.</li>
+			<li>Auswählen <strong>Grund</strong> und <strong>Auf Rechnung gegeben</strong> aus der verfügbaren Dropdown-Liste.</li>
+			<li>Auswählen <strong>Ausfallstartdatum</strong> und <strong>Enddatum des Ausfalls</strong>.</li>
+			<li>Geben Sie die Kommentare für Anpassungen in das ein <strong>Kommentar</strong> Kasten.</li>
+			<li>Klicken <strong>Fertig</strong> zum Bereitstellen der Anpassung oder klicken Sie auf <strong>Geh zurück</strong>.</li>
+	</ol>
+	</section>
+	<section class="bcls-section">
+		<h2 id="Refunds">Rückerstattungen</h2>
+		<p>Rückerstattungen werden berechnet, wenn ein Dienst entfernt oder getrennt wird. Ab dem Datum der Trennung/Entfernung wird der Betrag für die Dauer der Rechnungsstellung zurückerstattet.</p>
+		<h3>Rückerstattungen hinzufügen</h3>
+		<p>Gehen Sie wie folgt vor, um dem Benutzerkonto Rückerstattungen hinzuzufügen:</p>
+		<ol class="bcls-tasklist-restart">
+			<li>Drücke den <strong>Rückerstattungen</strong> Hyperlink unter dem <strong>Abrechnung und Finanzen</strong> Tab.</li>
+			<li>
+				Klicken Sie auf das Symbol Rückerstattungen hinzufügen (<i data-feather="plus"></i>), um einem Kunden eine Rückerstattung zu gewähren.
+				<figure class="bcls-figure">
+					<img class="bcls-image" src="/assets/images/beacon-evergent/refunds-screen.png" alt="Refunds">
+					<figcaption class="bcls-caption--image">Rückerstattungen</figcaption>
+				</figure>
+			</li>
+			<li>
+				Im Folgenden sind die Rückerstattungsarten in der Liste Transaktionstyp aufgeführt:
+				<ul>
+					<li>In Rechnung gestellt</li>
+					<li>Nicht abgerechnet</li>
+					<li>Alle Zahlungen</li>
+					<li>Rückbuchung</li>
+				</ul>
+			</li>
+		</ol>
+		<h4>Rückerstattung für in Rechnung gestellte Transaktionen</h4>
+		<p>Bei der Auswahl der <strong>Art der abgerechneten Transaktion</strong> von dem <strong>Art der Transaktion</strong> Dropdown-Listenfeld:</p>
+		<ol class="bcls-tasklist-restart">
+			<li>Wählen Sie eine der Rechnungen aus der <strong>Wählen Sie die Rechnung aus</strong> Dropdown-Liste.</li>
+			<li>Wählen Sie eines der Produkte aus dem <strong>Bestelltes Produkt auswählen</strong> Dropdown-Listenfeld.</li>
+			<li>Geben Sie den zu verrechnenden Preis im <strong>Preis berechnet</strong> Gebiet.</li>
+			<li>Geben Sie den Steuerbetrag in das ein <strong>Steuerpflichtig</strong> Gebiet.</li>
+			<li>Geben Sie den Erstattungsbetrag in das ein <strong>Zu erstattender Betrag</strong> Gebiet.</li>
+			<li>Wählen Sie den Grund für die Rückerstattung des Betrags im <strong>Ursachencode</strong> Dropdown-Liste.</li>
+			<li>Geben Sie die Kommentare in die ein <strong>Kommentare</strong> Kasten.</li>
+			<li>Drücke den <strong>Hinzufügen</strong> Schaltfläche, um die Rückerstattung an den Kunden vorzunehmen, oder klicken Sie auf die Schaltfläche <strong>Geh zurück</strong> Taste zum Abbrechen.</li>
+		</ol>
+		<h4>Rückerstattung bei nicht abgerechneten Transaktionen</h4>
+		<p>Bei der Auswahl der <strong>Nicht abgerechneter Transaktionstyp</strong> von dem <strong>Art der Transaktion</strong> Dropdown-Listenfeld:</p>
+		<ol class="bcls-tasklist-restart">
+			<li>Wählen Sie eine der <strong>Produkte/Pakete</strong> von dem <strong>Bestelltes Produkt auswählen</strong> Dropdown-Listenfeld.</li>
+			<li>Geben Sie den zu verrechnenden Preis im <strong>Preis berechnet</strong> Gebiet.</li>
+			<li>Geben Sie den Steuerbetrag in das ein <strong>Steuerpflichtig</strong> Gebiet.</li>
+			<li>Geben Sie den Erstattungsbetrag in das ein <strong>Zu erstattender Betrag</strong> Gebiet.</li>
+			<li>Standardmäßig ist das Kontrollkästchen Anpassung aktiviert, was angibt, dass die Kreditanpassung zum ausgestellten Rückerstattungsbetrag hinzugefügt wird, wodurch die Anzeige des laufenden Saldos als Null gelöscht wird.</li>
+			<li>Wählen Sie den Grund für die Rückerstattung des Betrags im <strong>Ursachencode</strong> Dropdown-Liste.</li>
+			<li>Geben Sie die Kommentare in die ein <strong>Kommentare</strong> Kasten.</li>
+			<li>Drücke den <strong>Hinzufügen</strong> Schaltfläche, um die Rückerstattung an den Kunden vorzunehmen, oder klicken Sie auf die Schaltfläche <strong>Geh zurück</strong> Taste zum Abbrechen.</li>
+		</ol>
+		<h4>Rückerstattung für alle Zahlungstransaktionen</h4>
+		<p>Bei der Auswahl der <strong>Alle Zahlungstransaktionsarten</strong> von dem <strong>Art der Transaktion</strong> Dropdown-Listenfeld:</p>
+		<ol class="bcls-tasklist-restart">
+			<li>Geben Sie den Steuerbetrag in das ein <strong>Steuerpflichtig</strong> Gebiet.</li>
+			<li>Geben Sie den Erstattungsbetrag in das ein <strong>Zu erstattender Betrag</strong> Gebiet.</li>
+			<li>Geben Sie die ID in das ein <strong>Abgleichs-ID</strong> Gebiet.</li>
+			<li>Wählen Sie den Grund für die Rückerstattung des Betrags im <strong>Ursachencode</strong> Dropdown-Liste.</li>
+			<li>Geben Sie die Kommentare in die ein <strong>Kommentare</strong> Kasten.</li>
+			<li>Drücke den <strong>Hinzufügen</strong> Schaltfläche, um die Rückerstattung an den Kunden vorzunehmen, oder klicken Sie auf die Schaltfläche <strong>Geh zurück</strong> Taste zum Abbrechen.</li>
+		</ol>
+		<h4>Rückerstattung bei Rückbuchungstransaktionen</h4>
+		<p>Bei der Auswahl der <strong>Art der Rückbuchungstransaktion</strong> von dem <strong>Art der Transaktion</strong> Dropdown-Listenfeld:</p>
+		<ol class="bcls-tasklist-restart">
+			<li>Geben Sie den Steuerbetrag in das ein <strong>Steuerpflichtig</strong> Gebiet.</li>
+			<li>Geben Sie den Erstattungsbetrag in das ein <strong>Zu erstattender Betrag</strong> Gebiet.</li>
+			<li>Geben Sie die ID in das ein <strong>Abgleichs-ID</strong> Gebiet.</li>
+			<li>Geben Sie die ID in das ein <strong>Transaktions-ID</strong> Gebiet.</li>
+			<li>Wählen Sie den Grund für die Rückerstattung des Betrags im <strong>Ursachencode</strong> Dropdown-Liste.</li>
+			<li>Geben Sie die Kommentare in die ein <strong>Kommentare</strong> Kasten.</li>
+			<li>Drücke den <strong>Hinzufügen</strong> Schaltfläche, um die Rückerstattung an den Kunden vorzunehmen, oder klicken Sie auf die Schaltfläche <strong>Geh zurück</strong> Taste zum Abbrechen.</li>
+		</ol>
+	</section>
+	<section class="bcls-section">
+		<h2 id="Credits">Credits</h2>
+		<p>Kredit ist das, was Unternehmen einem Kunden in der Regel gewähren, wenn der Betrag auf einer Rechnung oder einem Kauf strittig oder falsch ist. Dies kann auf einen Administratorfehler zurückzuführen sein oder weil der Kunde eine vollständige oder teilweise Rückerstattung verlangt.</p>
+		<figure class="bcls-figure">
+			<img class="bcls-image" src="/assets/images/beacon-evergent/credits-module.png" alt="Credits Module">
+			<figcaption class="bcls-caption--image">Credits-Modul</figcaption>
+		</figure>
+		<h3>Hinzufügen von Werbebuchungs-Gutschriften</h3>
+		<p>Gehen Sie wie folgt vor, um das Einzelposten-Guthaben dem Benutzerkonto hinzuzufügen:</p>
+		<ol class="bcls-tasklist-restart">
+			<li>Auf der <strong>Credits</strong> Klicken Sie auf dem Bildschirm Hinzufügen (<i data-feather="plus"></i>) Symbol, um eine neue Positionsgutschrift hinzuzufügen.</li>
+			<li>Die <strong>Guthaben hinzufügen</strong> Bildschirm erscheint.</li>
+			<li>Drücke den <strong>Kreditart auswählen</strong> Dropdown-Liste und wählen Sie die <strong>Einzelposten-Gutschrift</strong>.</li>
+			<li>
+				Wählen Sie einen Typ im <strong>Art der Transaktion</strong> Dropdown-Liste.
+				<ul>
+					<li>In Rechnung gestellt</li>
+					<li>Nicht abgerechnet</li>
+					<li>Rückbuchung</li>
+				</ul>
+			</li>
+		</ol>
+		<p>Für Beacon gelten nur Chargeback-Guthaben.</p>
+		<h4>Rückbuchung</h4>
+		<p>Um eine Gutschrift für eine Rückbuchungsposition zu erhalten, gehen Sie wie folgt vor:</p>
+		<figure class="bcls-figure">
+			<img class="bcls-image" src="/assets/images/beacon-evergent/chargeback-line-item-credit.png" alt="Chargeback Line-Item Credit">
+			<figcaption class="bcls-caption--image">Gutschrift für Rückbuchungsposition</figcaption>
+		</figure>
+		<ol class="bcls-tasklist-restart">
+			<li>Geben Sie den Betrag in die ein <strong>Betrag erstattet</strong> Gebiet.</li>
+			<li>Geben Sie den Betrag in die ein <strong>Guthabenbetrag</strong> Gebiet.</li>
+			<li>Wählen Sie einen Grund in der <strong>Ursachencode</strong> Dropdown-Liste.</li>
+			<li>Geben Sie die Kommentare in die ein <strong>Kommentare</strong> Kasten.</li>
+			<li>Drücke den <strong>Hinzufügen</strong> , um das Serviceguthaben hinzuzufügen, oder klicken Sie auf <strong>Geh zurück</strong> Taste zum Abbrechen.</li>
+		</ol>
+	</section>
+	<section class="bcls-section">
+		<h2 id="Related_topics">verwandte Themen</h2>
+		<ul>
+			<li><a href="/monetization/beacon-evergent/overview-beacon-evergent.html">Überblick: Beacon Advanced Monetarisierung</a></li>
+			<li><a href="/monetization/beacon-evergent/evergent-finding-accounts.html">Auffinden von Konten im Evergent CRM</a></li>
+			<li>Evergent:<a href="/monetization/beacon-evergent/evergent-managing-account-details.html"> Kontodetails verwalten</a></li>
+			<li>Evergent:<a href="/monetization/beacon-evergent/emailer-coupons.html"> E-Mail und Coupons</a></li>
+		</ul>
+	</section>
+</article>

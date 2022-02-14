@@ -1,0 +1,85 @@
+---
+title: Hinzufügen von Bumpern zur Cloud Playout-
+description: In diesem Thema erfahren Sie, wie Sie in einem Cloud Playout-Kanal Bumper (interne Anzeigen) zu VOD-Videos und Live-Ereignissen hinzufügen.
+parent: Cloud Playout
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+  <section class="bcls-section">
+    <h2 id="Introduction">Einführung</h2>
+    <p>Wenn du Server-Side Ads (SSAI) für deinen Kanal nicht aktivierst, möchtest du vielleicht trotzdem Bumper hinzufügen – kurze Pre- oder Post-Roll-Videos, die interne Werbung oder eine andere Art von Ankündigung oder Werbung sein können. Sie können Puffer auch verwenden, um Puffer für Ihre Live-Programmierungssegmente zu erstellen.</p>
+    <p>Bei der anfänglichen Kanalerstellung müssen Sie nichts tun - die Option, um <span class="button-blue">Stoßfänger einfügen</span> wird automatisch angezeigt, nachdem der Kanal erstellt wurde. Dies gilt für alle Kanäle, einschließlich der für Livestreams oder SSAI aktivierten Kanäle</p>
+    <p>Sie können demselben Video mehrere Bumper hinzufügen und die Bumper in der Programmreihenfolge neu anordnen, genau wie bei Videos. Dabei ist jedoch einige Vorsicht geboten, da Sie sonst möglicherweise einen ungenauen EPG erhalten. Sehen <a href="https://apis.support.brightcove.com/cloud-playout-apis/getting-started/overview-epg-api.html#epg_bumpers">Der EPG und die Bumper</a> für alle Einzelheiten.</p>
+    <p>Stoßstangen werden <strong>nicht</strong> erscheinen in der <a href="https://apis.support.brightcove.com/cloud-playout-apis/references/reference-epg.html">EPG</a> aber die Dauer des Bumpers wird dem Video vorher oder nachher hinzugefügt (je nachdem, ob es sich um Pre-Roll oder Post-Roll handelt).</p>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Enabling_bumper_content">Bumper-Inhalte aktivieren</h2>
+    <p>Bei den Bumpern kann es sich um ein beliebiges Video in Ihrem Konto handeln, muss es aber haben <strong>einer von</strong> die folgenden Tags:</p>
+    <ul>
+      <li><code translate="no">cp-preroll-stoßstange</code></li>
+      <li><code translate="no">cp-postroll-stoßstange</code></li>
+    </ul>
+    <aside class="bcls-aside bcls-aside--warning">Potenzielle Probleme:
+			<ul>
+				<li>Wenn du diese beiden Tags demselben Video hinzufügst, funktioniert es immer noch als Bumper, aber die <a href="https://apis.support.brightcove.com/cloud-playout-apis/getting-started/overview-epg-api.html">EPG</a> wird ungenau sein.</li>
+				<li>Bei SSAI-fähigen Kanälen werden Anzeigenplatzhalter als Post-Roll-Anzeigen behandelt. Sie sollten keinen Pre-Roll-Bumper gefolgt von einem Anzeigenplatzhalter haben, da dies effektiv einen Pre-Roll erzeugt.<i data-feather="arrow-right"></i>Post-Roll-Sequenz, die dazu führt, dass der EPG ungenau ist.</li>
+			</ul>
+			</aside>
+  </section>
+  <section class="bcls-section">
+    <h2 id="inserting-bumpers">Stoßfänger einsetzen</h2>
+    <ol class="bcls-tasklist-restart">
+      <li>Bevor Sie Stoßfänger einsetzen können, müssen Sie <a href="/cloud-playout/cloud-playout-stream-vod.html#add_videos">Videos und/oder Live-Events zum Kanal hinzufügen</a> und <strong>speichern</strong> die Änderungen.</li>
+      <li>
+        Wählen Sie ein oder mehrere Videos und/oder Live-Ereignisse aus und klicken Sie auf <span class="button-blue">Stoßfänger einfügen</span>.<sup>[1-1]<strong><a href="#note1-1"></a></strong></sup>
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/cloud-playout/select-videos-for-bumper.png" alt="Select Videos for Bumper">
+          <figcaption class="bcls-caption--image">Videos für Bumper auswählen</figcaption>
+        </figure>
+      </li>
+      <li>
+        In dem <strong>Stoßstangen</strong> Dialogauswahl <strong>Pre-Roll</strong> oder <strong>Post-Roll</strong> und dann klick <span class="button-blue">Einfügung</span> neben dem Bumper-Video, das Sie einfügen möchten.<sup>[1-2]<strong><a href="#note1-2"></a></strong></sup>
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/cloud-playout/bumper-dialog.png" alt="Bumper Dialog">
+          <figcaption class="bcls-caption--image">Stoßfänger-Dialog</figcaption>
+        </figure>
+      </li>
+      <li>
+        Sie sehen nun die Bumper in der Programmliste:
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/cloud-playout/bumper-in-program-list.png" alt="Bumper in Program List">
+          <figcaption class="bcls-caption--image">Stoßfänger in der Programmliste</figcaption>
+        </figure>
+      </li>
+    </ol>
+    <h3>Anmerkungen</h3>
+    <ul style="list-style: none;">
+      <li id="note1-1" style="list-style: none;"><sup>[1-1]<strong></strong></sup> Wenn Sie mehrere Elemente auswählen, wird jedem der gleiche Stoßfänger hinzugefügt. Wenn Sie verschiedene Stoßfänger für verschiedene Artikel wünschen, fügen Sie sie nacheinander hinzu.</li>
+      <li id="note1-2" style="list-style: none;"><sup>[1-2]<strong></strong></sup> Denken Sie daran, dass nur Videos, die <a href="#Enabling_bumper_content">markiert als Stoßfänger</a> erscheint in der Liste.</li>
+  </ul>
+  </section>
+  <section class="bcls-section">
+    <h2 id="removing_bumpers">Stoßfänger verschieben oder entfernen</h2>
+    <p>Ziehen Sie Bumper per Drag-and-Drop, um sie an neue Positionen in der Programmliste zu verschieben.</p>
+    <p>Um eine Stoßstange zu entfernen, wählen Sie sie einfach aus, klicken Sie auf <strong>Löschen</strong> , und klicken Sie dann auf <strong>Löschen</strong> erneut im Bestätigungsdialog.</p>
+    <figure class="bcls-figure">
+      <img class="bcls-image" src="/assets/images/cloud-playout/delete-bumper.png" alt="Delete Bumper">
+      <figcaption class="bcls-caption--image">Stoßfänger löschen</figcaption>
+    </figure>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Related_topics">verwandte Themen</h2>
+    <ul>
+      <li><a href="/cloud-playout/cloud-playout-overview.html">Überblick: Cloud-Playout</a></li>
+      <li><a href="/cloud-playout/cloud-playout-stream-vod.html">Erstellen eines Cloud-Playout-Kanals</a></li>
+      <li><a href="/cloud-playout/enabling-server-side-ads.html">Monetarisieren von Cloud-Playout</a></li>
+      <li><a href="/cloud-playout/using-channel-actions.html">Verwenden von Kanalaktionen</a></li>
+      <li><a href="/cloud-playout/viewing-channel-output-and-analytics.html">Anzeigen von Kanalausgaben und -analysen</a></li>
+      <li><a href="/cloud-playout/generating-channel-embed-code.html">Generieren des Kanaleinbettungscodes</a></li>
+      <li><a href="https://apis.support.brightcove.com/cloud-playout-apis/getting-started/overview-epg-api.html">Überblick: EPG-API</a></li>
+      <li><a href="https://apis.support.brightcove.com/cloud-playout-apis/references/reference-epg.html">EPG API-Referenz</a></li>
+      <li><a href="https://apis.support.brightcove.com/cloud-playout-apis/references/reference-channels.html">Kanal-API-Referenz</a></li>
+    </ul>
+  </section>
+</article>

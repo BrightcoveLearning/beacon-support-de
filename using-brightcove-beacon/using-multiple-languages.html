@@ -1,0 +1,273 @@
+---
+title: "Mehrere Sprachen verwenden"
+description: "In diesem Thema erfahren Sie, wie Sie mehrere Sprachen für Brightcove Beacon verwalten. Die mehrsprachigen Funktionen der Brightcove Beacon-Apps bieten Ihnen die Möglichkeit, Ihre Inhalte und Apps in der Muttersprache Ihrer Zuschauer zu präsentieren. Ihre Zuschauer können ihre Sprache auswählen, um mit Ihren Inhalten und Apps zu interagieren."
+parent: "using-brightcove-beacon"
+layout: "staging"
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+
+  <section class="bcls-section">
+    <h2 id="Introduction">Einführung</h2>
+    <p>Dieses Dokument enthält die folgenden Abschnitte:</p>
+    <ul>
+      <li><a href="#Choose_the_languages_for_your_apps">Wählen Sie die Sprachen für Ihre Apps</a>: Erläutert den Prozess der Auswahl der Sprache(n) für Ihre App.</li>
+      <li><a href="#What_is_translated">Was wird übersetzt?</a>: Erklärt, welche Teile der Apps übersetzt werden können. Erläutert auch, was automatisch für Sie übersetzt wird und was Sie übersetzen müssen.</li>
+      <li><a href="#How_your_viewers_choose_a_language">Wie Ihre Zuschauer eine Sprache für die App auswählen</a>: Zeigt drei Möglichkeiten, wie Ihre Zuschauer die Sprache ändern können, in der sie Ihre Brightcove Beacon-Apps verwenden.</li>
+      <li><a href="#How_your_viewers_select_a_video_asset_language">So wählen Ihre Zuschauer eine Video-Asset-Sprache aus</a>: Zeigt, wie Ihre Zuschauer die Sprache eines Video-Assets auswählen können, wenn die übersetzte Version des Videos bereitgestellt wird.</li>
+      <li>In der folgenden Tabelle sind die Elemente aufgeführt, für die Details übersetzt werden können. Jeder Abschnitt enthält Anweisungen und Screenshots, wie Sie mehrsprachige Assets für Videos, Seiten, Serien usw. bereitstellen können.
+        <table class="bcls-table">
+          <thead class="bcls-table__head">
+            <tr>
+              <th>Artikel</th>
+              <th>Enthält Details zur Lokalisierung</th>
+            </tr>
+          </thead>
+          <tbody class="bcls-table__body">
+            <tr>
+              <td>Videos<a href="#Videos"></a></td>
+              <td>Videotitel, Metadaten, Bilder, Untertitel/Bildunterschriften und Audiotracks</td>
+            </tr>
+            <tr>
+              <td><a href="#Pages">Seiten</a></td>
+              <td>Seitentitel und Bilder</td>
+            </tr>
+            <tr>
+              <td><a href="#Playlists">Wiedergabelisten</a></td>
+              <td>Playlist-Titel</td>
+            </tr>
+            <tr>
+              <td><a href="#Series">Serie</a></td>
+              <td>Serientitel und Bilder</td>
+            </tr>
+            <tr>
+              <td><a href="#Channels">Kanäle</a></td>
+              <td>Kanaltitel und Bilder</td>
+            </tr>
+            <tr>
+              <td><a href="#Events">Veranstaltungen</a></td>
+              <td>Veranstaltungstitel und Bilder</td>
+            </tr>
+            <tr>
+              <td><a href="#Subscriptions">Abonnements</a></td>
+              <td>Abonnementtitel, Bilder und Preise</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+    </ul>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Choose_the_languages_for_your_apps">Wählen Sie die Sprachen für Ihre Apps</h2>
+    <p>Während des Pre-Sales-Prozesses haben Sie Ihre Absicht erklärt, Ihre Apps in mehrere Sprachen zu übersetzen. Zu den Übersetzungsmöglichkeiten gehören die App-Felder und Inhaltsmetadaten.</p>
+    <p>App-Übersetzungen werden durchgeführt, indem Sie die Übersetzung der App-Felder in Ihrer App-Erfahrung anfordern. Inhaltsübersetzungen sind die Metadaten, die Sie in das CMS eingeben. Es enthält Textdaten wie Titel und Beschreibungen sowie Bilder, die Text enthalten.</p>
+    <p>Das Definieren der Sprachen, die Sie in Ihren Brightcove Beacon-Apps verwenden möchten, ist Teil des Onboarding-Prozesses. Wenn Sie nach dem Onboarding-Prozess mehrere Sprachen verwenden möchten oder Sprachen hinzufügen möchten, für die Übersetzungen vorliegen, wenden Sie sich bitte an Ihren Brightcove-Supportmitarbeiter. Für neue Sprachübersetzungen wenden Sie sich bitte an den Brightcove-Support.</p>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="What_is_translated">Was wird übersetzt?</h2>
+    <p>Es gibt zwei Teile der Apps, die übersetzt werden/können, nämlich:</p>
+    <ul>
+      <li>Übersetzungen der Feldnamen, Schaltflächen und Beschreibungen in den Apps können von Ihnen bereitgestellt oder von Brightcove für Sie übersetzt werden.</li>
+      <li>Übersetzungen von von Ihnen definierten Elementen, z. B. Seitennamen oder Video-Metadaten, und Bilder werden von Ihnen in Brightcove Beacon eingegeben.</li>
+    </ul>
+    <h3>UI-Übersetzungen</h3>
+    <p>Standardseiten wie die <strong>Einstellungen</strong> Seite werden in den von Ihnen angegebenen Sprachen bereitgestellt. Hier ist zum Beispiel die <strong>Einstellungen</strong> Seite in Englisch und Deutsch:</p>
+    <figure class="bcls-figure">
+      <img class="bcls-image" src="/assets/images/using-bcb/using-multiple-languages/settings-english-german.png" alt="settings english german">
+    </figure>
+    <h3>Nicht-Standard-UI-Übersetzungen für Seiten</h3>
+    <p>Sie verwenden die Beacon Classic UI, um Nicht-Brightcove Beacon-UI-Elemente zu übersetzen. Die folgenden Screenshots zeigen beispielsweise die Benutzeroberfläche zum Hinzufügen von übersetzten Seitennamen und Filminformationen:</p>
+    <figure class="bcls-figure">
+      <img class="bcls-image" src="/assets/images/using-bcb/using-multiple-languages/pages-languages.png" alt="page languages">
+    </figure>
+    <figure class="bcls-figure">
+      <img class="bcls-image" src="/assets/images/using-bcb/using-multiple-languages/movies-languages.png" alt="movie languages">
+    </figure>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="How_your_viewers_choose_a_language">Wie Ihre Zuschauer eine Sprache für die App auswählen</h2>
+    <p>Es gibt drei Möglichkeiten, wie Ihre Zuschauer die Sprache für die App auswählen können. Sie sind:</p>
+    <ul>
+      <li>Wählen Sie die Sprache im <strong>Einstellungen</strong> Seite</li>
+      <li>Stellen Sie die Sprache des Browsers ein (falls zutreffend)</li>
+      <li>Legen Sie die Sprache für Ihr Gerät fest (falls zutreffend)</li>
+    </ul>
+    <h3>Ändern Sie die Sprache in der App</h3>
+    <p>Zuschauer können die Sprache in der Brightcove Beacon-App selbst auswählen. Das Folgende zeigt den Prozess, den der Betrachter unter Verwendung der <strong>Einstellungen</strong> Seite, um die App-Sprache von Englisch auf Deutsch zu ändern:</p>
+    <figure class="bcls-figure">
+      <img class="bcls-image" src="/assets/images/using-bcb/using-multiple-languages/change-lanaguage.png" alt="change languages">
+    </figure>
+
+    <h3>Stellen Sie die bevorzugte Sprache im Browser ein</h3>
+    <p>Wenn ein Betrachter in einem Browser eine bevorzugte Sprache einstellt und diese Sprache von der Brightcove Beacon-App unterstützt wird, verwendet die App automatisch diese Sprache. Der Betrachter müsste die Sprache in der <strong>Einstellungen</strong> Standardseite.</p>
+    <aside class="bcls-aside bcls-aside--information language-editable">Notiz: Wenn in der tatsächlichen Brightcove Beacon-App eine Sprache eingestellt ist, überschreibt dies die Browsereinstellungen.</aside>
+    <p>Alle gängigen Browser haben eine Möglichkeit, die bevorzugte Sprache einzustellen. So wird beispielsweise in Chrome die Einstellung im <strong>Fortschrittlich</strong> Abschnitt der <strong>Einstellungen</strong> Möglichkeit:</p>
+    <figure class="bcls-figure">
+      <img class="bcls-image" src="/assets/images/using-bcb/using-multiple-languages/browser-choose-language.png" alt="browser choose language">
+    </figure>
+
+    <h3>Stellen Sie die Sprache auf Ihrem Gerät ein</h3>
+    <p>Gehen Sie beispielsweise auf einem iPhone zu <strong>Einstellungen → Allgemein → Sprache &amp; Region</strong></p>
+    <figure class="bcls-figure">
+      <img class="bcls-image" src="/assets/images/using-bcb/using-multiple-languages/iphone-change-language.png" alt="iphone change language">
+    </figure>
+    <aside class="bcls-aside bcls-aside--information language-editable">Notiz: Wenn in der tatsächlichen Brightcove Beacon-App eine Sprache eingestellt ist, werden die Geräteeinstellungen dadurch überschrieben.</aside>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="How_your_viewers_select_a_video_asset_language">So wählen Ihre Zuschauer eine Video-Asset-Sprache aus</h2>
+    <p> Zusätzlich zu den in den Apps verfügbaren Sprachen stehen Ihnen möglicherweise mehrsprachige Untertitel und Audiospuren für Ihre Video-Assets zur Verfügung. Wenn für das Video mehrere Sprachen verfügbar sind, wählt der Betrachter während der Videowiedergabe die gewünschte Sprache aus. Während der Wiedergabe ist ein Zahnradsymbol verfügbar. Wenn Sie auf dieses Symbol klicken, wird ein Dialogfeld angezeigt und der Zuschauer kann die Sprache für Untertitel und/oder Audiospur auswählen, wie hier gezeigt:</p>
+    <figure class="bcls-figure">
+      <img class="bcls-image" src="/assets/images/using-bcb/using-multiple-languages/select-language-in-video.png" alt="select language in video">
+    </figure>
+  </section>
+
+  <l class="bcls-section">
+    <h2 id="Videos">Lokalisieren von Videoinformationen</h2>
+    <p>Es gibt viele Elemente, die Sie rund um Videos lokalisieren können. Details zu jedem finden Sie hier:</p>
+    <h3>Sprachen für Videometadaten definieren</h3>
+    <p>Der grundlegende Prozess zum Lokalisieren von Video-Metadaten ist:</p>
+    <ul>
+      <li>Konfigurieren Sie die gewünschte Sprache in <strong>Administrator von Video Cloud Studio</strong> Modul.</li>
+      <li>Wählen Sie auf der Seite mit den Videoeigenschaften die Sprache aus, für die Sie lokalisierte Metadaten eingeben möchten.</li>
+      <li>Geben Sie die lokalisierten Metadaten ein.</li>
+    </ul>
+    <aside class="bcls-aside bcls-aside--information language-editable">
+      <p>Weitere Informationen zur Verwendung mehrsprachiger Metadaten finden Sie im <a href="https://studio.support.brightcove.com/media/working-multi-lingual-metadata.html">Arbeiten mit mehrsprachigen Metadaten</a> dokumentieren.</p>
+    </aside>
+    <p>Der erste Schritt zur Verwendung mehrsprachiger Metadaten besteht darin, die Sprache auszuwählen, in der die Metadaten in Video Cloud Studio angezeigt werden sollen, indem Sie zu . navigieren <strong>Admin → Spracheinstellungen</strong>. Sie fügen zuerst die Sprache hinzu und speichern sie dann, wie hier gezeigt:</p>
+    <!-- Beacon Classic -->
+    <ol class="bcls-tasklist">
+      <li>Sprache hinzufügen
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/using-bcb/using-multiple-languages/video-metadata-vc-admin-language.png" alt="metadata languages">
+        </figure>
+      </li>
+      <li>Speichern Sie die Sprache
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/using-bcb/using-multiple-languages/metadata-languages.png" alt="metadata languages">
+        </figure>
+      </li>
+    </ol>
+    <h3>Video-Metadaten</h3>
+    <!-- Beacon Classic -->
+    <p>Diese Aufgabe muss in Video Cloud Studio ausgeführt werden. Gehen Sie die <strong>Medien</strong> klicken Sie dann auf das Video, dem Sie mehrsprachige Metadaten hinzufügen möchten. Um die Metadaten tatsächlich einzugeben, gehen Sie zum <strong>Videoinformationen</strong> Wählen Sie dann die Sprache aus und geben Sie schließlich die Metadaten ein.</p>
+    <ol class="bcls-tasklist-restart">
+      <li>Wählen Sie die Sprache
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/using-bcb/using-multiple-languages/video-metadata-vc-choose-language.png" alt="video metadata select language">
+        </figure>
+      </li>
+      <li>Geben Sie die Metadaten ein
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/using-bcb/using-multiple-languages/video-metadata-vc-edit.png" alt="video metadata">
+        </figure>
+      </li>
+    </ol>
+
+    <h3>Videobilder</h3>
+    <p>Diese Aufgabe muss in Video Cloud Studio ausgeführt werden. Gehen Sie die <strong>Medien</strong> Klicken Sie dann auf das Video, zu dem Sie lokalisierte Bilder hinzufügen möchten. Um die lokalisierten Bilder tatsächlich bereitzustellen, gehen Sie zum <strong>Videoinformationen</strong> Wählen Sie dann die Sprache aus und laden Sie schließlich die Bilder hoch.</p>
+    <figure class="bcls-figure">
+      <img class="bcls-image" src="/assets/images/using-bcb/using-multiple-languages/video-images-vc.png" alt="video images">
+    </figure>
+
+    <h3>Videountertitel/Bildunterschriften</h3>
+    <p>Diese Aufgabe muss in Video Cloud Studio ausgeführt werden. Gehen Sie die <strong>Medien</strong> Klicken Sie dann auf das Video, dem Sie mehrsprachige Untertitel/Beschriftungen hinzufügen möchten. Um die Untertitel/Bildunterschriften tatsächlich bereitzustellen, gehen Sie zum <strong>Textspuren</strong> Abschnitt, klicken Sie <strong>Bearbeiten</strong> dann fülle das Formular aus.</p>
+    <aside class="bcls-aside bcls-aside--information language-editable">Vollständige Details finden Sie in der <a href="https://beacon-help.support.brightcove.com/media/adding-captions-videos.html">Hinzufügen von Untertiteln zu Videos</a> dokumentieren.</aside>
+    <!-- Beacon Classic -->
+    <figure class="bcls-figure">
+      <img class="bcls-image" src="/assets/images/using-bcb/using-multiple-languages/video-text-tracks-vcs.png" alt="video subtitles choose language">
+    </figure>
+
+    <h3>Video Audiospuren</h3>
+    <p>Diese Aufgabe muss in Video Cloud Studio ausgeführt werden. Gehen Sie die <strong>Medien</strong> klicken Sie dann auf das Video, zu dem Sie Audiospuren hinzufügen möchten. Um die Audiospuren tatsächlich bereitzustellen, gehen Sie zum <strong>Audiospuren</strong> Abschnitt, klicken Sie <strong>Bearbeiten → Audiospur hinzufügen</strong> dann fülle das Formular aus.</p>
+    <aside class="bcls-aside bcls-aside--information language-editable">Vollständige Details finden Sie in der <a href="https://beacon-help.support.brightcove.com/media/adding-audio-tracks-videos.html">Hinzufügen von Audiospuren zu Videos</a> dokumentieren.</aside>
+    <figure class="bcls-figure">
+      <img class="bcls-image" src="/assets/images/using-bcb/using-multiple-languages/video-audio-track-vc.png" alt="add audio tracks">
+    </figure>
+    </section>
+
+    <section class="bcls-section">
+      <h2 id="Pages">Seiteninformationen lokalisieren</h2>
+      <p>Seiten können mit ihren Titeln und zugehörigen Bildern lokalisiert werden. Navigieren Sie in der Beacon Classic-Benutzeroberfläche zum <strong>Seiten</strong> Abschnitt und klicken Sie auf die Seite, die Sie ändern möchten. In diesem Beispiel sind Informationen für die <strong>Heim</strong> Seite ist lokalisiert.</p>
+      <h3>Seitentitel</h3>
+      <figure class="bcls-figure">
+        <img class="bcls-image" src="/assets/images/using-bcb/using-multiple-languages/page-titles.png" alt="page titles">
+      </figure>
+      <h3>Seitenbilder</h3>
+      <figure class="bcls-figure">
+        <img class="bcls-image" src="/assets/images/using-bcb/using-multiple-languages/page-images.png" alt="page images">
+      </figure>
+    </section>
+
+    <section class="bcls-section">
+      <h2 id="Playlists">Lokalisieren von Playlist-Informationen</h2>
+      <p>Bei Playlists können nur die Titel lokalisiert werden. Navigieren Sie in der Beacon Classic-Benutzeroberfläche zum <strong>Wiedergabelisten</strong> Abschnitt und klicken Sie auf die Playlist, die Sie ändern möchten.</p>
+      <h3>Playlist-Titel</h3>
+      <figure class="bcls-figure">
+        <img class="bcls-image" src="/assets/images/using-bcb/using-multiple-languages/playlist-titles.png" alt="playlist titles">
+      </figure>
+    </section>
+
+    <section class="bcls-section">
+      <h2 id="Series">Serieninformationen lokalisieren</h2>
+      <p>Serien können mit ihren Titeln und zugehörigen Bildern lokalisiert werden. Navigieren Sie in der Beacon Classic-Benutzeroberfläche zu <strong>Programme → Serien</strong> und klicken Sie auf die Serie, die Sie ändern möchten.</p>
+      <h3>Serientitel</h3>
+      <figure class="bcls-figure">
+        <img class="bcls-image" src="/assets/images/using-bcb/using-multiple-languages/series-titles.png" alt="series titles">
+      </figure>
+      <h3>Serienbilder</h3>
+      <figure class="bcls-figure">
+        <img class="bcls-image" src="/assets/images/using-bcb/using-multiple-languages/series-images.png" alt="series images">
+      </figure>
+    </section>
+
+    <section class="bcls-section">
+      <h2 id="Channels">Lokalisieren von Kanalinformationen</h2>
+      <p>Die Titel und die zugehörigen Bilder von Kanälen können lokalisiert werden. Navigieren Sie in der Beacon Classic-Benutzeroberfläche zu <strong>Kanäle</strong> und klicken Sie auf den Kanal, den Sie ändern möchten.</p>
+      <h3>Kanaltitel</h3>
+      <figure class="bcls-figure">
+        <img class="bcls-image" src="/assets/images/using-bcb/using-multiple-languages/channel-titles.png" alt="channel titles">
+      </figure>
+      <h3>Kanalbilder</h3>
+      <figure class="bcls-figure">
+        <img class="bcls-image" src="/assets/images/using-bcb/using-multiple-languages/channel-images.png" alt="channel images">
+      </figure>
+    </section>
+
+    <section class="bcls-section">
+      <h2 id="Events">Lokalisieren von Ereignisinformationen</h2>
+      <p>Ereignisse können mit ihren Titeln und zugehörigen Bildern lokalisiert werden. Navigieren Sie in der Beacon Classic-Benutzeroberfläche zu <strong>Veranstaltungen</strong> und klicken Sie auf das Ereignis, das Sie ändern möchten.</p>
+      <h3>Veranstaltungstitel</h3>
+      <figure class="bcls-figure">
+        <img class="bcls-image" src="/assets/images/using-bcb/using-multiple-languages/event-titles.png" alt="event titles">
+      </figure>
+      <h3>Veranstaltungsbilder</h3>
+      <figure class="bcls-figure">
+        <img class="bcls-image" src="/assets/images/using-bcb/using-multiple-languages/event-images.png" alt="event images">
+      </figure>
+    </section>
+
+    <section class="bcls-section">
+      <h2 id="Subscriptions">Lokalisieren von Abonnementinformationen</h2>
+      <p>Bei Abonnements können Titel, Bilder und Preise lokalisiert werden. Navigieren Sie in der Beacon Classic-Benutzeroberfläche zu <strong>Handel → SVOD/AuthVOD-Pläne</strong> und klicken Sie auf das Abonnement, das Sie ändern möchten.</p>
+      <aside class="bcls-aside bcls-aside--information language-editable">Weitere Informationen zur Verwendung von Abonnements finden Sie im <a href="/monetization/general/creating-subscription-package.html">Erstellen eines Abonnementpakets</a> und <a href="/monetization/general/using-subscription-package.html">Verwenden eines Abonnementpakets</a> Unterlagen.</aside>
+      <h3>Abonnementtitel</h3>
+      <figure class="bcls-figure">
+        <img class="bcls-image" src="/assets/images/using-bcb/using-multiple-languages/subscription-titles.png" alt="subscription titles">
+      </figure>
+      <h3>Abo-Bilder</h3>
+      <figure class="bcls-figure">
+        <img class="bcls-image" src="/assets/images/using-bcb/using-multiple-languages/subscription-images.png" alt="subscription images">
+      </figure>
+      <h3>Abonnementpreise</h3>
+      <figure class="bcls-figure">
+        <img class="bcls-image" src="/assets/images/using-bcb/using-multiple-languages/subscription-prices.png" alt="subscription prices">
+      </figure>
+    </section>
+
+</article>

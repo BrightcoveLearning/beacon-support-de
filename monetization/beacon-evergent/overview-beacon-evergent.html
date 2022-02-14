@@ -1,0 +1,141 @@
+---
+title: 'Überblick: Beacon Advanced Monetarisierung'
+description: Dieses Thema bietet einen Überblick über die Integration zwischen Brightcove Beacon und Evergent.
+parent: Using Brightcove Beacon
+layout: staging
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+  <section class="bcls-section">
+    <h2 id="Introduction">Einführung</h2>
+		<p>Evergent ist ein Zahlungs- und Abonnentenverwaltungssystem, das in Beacon integriert wurde, um diese Funktionen bereitzustellen. Evergent bietet ein robustes Abonnentenmanagement und Zugriff auf viele beliebte Zahlungsgateways weltweit, einschließlich derjenigen, die üblicherweise in Lateinamerika, dem Nahen Osten, Afrika und dem asiatisch-pazifischen Raum verwendet werden.</p>
+  </section>
+	<section class="bcls-section">
+		<h2 id="glossary_of_terms">Glossar der Begriffe</h2>
+		<dl>
+			<dt>Geschäftsbereich</dt>
+			<dd>Eine Business Unit (BU) ist eine Einheit im Evergent-System, die ein Land oder eine Region definiert, in der Sie Ihre Inhalte verkaufen möchten. Sie benötigen separate Geschäftseinheiten, wenn Sie unterschiedliche Währungen oder Steuererhebungen pro Land/Region wünschen. Im System von Evergent wird jeder Geschäftseinheit eine Währung zugewiesen; Diese Währung wird ihren Benutzern beim Check-out angezeigt.</dd>
+			<dt>Zahlungs-Gateways</dt>
+			<dd>Ein Dienst, der es einem Händler ermöglicht, Zahlungen von Kunden anzunehmen. Das Zahlungsgateway fungiert als Vermittler, indem es das Geld von den Bankkonten Ihrer Kunden auf sichere und zuverlässige Weise auf Ihr eigenes Bankkonto überweist.</dd>
+			<dt>Handelsvertreter</dt>
+			<dd>Die juristische Person, die berechtigt ist, Zahlungen von Verbrauchern zu erhalten. Sie werden mit jedem Gateway, das Sie verwenden, ein MOR (Merchant of Record).</dd>
+			<dt>Händler-Konto</dt>
+			<dd>Ein virtuelles Bankkonto, auf das Einnahmen aus Online-Verkäufen gesendet werden. Die Einnahmen verbleiben auf Ihrem Händlerkonto bis zur Abrechnung – dem Vorgang der Überweisung von Geldern auf Ihr Bankkonto. Normalerweise stellt das Zahlungsgateway ein Händlerkonto bereit. Gateways, die keine Händlerkonten bereitstellen, überweisen Gelder direkt auf Ihr Bankkonto.</dd>
+			<dt>Paket</dt>
+			<dd>Ein Paket definiert, wie Benutzer Zugriff auf Ihre Inhalte im Beacon CMS erwerben können; es definiert alle Details für einen Monetarisierungsplan. Es enthält Informationen wie Preis, Rechnungshäufigkeit, Verfügbarkeit, Verfügbarkeit von App-Stores, Währung, Testzeitraum usw.</dd>
+			<dt>Produkte</dt>
+			<dd>Produkte in Evergent definiert alle Details für einen Monetarisierungsplan. Es enthält Informationen wie Preis, Rechnungshäufigkeit, Verfügbarkeit, Verfügbarkeit von App-Stores, Währung, Testzeitraum usw.</dd>
+		</dl>
+	</section>
+	<section class="bcls-section">
+		<h2 id="account_setup">Kontoeinrichtung</h2>
+		<h3>Was wird benötigt:</h3>
+		<h4>Leuchtfeuer</h4>
+		<ul>
+			<li>In Beacon benötigen Sie ein CMS, bei dem Evergent als Store konfiguriert ist.</li>
+			<li>Alle Länder, in denen Ihre Dienste verfügbar sein werden.</li>
+			<li>Für jedes Land sollte eine Währung definiert sein, in der Zahlungen von einem Zuschauer empfangen werden. </li>
+		</ul>
+		<h4>Evergent</h4>
+		<ul>
+			<li>Sie benötigen in Evergent erstellte Geschäftseinheiten, die den Währungen zugeordnet sind, in denen Sie Zahlungen erhalten möchten. </li>
+			<li>Für jede Geschäftseinheit werden Gateways und App-Store-Abrechnungen (Apple Store, Roku, Amazon, Google Play) konfiguriert. Sie müssen mit jedem Gateway, das Sie verwenden möchten, eine Beziehung und ein Händlerkonto haben.</li>
+		</ul>
+	</section>
+	<section class="bcls-section">
+		<h2 id="package_product_management">Paket-/Produktmanagement</h2>
+		<p>Sie richten Monetarisierungspläne sowohl über die Beacon-Benutzeroberfläche als auch über die Evergent-Benutzeroberfläche ein und verwalten sie. Pläne müssen manuell mit SKUs in Beacon und Evergent verknüpft werden:</p>
+		<ul>
+			<li>Die in Beacon konfigurierten Pakete sind die Art und Weise, wie Informationen den Betrachtern in der App präsentiert werden. Sehen <a href="/using-brightcove-beacon/creating-subscription-package.html">Erstellen eines Abonnementpakets</a> für Details.</li>
+			<li>Die <strong>Produkt</strong> in Evergent ermöglicht es ihnen, Zahlungen für den richtigen Monetarisierungsplan zu verarbeiten und den Beleg zu validieren, bevor dem Zuschauer Zugriff auf die Inhalte gewährt wird. Sehen <a href="/monetization/beacon-evergent/evergent-account-management.html">Evergent-Kontoverwaltung</a> für Details.</li>
+			<li>
+				Für die erste Version unterstützt Beacon die folgenden Monetarisierungsmodelle:
+				<ul>
+					<li>MixedVOD - Abonnement für authentifizierte Benutzer mit geschalteten Anzeigen</li>
+					<li>SVOD - Abonnement für authentifizierte Benutzer und keine geschalteten Anzeigen</li>
+				</ul>
+			</li>
+			<li>Zukünftige Versionen werden TVOD und PPV enthalten.</li>
+		</ul>
+	</section>
+	<section class="bcls-section">
+		<h2 id="website_sales">Website-Verkauf</h2>
+		<p>Sobald Pakete und Produkte konfiguriert sind, können Sie Zahlungen in Ihrer Beacon-Web-App akzeptieren. Käufe in der Beacon-Web-App werden über ein Zahlungsgateway abgewickelt, das über die Evergent-Plattform verbunden ist.</p>
+		<h3>Zahlungsgateways und Zahlungsmethoden</h3>
+		<p>Evergent ermöglicht unseren Kunden, Zahlungen über mehrere Zahlungsgateways zu erhalten. Die Konfiguration des Zahlungsgateways befindet sich auf der Ebene der Geschäftseinheit. Ein Kunde kann mehrere Zahlungsgateways für eine Geschäftseinheit konfiguriert haben. Wenn mehrere Gateways konfiguriert sind, stehen dem Betrachter beim Auschecken verschiedene Zahlungsmethoden zur Verfügung. Kunden müssen eine direkte Beziehung zum Zahlungsgateway haben.</p>
+	</section>
+	<section class="bcls-section">
+		<h2 id="In_app_purchases">In-App Käufe</h2>
+		<p>Beacon-Kunden können ihre Inhalte auch über Apple-, Google-, Amazon- und Roku-Stores verkaufen. Jeder Store wird optional im Beacon CMS und im System von Evergent konfiguriert.</p>
+		<ul>
+			<li>Wann <a href="/using-brightcove-beacon/creating-subscription-package.html">Erstellen eines SVOD-Pakets in Beacon</a> , haben Kunden die Möglichkeit auszuwählen, über welche App Stores sie ihr Paket verkaufen möchten. Sie können den App-Store, die Verfügbarkeit, den Standort, den Preis, die Währung und die App-Store-Produkt-SKU festlegen.</li>
+			<li>Darüber hinaus können der App-Store (Apple, Google, Amazon, Roku), die App-Store-Produkt-ID und der Produktname für ein SVOD-Produkt konfiguriert werden.</li>
+		</ul>
+	</section>
+	<section class="bcls-section">
+		<h2 id="Subscriber_viewer_management">Abonnenten-/Zuschauerverwaltung</h2>
+		<p>Die Beacon Advanced Monetarisierung unterstützt Registrierungs- und Kaufworkflows über beide Apps:</p>
+		<ul>
+			<li>Wenn sich Zuschauer in der Beacon-App registrieren, wird automatisch ein Schatten-Viewer in der Viewer-Datenbank von Evergent erstellt. </li>
+			<li>Zuschauer werden in der Zuschauerdatenbank von Evergent segmentiert. Wenn ein Kunde mehr als eine Business Unit hat, werden Viewer in der Business Unit erstellt, die ihrem Standort entspricht.</li>
+			<li>Zuschauer können entweder nicht zahlende Zuschauer oder zahlende Zuschauer im System von Evergent sein.</li>
+		</ul>
+		<h3>Fehlerbehebung bei Viewer-Problemen</h3>
+		<p>Sie müssen sowohl die Viewer-Verwaltung von Beacon als auch die Abonnentenverwaltung von Evergent verwenden, um Probleme mit Ihren Zuschauern zu beheben' Probleme, je nach Art des Problems. Die folgenden Informationen helfen Ihnen dabei, welches System Sie in bestimmten Fällen verwenden müssen.</p>
+		<h4>Viewer-Informationen, die in der Viewer-Verwaltung von Beacon enthalten sind:</h4>
+		<ul>
+			<li>Name</li>
+			<li>Email</li>
+			<li>Passwort</li>
+			<li>Kaufhistorie</li>
+			<li>Profil Information</li>
+			<li>Lesezeichen und Favoriten</li>
+			<li>Mit dem Konto verknüpfte Geräte</li>
+		</ul>
+		<h4>In der Abonnentenverwaltung von Evergent enthaltene Zuschauerinformationen:</h4>
+		<ul>
+			<li>Name</li>
+			<li>Email</li>
+			<li>Zahlungsdaten</li>
+			<li>Kaufhistorie</li>
+		</ul>
+		<h4>Aufgaben, die in Beacon erledigt werden müssen:</h4>
+		<ul>
+			<li>Viewer-Passwort aktualisieren</li>
+			<li>Profil bearbeiten oder löschen</li>
+			<li>Geräte aus dem Beacon-Konto entfernen</li>
+		</ul>
+		<h4>Aufgaben, die in Evergent erledigt werden müssen:</h4>
+		<ul>
+			<li>Eine Rückerstattung an die hinterlegte Zahlungsmethode eines Zuschauers vornehmen</li>
+			<li>Abo eines Zuschauers kündigen</li>
+			<li>Überprüfe, ob die Zahlung eines Zuschauers erfolgreich war</li>
+			<li>Überprüfen Sie das Verlängerungsdatum des Abonnements eines Zuschauers</li>
+			<li>Alle Zahlungen eines Zuschauers ansehen</li>
+		</ul>
+	</section>
+	<section class="bcls-section">
+		<h2 id="coupons_and_voucher_codes">Gutscheine und Gutscheincodes</h2>
+		<p>In der Evergent-Benutzeroberfläche können Sie Coupons und Gutscheine für Rabatte generieren. Sobald Sie diese Codes generiert haben, können Sie sie an Ihre Zuschauer verteilen und die Zuschauer können sie dann während des Bezahlvorgangs einlösen. Coupons und Gutscheine sind mit bestimmten SVOD-Paketen/-Produkten verknüpft, sodass Zuschauer sie nur mit den entsprechenden SVOD-Paketen/-Produkten einlösen können.</p>
+	</section>
+	<section class="bcls-section">
+		<h2 id="Viewer_communication">Zuschauerkommunikation</h2>
+		<p>Sie können den Inhalt und den Stil der E-Mails, die Sie an die Zuschauer im Evergent-System senden, konfigurieren. Sie können auch konfigurieren, welche Ereignisse den Versand von E-Mails auslösen. Zum Beispiel, wenn sich ein Zuschauer für den Dienst anmeldet oder wenn er von einem Abonnement zu einem anderen wechselt.</p>
+	</section>
+	<section class="bcls-section">
+		<h2 id="analytics_and_reporting">Analyse und Berichterstellung</h2>
+		<h3>Finanzbericht</h3>
+		<p>Die Berichterstattung zur Geschäftsleistung wird im Berichts-Dashboard von Evergent verfügbar sein, damit Sie verstehen können, wie Ihre Beacon-App in Bezug auf Ihre Geschäftsziele abschneidet.</p>
+	</section>
+	<section class="bcls-section">
+		<h2 id="Related_topics">verwandte Themen</h2>
+		<ul>
+			<li><a href="/monetization/beacon-evergent/configuring-beacon-evergent.html">Beacon mit Evergent konfigurieren</a></li>
+			<li><a href="/monetization/beacon-evergent/evergent-finding-accounts.html">Auffinden von Konten im Evergent CRM</a></li>
+			<li>Evergent:<a href="/monetization/beacon-evergent/evergent-managing-account-details.html"> Kontodetails verwalten</a></li>
+			<li>Evergent:<a href="/monetization/beacon-evergent/evergent-billing-finance.html"> Abrechnung und Finanzen</a></li>
+			<li>Evergent:<a href="/monetization/beacon-evergent/emailer-coupons.html"> E-Mail und Coupons</a></li>
+		</ul>
+	</section>
+</article>

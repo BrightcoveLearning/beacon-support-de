@@ -1,0 +1,43 @@
+---
+title: Hinzufügen eines Trailers zu einer Beacon-Film
+description: In diesem Thema wird erläutert, wie Sie einen Trailer für einen Film hinzufügen.
+parent: Using Brightcove Beacon
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+  <section class="bcls-section">
+    <h2 id="Adding_a_trailer">Trailer hinzufügen</h2>
+    <p>Das Hinzufügen eines Trailers für einen Beacon-Film ist einfach. Folgen Sie den unteren Schritten.</p>
+    <ol class="bcls-tasklist-restart">
+      <li>Laden Sie das Trailervideo in Ihr Video Cloud-Konto hoch.</li>
+      <li>
+        Sie machen <strong>nicht</strong> müssen dem Trailer-Video spezielle benutzerdefinierte Beacon-Felder hinzufügen. Alles was du brauchst ist die <strong>Video-ID</strong>:
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/using-bcb/add-trailer-movie/get-trailer-video-id.png" alt="Get Video ID">
+          <figcaption class="bcls-caption--image">Video-ID abrufen</figcaption>
+        </figure>
+      </li>
+      <li>
+        Für das Video, das für den Beacon-Film verwendet wird, <a href="/assets/images/syncing-with-vc/vc-custom-fields">fügen Sie das folgende benutzerdefinierte Feld hinzu</a>:
+        <table class="bcls-table">
+          <caption class="bcls-caption--table">Benutzerdefiniertes Feld für Trailer</caption>
+          <thead class="bcls-table__head">
+              <tr>
+                  <th>Anzeigename</th>
+                  <th>Interner Name</th>
+                  <th>Wert</th>
+              </tr>
+          </thead>
+          <tbody class="bcls-table__body">
+              <tr>
+                  <td translate="no">beacon.trailer.id</td>
+                  <td translate="no">beacon_trailer_id</td>
+                  <td translate="no">(Video-ID für Trailer)</td>
+              </tr>
+          </tbody>
+      </table>
+      </li>
+    </ol>
+  </section>
+</article>

@@ -1,0 +1,172 @@
+---
+title: 'Leitfaden zur Validierung von Geräte-Apps'
+description: 'In diesem Thema erfahren Sie, wie Sie das Verhalten Ihrer Geräteanwendung(en) validieren, damit Sie diese an entsprechende Stores senden können.'
+parent: 'General'
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+  <section class="bcls-section">
+    <h2 id="Overview">Überblick</h2>
+    <p>
+      Irgendwann während der Entwicklung Ihrer Apps aus Brightcove Beacon Experience erhalten Sie Test-Builds, um sicherzustellen, dass sich die Apps wie gewünscht verhalten. Dieses Dokument enthält Informationen zu jedem der folgenden Punkte:
+    </p>
+    <ul>
+      <li><em>Testkategorien</em>: Definieren Sie breite Bereiche zum Testen.</li>
+      <li>
+        <em>Tipps</em>: Vorschläge und Erkenntnisse, die bei der Durchführung des Tests zu befolgen sind.
+      </li>
+      <li>
+        <em>Berichterstattung</em>: Das zu befolgende Verfahren, wenn beim Testen Probleme auftreten.
+      </li>
+    </ul>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Before_you_start">Bevor du anfängst</h2>
+    <p>Stellen Sie sicher, dass Sie für die richtigen Tests eingerichtet sind. Stellen Sie Folgendes sicher:</p>
+    <ul>
+      <li>Tester haben alle benötigten Testgeräte zur Hand.</li>
+      <li>Aus Kompatibilitätsgründen sollten die zum Testen verwendeten Geräte nicht älter als drei Jahre sein. Später in diesem Dokument werden für jede Plattform spezifische, erforderliche Mindestversionen angegeben.</li>
+    </ul>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Testing_categories">Testkategorien</h2>
+    <p>
+      Brightcove empfiehlt, die folgenden Bereiche zu testen und Fragen zu beantworten:
+    </p>
+    <ul>
+      <li>
+        Design und Funktionen:
+        <ul>
+          <li>Stimmt die Erfahrung mit den vereinbarten Mock-ups überein?</li>
+          <li>Sind alle gewünschten Funktionen verfügbar?</li>
+        </ul>
+      </li>
+      <li>
+        Seitenlayout und Inhalt:
+        <ul>
+          <li>Sind die Seiten wie erwartet eingerichtet?</li>
+          <li>Wird der erwartete Inhalt auf jeder der Seiten angezeigt?</li>
+        </ul>
+      </li>
+      <li>
+        Monetarisierungs-Setup:
+        <ul>
+          <li>Werden Anzeigen wie erwartet geschaltet?</li>
+          <li>
+            Werden Abonnements für entsprechende Assets angezeigt?
+          </li>
+          <li>
+            Können die Benutzer wie erwartet Inhalte kaufen und erhalten?
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Supported_platforms_and_versions">Unterstützte Plattformen und Versionen</h2>
+    <p>Im Folgenden sind die unterstützten Plattformen und Versionen aufgeführt, die für Ihre Tests verwendet werden sollten.</p>
+    <ul>
+      <li>Netz
+        <ul>
+          <li>Chrome – Aktuelle Version und aktuelle-1-Version</li>
+          <li>Safari - Aktuelle Version und aktuelle-1 Version</li>
+          <li>Edge - Aktuelle Version und aktuelle-1-Version</li>
+          <li>Firefox - Aktuelle Version und aktuelle-1 Version</li>
+        </ul>
+      </li>
+      <li>Apple iOS (Handy/Tablet)
+        <ul>
+          <li>Apple iOS 13 und höher</li>
+          <li>Weitere Informationen finden Sie im <a href="/creating-your-apps/ios-tvos/installing-ios-test-build.html">Installieren eines iOS/tvOS-Test-Builds</a> dokumentieren</li>
+        </ul>
+      </li>
+      <li>Apple tvOS
+        <ul>
+          <li>tvOS 12 und höher</li>
+          <li>Weitere Informationen finden Sie im <a href="/creating-your-apps/ios-tvos/installing-ios-test-build.html">Installieren eines iOS/tvOS-Test-Builds</a> dokumentieren</li>
+        </ul>
+      </li>
+      <li>Google-Android
+        <ul>
+          <li>Android 5 und höher</li>
+          <li>Weitere Informationen finden Sie im <a href="/creating-your-apps/android/installing-android-test-build.html">Installieren eines Android-Test-Builds</a> dokumentieren</li>
+        </ul>
+      </li>
+      <li>Google Android TV
+        <ul>
+          <li>Android 5 und höher</li>
+          <li>Weitere Informationen finden Sie im <a href="/creating-your-apps/android/installing-android-test-build.html">Installieren eines Android-Test-Builds</a> dokumentieren</li>
+        </ul>
+      </li>
+      <li>Roku
+        <ul>
+          <li>Roku OS 9.1 und höher</li>
+          <li>Weitere Informationen finden Sie im <a href="/creating-your-apps/roku/installing-roku-test-build.html">Installieren eines Roku-Test-Builds</a> dokumentieren</li>
+        </ul>
+      </li>
+      <li>Amazon Fire TV
+        <ul>
+          <li>Fire OS 5.0 und höher</li>
+          <li>Weitere Informationen finden Sie im <a href="/creating-your-apps/fire-tv/installing-fire-tv-test-build.html">Installieren eines Fire TV-Test-Builds</a> dokumentieren</li>
+        </ul>
+      </li>
+      <li>Samsung Smart-TV
+        <ul>
+          <li>Tizen 2018, 2019, 2020</li>
+        </ul>
+      </li>
+      <li>Sony Bravia Smart-TV
+        <ul>
+          <li>Android TV 5.0+ und höher</li>
+        </ul>
+      </li>
+      <li>Toshiba-Smart-TV
+        <ul>
+          <li>Android TV 5.0+ und höher und/oder Fire OS 5.0 und höher</li>
+          <li>Weitere Informationen finden Sie im <a href="/creating-your-apps/android/installing-android-test-build.html">Installieren eines Android-Test-Builds</a> dokumentieren</li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Tips">Tipps</h2>
+    <p>Bitte beachten Sie die folgenden Tipps bei der Durchführung Ihrer Validierung:</p>
+    <ul>
+      <li>
+        <strong>Erster Pass</strong>: Wählen Sie EINE der Plattformen und gehen Sie die verschiedenen Testbereiche auf dieser Plattform durch. Beginnen mit <em>Design und Funktionen</em>, dann weiter zu <em>Seitenlayout und Inhalt</em> und zuletzt zu <em>Monetarisierung einrichten</em> testen.
+      </li>
+      <li>
+        <strong>Zusätzliche Testrunden</strong>: Wenn Sie den ersten Durchgang für jeden Bereich abgeschlossen haben, wechseln Sie zu anderen verfügbaren Plattformen. Wenn ein Problem auf mehrere Plattformen zutrifft, beachten Sie dies bitte in allen zuvor gemeldeten Tickets.
+      </li>
+      <li>
+        <strong>Fehlerbehebungen testen</strong>: Fixes für gemeldete Probleme werden in einem dieser drei Bereiche sein:
+        <ul>
+          <li>Die Brightcove Beacon Experience (keine App-Updates erforderlich)</li>
+          <li>In der/den App(s)</li>
+          <li>Das Brightcove Beacon-Backend</li>
+        </ul>
+        <p>
+          Wenn sich der Fix in der App befindet, wird ein neuer Build mit Details zu den behobenen Problemen bereitgestellt. Für andere Bereiche würde Brightcove im Ticket Details zu den Fehlerbehebungen angeben. Um die Fehlerbehebung und den erneuten Test zu beschleunigen, ist es sehr wichtig, dass die Tickets Details zum Problem und Schritte enthalten, die beim erneuten Testen helfen.
+        </p>
+      </li>
+    </ul>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Reporting">Berichterstattung</h2>
+    <p>
+      Brightcove empfiehlt, Probleme zu melden, sobald sie auftreten, damit das Feedback an Brightcove fließen und die Probleme so schnell wie möglich behoben und zur Überprüfung bearbeitet werden können. Bitte melden Sie ein Problem/Ticket pro Problem und geben Sie in jedem Problem/Ticket die folgenden Informationen an:
+    </p>
+    <ul>
+      <li>Plattform getestet</li>
+      <li>Die App-Version, in der das Problem gefunden wurde</li>
+      <li>Schritte zum Reproduzieren</li>
+      <li>
+        Bitte fügen Sie Screenshots oder Bildschirmfilme bei, um das Problem schneller zu identifizieren und eine Lösung bereitzustellen. </li>
+    </ul>
+  </section>
+</article>

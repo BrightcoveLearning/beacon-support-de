@@ -1,0 +1,41 @@
+---
+title: Anzeigen der Kanalausgabe und der Analyse
+description: In diesem Thema erfahren Sie, wie Sie die Ausgabe und Analysen für einen laufenden Cloud Playout-Kanal anzeigen.
+parent: Cloud Playout
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+  <section class="bcls-section">
+    <h2 id="analytics">Anzeigen von Kanalausgaben und -analysen</h2>
+    <p>Während der Kanal in a . ist <strong>LAUFEN</strong> Status, ist es möglich, Kanalausgaben und -analysen anzuzeigen. Klicken Sie auf den Kanal auf der <strong>Kanäle</strong> Seite, um die Kanaldetails zu öffnen.</p>
+    <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/cloud-playout/cloudplayout-program-analytics.png" /></figure>
+    <aside class="bcls-aside bcls-aside--information">Notiz: Das Vorschaubild wird alle drei Sekunden aktualisiert.</aside>
+    <p>Klicken <strong>In Brightcove Live ansehen</strong> um die Control Room-Seite des Live-Moduls mit dem aktuell laufenden Programm zu öffnen. Das aktuell abgespielte Video im Programm wird mit a . markiert <strong>Jetzt spielen</strong> Banner. Beachten Sie auch die <strong>Status</strong> Benachrichtigung oben rechts und die <img src="/assets/images/cloud-playout/cloudplayout-video-icon.png" alt="Live icon"> das ist grün, wenn ein Live-Feed verfügbar ist. Andernfalls ist es rot, wenn gerade ein Live-Event abgespielt wird, oder grau, wenn VOD-Inhalte abgespielt werden.</p>
+    <p>Die folgenden Analysewerte werden angezeigt:</p>
+    <ul>
+      <li><strong>Netzwerkeingang</strong> - Durchschnittliche Bytes pro Sekunde in der letzten Minute</li>
+      <li><strong>Netzwerkausgang</strong> - Durchschnittliche Bytes pro Sekunde in der letzten Minute</li>
+      <li><strong>Frames fallen gelassen</strong> - Prozentsatz der Frames, die in der letzten Minute ausgefallen sind</li>
+    </ul>
+    <p>Die <strong>Netzwerkeingang</strong> Analysen sind besonders nützlich, um zu erkennen, wann der Stream für ein Live-Ereignis fehlgeschlagen ist (Sie sollten auch das Slate-Video in der Ausgabe sehen, anstatt im Live-Stream):
+      <figure class="bcls-figure">
+        <img class="bcls-image" src="/assets/images/cloud-playout/cloudplayout-network-in-analytics.png" alt="Network In Analytics">
+        <figcaption class="bcls-caption--image">Netzwerk in Analytics</figcaption>
+      </figure>
+    </p>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Related_topics">verwandte Themen</h2>
+    <ul>
+      <li><a href="/cloud-playout/cloud-playout-overview.html">Überblick: Cloud-Playout</a></li>
+      <li><a href="/cloud-playout/cloud-playout-stream-vod.html">Erstellen eines Cloud-Playout-Kanals</a></li>
+      <li><a href="/cloud-playout/using-channel-actions.html">Verwenden von Kanalaktionen</a></li>
+      <li><a href="/cloud-playout/enabling-server-side-ads.html">Aktivieren von serverseitigen Anzeigen (SSAI)</a></li>
+      <li><a href="/cloud-playout/generating-channel-embed-code.html">Generieren des Kanaleinbettungscodes</a></li>
+      <li><a href="https://apis.support.brightcove.com/cloud-playout-apis/getting-started/overview-epg-api.html">Überblick: EPG-API</a></li>
+      <li><a href="https://apis.support.brightcove.com/cloud-playout-apis/references/reference-epg.html">EPG API-Referenz</a></li>
+      <li><a href="https://apis.support.brightcove.com/cloud-playout-apis/references/reference-channels.html">Kanal-API-Referenz</a></li>
+    </ul>
+  </section>
+</article>

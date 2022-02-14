@@ -1,0 +1,174 @@
+---
+title: "Verwalten von Google-Abonnements Teil 2"
+description: "In diesem Thema erfahren Sie, wie Sie Google-Abonnements konfigurieren' Datenaustausch zwischen Verlag und Abonnent. Dies ist der zweite Teil des umfassenderen Prozesses zur Herstellung der Kommunikation zwischen Ihren Brightcove Beacon-Apps und dem Google Store."
+parent: "android"
+layout: "staging"
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+
+  <section class="bcls-section">
+    <aside class="bcls-aside bcls-aside--warning">Das Abschließen der Schritte in diesem Dokument basiert auf früheren Arbeiten in der <a href="/creating-your-apps/android/managing-google-subscriptions-1.html">Verwalten von Google-Abonnements Teil 1</a>.</aside>
+    <h2 id="Introduction">Einführung</h2>
+    <p>Dieses Dokument führt Sie durch die Verwendung der Google Cloud Platform zum Erstellen eines <strong>Pub/Sub-Thema</strong> und fügen Sie dem Pub/Sub-Thema ein zuvor erstelltes Dienstkonto hinzu.</p>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Create_a_Pub/Sub_topic">Pub/Sub-Thema erstellen</h2>
+    <p>Führen Sie die folgenden Schritte aus, um ein Pub/Sub-Thema zu erstellen:</p>
+    <ol class="bcls-tasklist">
+      <li>Navigieren Sie zur Indexseite für die Google Cloud-Plattform (<a href="https://cloud.google.com/">https://cloud.google.com</a>).</li>
+      <li>Drücke den <strong>Konsole</strong> Link oben rechts auf dem Bildschirm.
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/creating-your-apps/android/gcp-pub-sub-subscription-notifications/first-page-click-console.png" alt="click console">
+        </figure>
+      </li>
+      <li>Wählen Sie das richtige Projekt aus. Sie haben Ihr Projekt wahrscheinlich nach Ihrer App benannt, z. B. <strong>Leuchtfeuer</strong>.
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/creating-your-apps/android/gcp-pub-sub-subscription-notifications/choose-project.png" alt="choose project">
+        </figure>
+      </li>
+      <li>In dem <strong>Suche</strong> , Eintreten <samp>Kneipe</samp>, und sobald es angezeigt wird, klicken Sie auf <strong>Pub/Sub</strong>.
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/creating-your-apps/android/gcp-pub-sub-subscription-notifications/search-4-pub.png" alt="search for pub/sub">
+        </figure>
+      </li>
+      <li>Von dem <strong>Pub/Sub</strong> Seite, klick <strong>THEMA ERSTELLEN</strong>.
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/creating-your-apps/android/gcp-pub-sub-subscription-notifications/click-create-topic.png" alt="click create topic">
+        </figure>
+      </li>
+      <li>In dem <strong>Erstellen Sie ein Thema</strong> Dialog, geben Sie die <strong>Themen-ID</strong> zu sein <samp>Untertitel</samp>, dann klick <strong>THEMA ERSTELLEN</strong>.
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/creating-your-apps/android/gcp-pub-sub-subscription-notifications/create-topic-dialog.png" alt="sub for topic ID">
+        </figure>
+      </li>
+      <li>Klicken Sie auf der angezeigten Seite auf ←, um zum <strong>Themen</strong> Seite.
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/creating-your-apps/android/gpc-server-server-subscriptions/back-to-topics-left-arrow.png" alt="back to topics">
+        </figure>
+      </li>
+    </ol>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Add_a_member_to_the_topic">Mitglied zum Thema hinzufügen</h2>
+    <p>Führen Sie die folgenden Schritte aus, um ein Dienstkonto als Mitglied des Pub/Sub-Themas hinzuzufügen:</p>
+    <ol class="bcls-tasklist">
+      <li>Von dem <strong>Themen</strong> Seite, für die <strong>Untertitel</strong> Thema, klick <strong>Mehr Aktionen</strong> (die drei vertikalen Punkte) dann aus der Dropdown-Liste auswählen <strong>Berechtigungen anzeigen</strong>.
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/creating-your-apps/android/gpc-server-server-subscriptions/more-actions-permissions.png" alt="view permissions">
+        </figure>
+      </li>
+      <li>Klicken Sie im Berechtigungsfeld auf <strong>MITGLIED HINZUFÜGEN</strong>.<figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/creating-your-apps/android/gpc-server-server-subscriptions/add-member.png" alt="click add member">
+        </figure>
+      </li>
+      <li>Bestätigen Sie, dass Sie das folgende Formular sehen:
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/creating-your-apps/android/gpc-server-server-subscriptions/empty-subs-member-form.png" alt="add member form">
+        </figure>
+      </li>
+      <li>Um die erforderliche E-Mail-Adresse zu erhalten, navigieren Sie zu <a href="https://console.cloud.google.com/iam-admin/serviceaccounts?project=pc-api-8769861187782665707-545">Google Cloud Console – Dienstkonten</a> Seite. Das von Ihnen erstellte Dienstkonto finden Sie im <a href="/creating-your-apps/android/managing-google-subscriptions-1.html">Verwalten von Google-Abonnements Teil 1</a> dokumentieren. Kopieren Sie die E-Mail-Adresse für die <strong>Android-Abonnements</strong> (oder der von Ihnen gewählte Name) Dienstkonto.
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/creating-your-apps/android/gpc-server-server-subscriptions/copy-email.png" alt="">
+        </figure>
+      </li>
+      <li>Gehe zurück zum <strong>Mitglieder hinzufügen</strong> Formular in <strong>Google Cloud-Plattform</strong>.</li>
+      <li>Fügen Sie die abgerufene E-Mail-Adresse in das <strong>Neue Mitglieder</strong> Textfeld.</li>
+      <li>Wählen Sie für die Rolle <strong>Pub/Sub → Pub/Sub-Publisher</strong>.</li>
+      <li>Drücke den <strong>Benachrichtigungs-E-Mail senden</strong> Kontrollkästchen und fügen Sie eine Nachricht hinzu.</li>
+      <li>Bestätigen Sie, dass Ihr Formular ähnlich wie folgt ausgefüllt ist:
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/creating-your-apps/android/gpc-server-server-subscriptions/new-member-completed-form.png" alt="filled in form">
+        </figure>
+      </li>
+      <li>Klicken <strong>Speichern</strong>.</li>
+      <li>
+        <p>Als Nächstes fügen Sie eine weitere Mitglieds-E-Mail hinzu. Dadurch wird sichergestellt, dass Google Play-Benachrichtigungen empfangen werden</p>
+        Klicken Sie im Berechtigungsfeld auf <strong>MITGLIED HINZUFÜGEN</strong>.<figure class="bcls-figure">
+        <img class="bcls-image" src="/assets/images/creating-your-apps/android/gpc-server-server-subscriptions/add-member.png" alt="click add member">
+      </figure>
+    </li>
+    <li>Bestätigen Sie, dass Sie das folgende Formular sehen:
+      <figure class="bcls-figure">
+        <img class="bcls-image" src="/assets/images/creating-your-apps/android/gpc-server-server-subscriptions/empty-subs-member-form.png" alt="add member form">
+      </figure>
+    </li>
+    <li>Fügen Sie die folgende Mitglieds-E-Mail hinzu:
+      <pre>
+<code class="language-html" translate="No">google-play-developer-notifications@system.gserviceaccount.com</code></pre>
+    </li>
+    <li>
+      Stellen Sie die Rolle auf <strong>Pub/Sub-Bearbeiter</strong>.
+      <figure class="bcls-figure">
+        <img class="bcls-image" src="/assets/images/creating-your-apps/android/gpc-server-server-subscriptions/member-email2.png" alt="add member2 form">
+      </figure>
+    </li>
+    <li>
+      Wählen Sie als Nächstes <strong>Abonnements</strong>.
+      <figure class="bcls-figure">
+        <img class="bcls-image" src="/assets/images/creating-your-apps/android/gpc-server-server-subscriptions/select-subscriptions.png" alt="Select Subscriptions">
+      </figure>
+    </li>
+    <li>
+      Auswählen <strong>Abonnement erstellen</strong>.
+      <figure class="bcls-figure">
+        <img class="bcls-image" src="/assets/images/creating-your-apps/android/gpc-server-server-subscriptions/create-subscription.png" alt="Create Subscription">
+      </figure>
+    </li>
+    <li>
+      Geben Sie ein <strong>Abonnement-ID</strong> Wert von <samp>Untertitel</samp>. Von dem <strong>Wählen Sie ein Cloud Pub/Sub-Thema aus</strong> Wählen Sie im Dropdown-Menü ein Thema aus.
+      <figure class="bcls-figure">
+        <img class="bcls-image" src="/assets/images/creating-your-apps/android/gpc-server-server-subscriptions/subscription-topic.png" alt="Subscription ID and topic">
+      </figure>
+    </li>
+    <li>Klicken <strong>Schaffen</strong>.</li>
+
+      <li>Von dem <strong>Themen</strong> Seite, klicken Sie auf die <strong>Untertitel</strong> Thema.
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/creating-your-apps/android/gpc-server-server-subscriptions/click-on-subs.png" alt="click subs">
+        </figure>
+      </li>
+      <li>Von dem <strong>Themendetails</strong> , Kopiere das <strong>Themenname</strong> (Beachten Sie, dass es eine eingebaute Kopiertaste gibt, die rot umrandet ist).
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/creating-your-apps/android/gpc-server-server-subscriptions/copy-topic-name.png" alt="copy topic name">
+        </figure>
+      </li>
+      <li>Senden Sie diesen Namen an Ihren Onboarding-Manager.
+      </li>
+    </ol>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Verify_your_setup">Überprüfen Sie Ihre Einrichtung</h2>
+    <aside class="bcls-aside bcls-aside--information">Dieser Abschnitt wird normalerweise vom Brightcove-Onboarding- oder CMS-Team ausgefüllt.</aside>
+    <p>Führen Sie diese Schritte aus, um die Benachrichtigungen für Ihren Publisher-/Abonnenten-Datenaustausch zu überprüfen.</p>
+    <ol class="bcls-tasklist-restart">
+      <li>Navigieren Sie im Browser zur Google Play-Konsole (<a href="https://play.google.com/console/">https://play.google.com/console/</a>).</li>
+      <li>Suchen nach <strong>Kneipen</strong>.
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/creating-your-apps/android/gpc-server-server-subscriptions/search-pubs.png" alt="Search for pubs">
+        </figure>
+      </li>
+      <li>Auswählen <strong>Monetarisierung</strong>.</li>
+      <li>Wählen Sie Ihre App.
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/creating-your-apps/android/gpc-server-server-subscriptions/choose-app.png" alt="Choose your app">
+        </figure>
+      </li>
+      <li>Geben Sie das Thema ein.
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/creating-your-apps/android/gpc-server-server-subscriptions/monetization-topic.png" alt="Enter the topic">
+        </figure>
+      </li>
+      <li>Auswählen <strong>Testbenachrichtigung senden</strong>.</li>
+      <li>Wenn Ihr Setup korrekt ist, sollten Sie Folgendes sehen. Beachten Sie, dass die Weitergabe von Konfigurationen in der Google Cloud einige Zeit in Anspruch nimmt.
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/creating-your-apps/android/gpc-server-server-subscriptions/test-notification-msg.png" alt="Test notification msg">
+        </figure>
+      </li>
+    </ol>
+
+  </section>
+</article>

@@ -1,0 +1,55 @@
+---
+title: Beschreibung der Verwendung von Kanalaktionen: In diesem Thema erfahren Sie, wie Sie Kanalaktionen verwenden, um einen Cloud Playout-Kanal zu aktivieren, abzuspielen oder zu stoppen.
+parent: Cloud Playout
+layout: staging
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+  <section class="bcls-section">
+    <h2 id="actions">Kanalaktionen verwenden</h2>
+    <p>Je nach Status des Kanals stehen auf der Kanaleinstellungsseite verschiedene Kanalaktionsschaltflächen zur Verfügung. Greifen Sie auf die Aktionsschaltflächen des Kanals zu, indem Sie auf den Kanalnamen klicken, um die Kanaldetails anzuzeigen. Die folgenden Kanalaktionsschaltflächen stehen zur Verfügung:</p>
+    <ul>
+      <li><img src="/assets/images/cloud-playout/cloudplayout-activate-button.png" alt="activate" class="ui-image"> - Durch Aktivieren eines Kanals wird dieser für das Streaming verfügbar gemacht. Sie müssen dem Kanal Videos und/oder Live-Ereignisse hinzufügen und auf . klicken <img src="/assets/images/cloud-playout/cloudplayout-save-button.png" alt="save" class="ui-image"> bevor die Schaltfläche Aktivieren angezeigt wird.</li>
+      <li><img src="/assets/images/cloud-playout/cloudplayout-play-now-button.png" alt="play now" class="ui-image"> - Klicken <strong>Jetzt spielen</strong> um mit dem Streamen des Kanals zu beginnen. Diese Option ist nur für Kanäle mit einer bevorstehenden Startzeit verfügbar. Der Kanal startet automatisch zur geplanten Startzeit.</li>
+      <li><img src="/assets/images/cloud-playout/playout-stop-now.png" alt="stop now" class="ui-image"> - Klicken <strong>Hör jetzt auf</strong> einen laufenden Kanal zu stoppen. Dadurch wird der Kanal angehalten und der Livestream beendet. Wenn der Kanal in einer Schleife läuft und ein Enddatum/eine Endzeit hat, wird der Kanal zu diesem Zeitpunkt automatisch angehalten. Diese Option bietet Ihnen die Möglichkeit, es frühzeitig zu stoppen.</li>
+    </ul>
+  </section>
+	<section class="bcls-section">
+		<h2 id="Resource_deallocation_on_channel_stop">Ressourcenaufhebung bei Kanalstopp</h2>
+		<p>Folgendes passiert, wenn Sie einen Kanal stoppen:</p>
+		<ol>
+			<li>Ein angehaltener Cloud Playout-Kanal wird in a <strong>LUFTZUG</strong> Status, der es Benutzern ermöglicht, die Kanaleinstellungen erneut zu ändern.</li>
+			<li>Dadurch werden auch die verketteten BC-Live-Ereignisse gelöscht, falls vorhanden.</li>
+			<li>Der Kanal muss sein <strong>Aktiviert</strong> wieder, damit die Ressourcen zugewiesen und der Kanal in einen <strong>GEPLANT</strong> Zustand.</li>
+			<li>Wenn der Cloud Playout-Kanal für Livestreams aktiviert ist, wird ein . angezeigt <strong>statischer Einstiegspunkt für RTMP-Ingest</strong> die während der gesamten Lebensdauer des Kanals statisch bleibt, unabhängig davon, wie oft der Kanal gestoppt und erneut gestartet wird.
+				<figure class="bcls-figure">
+					<img class="bcls-image" src="/assets/images/cloud-playout/static-entry-point-for-rtmp-ingest.png" alt="Static Entry Point for RTMP Ingest">
+					<figcaption class="bcls-caption--image">Statischer Einstiegspunkt für RTMP-Ingest</figcaption>
+				</figure>
+				<p>Dieser Einstiegspunkt kann mit der Annahme von Eingaben beginnen, sobald der Kanal gestartet und ausgeführt wird.</p>
+			</li>
+			<li>Wenn Cloud Playout aufgrund eines internen Problems keinen statischen RTMP-Aufnahmepunkt bereitstellen kann, versuchen wir, einen IP-Adressen-basierten Aufnahmepunkt anzuzeigen. In diesem Fall empfehlen wir Ihnen, regelmäßig zu überprüfen, ob sich der RTMP-Ingest-Punkt für den Kanal ändert.</li>
+			<li>
+				<aside class="bcls-aside bcls-aside--information">Notiz: Nach der Aktivierung des Kanals dauert es durchschnittlich 1-2 Minuten, bis Cloud Playout die neue IP-Adresse für den statischen Aufnahmepunkt veröffentlicht. Wenn also ein Kanal direkt nach der Aktivierung innerhalb von 1-2 Minuten gestartet wird und das Live-Ereignis zufällig das erste Asset in der Playlist des Kanals ist, besteht die Möglichkeit, dass der Aufnahmepunkt nicht aufgelöst werden kann. Es wird auflösbar, sobald die IP-Adresse für den statischen Aufnahmepunkt veröffentlicht wird.</aside>
+			</li>
+			<li>
+				<aside class="bcls-aside bcls-aside--information">Notiz: In einem Fall, in dem der Kanal beim ersten Durchlauf mit Live-Input lief und gestoppt wurde und Sie dann den Live-Input für den Kanal deaktivieren, weist das vorhandene Programm möglicherweise immer noch Live-Ereignisse auf, die fehlschlagen. Wenn du Livestreams für den Kanal nach dem Beenden deaktivieren möchtest, solltest du alle Liveereignisse aus dem Kanalinhalt entfernen, bevor du ihn neu startest.</aside>
+			</li>
+		</ol>
+	</section>
+  <section class="bcls-section">
+    <h2 id="Related_topics">verwandte Themen</h2>
+    <ul>
+      <li><a href="/cloud-playout/cloud-playout-overview.html">Überblick: Cloud-Playout</a></li>
+      <li><a href="/cloud-playout/cloud-playout-stream-vod.html">Erstellen eines Cloud-Playout-Kanals</a></li>
+      <li><a href="/cloud-playout/viewing-channel-output-and-analytics.html">Anzeigen von Kanalausgaben und -analysen</a></li>
+      <li><a href="/cloud-playout/enabling-server-side-ads.html">Monetarisieren von Cloud-Playout</a></li>
+			<li><a href="/cloud-playout/mid-roll-ad-insertion.html">Hinzufügen von Mid-Roll-Anzeigen zu einem Kanal</a></li>
+      <li><a href="/cloud-playout/generating-channel-embed-code.html">Generieren des Kanaleinbettungscodes</a></li>
+      <li><a href="https://apis.support.brightcove.com/cloud-playout-apis/getting-started/overview-epg-api.html">Überblick: EPG-API</a></li>
+      <li><a href="https://apis.support.brightcove.com/cloud-playout-apis/references/reference-epg.html">EPG API-Referenz</a></li>
+      <li><a href="https://apis.support.brightcove.com/cloud-playout-apis/references/reference-channels.html">Kanal-API-Referenz</a></li>
+    </ul>
+  </section>
+</article>

@@ -1,0 +1,83 @@
+---
+title: 'Überblick: Cloud-Playout'
+description: Dieses Thema bietet einen Überblick über Cloud Playout, mit dem Sie eine Kombination aus Videos-on-Demand und Live-Feeds als linearen Live-Kanal zusammenstellen und planen können.
+parent: Cloud Playout
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+  <section class="bcls-section">
+    <h2 id="Introduction">Einführung</h2>
+    <p>Brightcove Cloud Playout ist ein Video Cloud Studio-Modul, mit dem Sie eine geplante Wiedergabe von Elementen aus Ihrem VOD-Katalog in Kombination mit Live-Feeds programmieren und als linearen Kanal mit der Zuverlässigkeit und Skalierbarkeit von Brightcove Live streamen können.</p>
+		<p>Sie können den Cloud Playout-Kanal dann als Beacon-Kanal verwenden, indem Sie beim Erstellen eines <a href="/using-brightcove-beacon/creating-a-channel.html">Beacon-Kanal</a>. Ein großer Vorteil der Verwendung von Cloud Playout-Kanälen besteht darin, dass Sie keinen EPG-Anbieter eines Drittanbieters suchen und integrieren müssen, da ein EPG-Dienst in Cloud Playout integriert ist.</p>
+    <p>Cloud Playout bietet eine leistungsstarke End-to-End-Lösung für Kanäle mit geplanten Programmen, darunter:</p>
+    <ul>
+      <li>24x7 lineare Kanäle</li>
+      <li>Pop-Up / virtuelle Kanäle</li>
+      <li>Simulierte Live-Ereignisse</li>
+    </ul>
+    <p>Cloud Playout hilft Ihnen, das Engagement des Publikums zu steigern und neue Umsatzmöglichkeiten durch ein sendeähnliches Live-TV-Erlebnis mit vorab aufgezeichneten Inhalten zu schaffen. Verwenden Sie vorhandene VOD-Assets, um geplante Live-Kanäle zu erstellen.</p>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Features">Merkmale</h2>
+    <p>Zu den Funktionen von Cloud Playout gehören:</p>
+    <ul>
+      <li>Importieren Sie VOD-Assets aus Ihrer Video Cloud-Medienbibliothek.</li>
+      <li>Wechseln Sie zwischen VOD-Assets und geplanten Live-Feeds.</li>
+      <li>Reagieren Sie in Echtzeit auf kurzfristige Fahrplanänderungen einfach, schnell und zuverlässig.</li>
+      <li>Monetarisieren Sie Ihren Kanalinhalt mit serverseitiger Anzeigeneinfügung (SSAI).</li>
+      <li>Konfigurieren Sie Ihren Kanal, um Ihr Programm zu wiederholen.</li>
+      <li>Optimieren Sie die Wiedergabe nach Gerät.</li>
+      <li>Ziehen und ablegen, um den Programmplan jederzeit neu zu ordnen, sogar im Status „Läuft“.</li>
+      <!-- <li>Push a channel to your owned and operated properties via Brightcove Live, an Amazon S3 bucket, or a 3rd party destination via RTMP output.</li> -->
+      <li>API zum Abrufen des EPG (elektronischer Programmführer) für einen Kanal</li>
+    </ul>
+  </section>
+	<section class="bcls-section">
+		<h2 id="workflow_overview">Workflow-Übersicht</h2>
+		<p>Es gibt zwei Teile, um einen Cloud Playout-Kanal zu erstellen und ihn zu Ihrer Beacon-App hinzuzufügen:</p>
+		<ol class="bcls-tasklist-restart">
+			<li>In <strong>Video-Cloud</strong> , erstellen Sie den Kanal.</li>
+			<li>In <strong>Leuchtfeuer</strong> , erstellen Sie einen neuen Beacon-Kanal, der den Cloud Playout-Kanal als Quelle verwendet.</li>
+		</ol>
+		<p>Diese Aufgaben sind in der <a href="#Related_topics">verwandte Themen</a></p>
+	</section>
+  <section class="bcls-section">
+    <h2 id="limitations">Einschränkungen</h2>
+    <p>Es gelten die folgenden Annahmen und Einschränkungen.</p>
+    <ul>
+      <li> Ihre Videos müssen mit einem Dynamic Delivery-Profil aufgenommen oder erneut transkodiert werden und <strong>muss eine MP4-Version haben</strong></li>
+      <li>Die maximale Eingangsbitrate und Auflösung, die für Cloud Playout unterstützt wird, beträgt 20 MBPS/1080p. Dies gilt sowohl für VOD-Inhalte als auch für Live-Eingaben.</li>
+      <li>Brightcove empfiehlt die Verwendung von Videos mit einer Dauer von mindestens 2 Minuten, um einen korrekten Übergang zwischen Videos und die Genauigkeit des elektronischen Programmführers zu gewährleisten</li>
+      <li>Zu Videos hinzugefügte Untertitel (Texttracks) werden derzeit nicht in Cloud Playout-Kanälen angezeigt. Die Unterstützung für Untertitel wird in einer zukünftigen Version hinzugefügt.</li>
+      <li>Die Mindestdauer für Live-Events beträgt 5 Minuten.</li>
+      <li>Jedes Live-Ereignis in Cloud Playout teilt eine 1:1-Beziehung mit einem Video Cloud-Remote-Asset. Dieses Remote-Asset kann nicht in anderen Kanälen wiederverwendet werden. Wenn das Live-Ereignis aus dem Kanal entfernt wird, wird das zugehörige Remote-Asset automatisch gelöscht. Wenn ein Kanal gelöscht wird, werden auch alle zugehörigen Remote-Assets automatisch gelöscht.</li>
+      <li>Videos <strong>geteilt</strong> auf das Konto eines anderen Kontos kann derzeit nicht zu einem Cloud Playout-Kanal hinzugefügt werden.</li>
+      <li>Wenn gerade ein Live-Event abgespielt wird, aber kein aktiver Feed verfügbar ist, wird der Slate-Inhalt in einer Schleife abgespielt, bis der Live-Feed fortgesetzt wird oder das Event endet. Es wird eine Verzögerung von ungefähr 30 Sekunden geben, bevor die Slate MP4 abgespielt wird.</li>
+      <!--<li><strong>Input Looper : if the asset URL is duplicated, then input looper rely on order for switching; if the order is changes during the course of the switching , then subsequent N+1 switch it attempt to create would rely on the order. </strong></li>-->
+      <li>Wenn das Video Cloud-Konto für die geografische Beschränkung konfiguriert ist, wird der Kanal <strong>Ausgaberegion</strong> sollte in einer Region erstellt werden, die mit der Richtlinie für geografische Beschränkungen von Video Cloud kompatibel ist.</li>
+      <li>Für die beste Erfahrung empfiehlt Brightcove die Verwendung des Google Chrome-Browsers.</li>
+      <li>
+        Für SSAI-aktivierte Kanäle muss das Ziel auf ein werbeaktiviertes RTP-Live-Ereignis eingestellt sein:
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/cloud-playout/advanced-options-for-live-job.png" alt="Live Settings for SSAI Channel">
+          <figcaption class="bcls-caption--image">Live-Einstellungen für SSAI-Kanal</figcaption>
+        </figure>
+      </li>
+    </ul>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Related_topics">verwandte Themen</h2>
+    <ul>
+      <li><a href="/cloud-playout/cloud-playout-stream-vod.html">Erstellen eines Cloud-Playout-Kanals</a></li>
+      <li><a href="/cloud-playout/using-channel-actions.html">Verwenden von Kanalaktionen</a></li>
+      <li><a href="/cloud-playout/adding-bumpers-to-vod.html">Hinzufügen von Bumpern zum Cloud-Playout</a></li>
+      <li><a href="/cloud-playout/enabling-server-side-ads.html">Monetarisieren von Cloud-Playout</a></li>
+      <li><a href="/cloud-playout/generating-channel-embed-code.html">Generieren des Kanaleinbettungscodes</a></li>
+      <li><a href="/cloud-playout/viewing-channel-output-and-analytics.html">Anzeigen von Kanalausgaben und -analysen</a></li>
+      <!-- <li><a href="https://apis.support.brightcove.com/cloud-playout-apis/getting-started/overview-epg-api.html">Overview: EPG API</a></li>
+      <li><a href="https://apis.support.brightcove.com/cloud-playout-apis/references/reference-epg.html">EPG API Reference</a></li>
+      <li><a href="https://apis.support.brightcove.com/cloud-playout-apis/references/reference-channels.html">Channel API Reference</a></li> -->
+    </ul>
+  </section>
+</article>

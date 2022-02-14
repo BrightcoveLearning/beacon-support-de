@@ -1,0 +1,88 @@
+---
+title: Konfigurieren von Ankündigungen für Live-SSAI mit einem Brightcove Beacon-Kanal
+description: 'In diesem Thema erfahren Sie, wie Sie Live-SSAI-Anzeigen auf einen Brightcove Beacon-Kanal einstellen.'
+parent: Using Brightcove Beacon
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+    <summary>{{ page.description }}</summary>
+
+    <section class="bcls-section">
+        <aside class="bcls-aside bcls-aside--information">Dieser Live-Anzeigen-Konfigurationsprozess ist nur erforderlich, wenn der Live-Kanal mit SSAI aktiviert wurde. Wenn nicht, sind diese Schritte nicht erforderlich.</aside>
+        <h2 id="Prerequisites">Voraussetzungen</h2>
+
+        <ul>
+            <li><a href="https://live.support.brightcove.com/live-module/implementing-server-side-ads-live-module.html" target="_blank">Erstellen Sie einen Live-Kanal, der mit SSAI in Video Cloud aktiviert ist.</a></li>
+            <li><a href="https://studio.support.brightcove.com/admin/configuring-server-side-ad-settings.html#live" target="_blank">Erstellen und richten Sie das Anzeigen-Tag in Video Cloud ein.</a></li>
+            <li><a href="https://beacon.support.brightcove.com/using-brightcove-beacon/creating-a-channel.html" target="_blank">Erstellen Sie einen Kanal in Brightcove Beacon.</a></li>
+            <li>Erstellen Sie die Ankündigungskonfiguration in Brightcove Beacon.</li>
+            <li>Legen Sie die Rechte und Planung im Kanal fest.</li>
+        </ul>
+
+    </section>
+
+    <section class="bcls-section">
+        <h2 id="Prerequisites">Konfigurieren der Video Cloud-Anzeige mit Brightcove Beacon </h2>
+
+        <ol class="bcls-tasklist-restart">
+            <li>Wählen Sie in Video Cloud Studio die Option <strong>LIVE</strong> Modul.</li>
+            <li>Erstellen oder öffnen Sie den Live-SSAI-Kanal, den Sie mit Brightcove Beacon verwenden möchten. </li>
+            <li>In dem <strong>Kontrollraum</strong> , klicken <strong>Veröffentlichen und einbetten</strong> von der linken Tafel.
+                <figure class="bcls-figure">
+                    <img class="bcls-image--no-border" src="/assets/images/using-bcb/ssai-beacon/live-player-options.png" alt="" width="" height="" />
+                </figure>
+            </li>
+            <li>In dem <strong>Live-Player-Optionen</strong> Abschnitt, wählen Sie aus der Dropdown-Liste die <strong>Anzeigenkonfiguration</strong> Sie einstellen möchten.</li>
+            <li>Einmal eine neue ausgewählt <strong>Standard-Einbettungscode</strong> wird auftauchen. </li>
+            <li>Extrahieren Sie die <strong>adConfigId</strong> indem Sie einen Teil der URL kopieren, die der adConfigId zugewiesen ist, wie im Bild gezeigt.
+                <figure class="bcls-figure">
+                    <img class="bcls-image--no-border" src="/assets/images/using-bcb/ssai-beacon/configid.png" alt="" width="" height="" />
+                </figure>
+            </li>
+            
+        </ol>
+
+    </section>
+
+    <section class="bcls-section">
+        <h2 id="Prerequisites">Erstellen Sie die Anzeige in Brightcove Beacon</h2>
+
+        <ol class="bcls-tasklist-restart">
+            <li>Kehren Sie zur Brightcove Beacon-Plattform zurück.</li>
+            <li>Klicken <strong>Werbung</strong>.
+                <figure class="bcls-figure">
+                    <img class="bcls-image--no-border" src="/assets/images/using-bcb/ssai-beacon/paste-configid.png" alt="" width="" height="" />
+                </figure>
+            </li>
+            <li>Erstellen Sie die Anzeigenkonfiguration, die Sie festlegen möchten, oder wählen Sie sie aus. </li>
+            <li>Geben Sie für eine neue Anzeige ein <strong>Name</strong>.</li>
+            <li>Stellen Sie sicher, dass die <strong>Anbieter</strong> ist eingestellt auf <strong>Brightcove SSAI</strong>.</li>
+            <li>In dem <strong>Live-Konfigurations-ID</strong> Feld, fügen Sie das ein <strong>adConfigId</strong> URL, die Sie im vorherigen Abschnitt dieses Dokuments kopiert haben.</li>
+            <li>Klicken <strong>Neue Anzeige erstellen</strong>.</li>
+            
+        </ol>
+
+        </section>
+
+        <section class="bcls-section">
+            <h2 id="Prerequisites">Festlegen von Rechten und Planung in Brightcove Beacon</h2>
+            <ol class="bcls-tasklist-restart">
+                <li>Klicken Sie in der oberen Navigation auf <strong>Kanäle</strong>.
+                    <figure class="bcls-figure">
+                        <img class="bcls-image--no-border" src="/assets/images/using-bcb/ssai-beacon/rigthsandsche.png" alt="" width="" height="" />
+                    </figure>
+                </li>
+                <li>Wählen Sie den Kanal aus, dessen SSAI-Konfiguration Sie einstellen möchten.</li>
+                <li>Drücke den <strong>Rechte &amp; Planung</strong> Tab.</li>
+                <li>In <strong>Rechtetyp</strong> , auswählen <strong>Werbung - AVOD</strong>.</li>
+                <li>In <strong>Anzeigenkonfiguration</strong> , wählen Sie aus der Dropdown-Liste die gerade erstellte Anzeigenkonfiguration aus.</li>
+                <li>Klicken <strong>Neuen Kanal erstellen</strong> um Ihre Arbeit zu speichern. 
+                    <figure class="bcls-figure">
+                        <img class="bcls-image--no-border" src="/assets/images/using-bcb/ssai-beacon/create-button.png" alt="" width="300" height="100" />
+                    </figure>
+                </li>
+            </ol>
+
+            </section>
+
+    </article>

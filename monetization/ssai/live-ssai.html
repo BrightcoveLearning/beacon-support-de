@@ -1,0 +1,278 @@
+---
+title: "Implementierung von Live-SSAI"
+description: In diesem Thema erfahren Sie, wie Sie serverseitige Live-Anzeigenkonfigurationen in Brightcove Beacon verwalten und erstellen.
+parent: SSAI 
+grandparent: Monetization
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+
+  <section class="bcls-section">
+    <h2 id="overview">Überblick</h2>
+
+    <p>
+      Brightcove Beacon unterstützt Server-Side Ad Insertion (SSAI) in Live-Ereignissen, sodass serverseitige Anzeigen angefordert und während eines Live-Streams angezeigt werden können. Hinweis: Wenn Sie Redundanz mit SSAI verwenden, müssen Sie Anzeigen gleichzeitig in alle Jobs in der Gruppe einfügen. 
+    </p>
+    <p>Eine übergeordnete Ansicht des Prozesses ist:</p>
+    <ol>
+      <li>Erstellen Sie eine Anzeigenkonfiguration in Studio.</li>
+      <li>Erstellen Sie eine Fülltafel für Ihr Live-Event.</li>
+      <li>Erstellen Sie ein Live-Ereignis mit aktiviertem SSAI.</li>
+      <li>Veröffentlichen Sie das Live-Ereignis in Brightcove Beacon.</li>
+    </ol>
+    <aside class="bcls-aside bcls-aside--information"> Dieses Dokument ergänzt die <a href="https://beacon.support.brightcove.com/using-brightcove-beacon/streaming-live-event.html" target="_blank">Ein Live-Event streamen</a> Dokumentation, die Sie dabei unterstützt, SSAI zu Ihren Live-Events hinzuzufügen. Ausführliche Informationen zum Erstellen einer Veranstaltung finden Sie im Abschnitt zu <a href="https://beacon.support.brightcove.com/using-brightcove-beacon/streaming-live-event.html#create" target="_blank">Erstellen eines Live-Ereignisses in Brightcove Beacon</a> . </aside>
+
+    <p>SSAI bietet diese Hauptfunktionen während Live-Events:</p>
+    <ul>
+      <li>
+        Da Anzeigen serverseitig in den Live-Videostream eingebunden werden, sind sie nicht von Werbeblockern betroffen.
+      </li>
+      <li>
+        Anzeigen werden an Cue-Punkten eingefügt, die von Ihrem Encoder gesendet werden, oder Sie können mit dem Live-Modul Control Room einen sofortigen Cue-Punkt erstellen.
+      </li>
+      <li>
+        Sie können konfigurieren <a href="https://live.support.brightcove.com/live-module/implementing-server-side-ads-live-module.html#fill_slate" target="_blank">Schiefertafeln füllen</a> um ungenutzte Anzeigenzeit zu füllen.
+      </li>
+    </ul>
+  </section>
+  <section class="bcls-section">
+    <h2 id="configuring-ssai">Serverseitige Anzeigeneinstellungen konfigurieren</h2>
+    <p>
+      Hier erstellen Sie eine SSAI-Anzeigenkonfiguration, die als Ihre Anzeigengruppe verwendet wird, die in Ihrem Brightcove Beacon Live-Ereignis angezeigt wird.
+    </p>
+    <ol class="bcls-tasklist">
+      <li>Melden Sie sich bei Studio an.</li>
+      <li>
+        Klicken Sie im Navigationskopf auf <strong>ADMINISTRATOR</strong> und wählen Sie <strong>Serverseitige Anzeigeneinstellungen</strong>. Eine Liste aller Anzeigenkonfigurationen wird angezeigt.
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/live-ssai/1-studio-ssai-settings.png" />
+        </figure>
+      </li>
+      <li>
+        Um eine neue Anzeigenkonfiguration zu erstellen, klicken Sie auf das <strong>Anzeigenkonfiguration erstellen</strong> Taste.
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/live-ssai/2-create-ad-configuration.png" />
+        </figure>
+        <aside class="bcls-aside bcls-aside--information"> Serverseitige Live-Anzeigenkonfigurationen können auch über die Live-API verwaltet werden. Informationen finden Sie unter <a href="https://live.support.brightcove.com/live-api/ssai/live-api-server-side-ad-insertion-ssai.html#Create_an_ad_configuration" target="_blank">Brightcove Live-API: Serverseitige Anzeigeneinfügung (SSAI)</a> . </aside>
+      </li>
+      <li>
+        Wählen Sie aus der Dropdown-Liste <strong>Live</strong> als typ.
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/live-ssai/3-ad-config-live.png" />
+        </figure>
+      </li>
+      <li>
+        Überprüfen Sie, ob Sie das sehen <strong>Serverseitige Anzeigeneinstellungen</strong> Form.
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/live-ssai/4-ad-config-form.png" />
+        </figure>
+      </li>
+      <li>Geben Sie Ihre Anzeigenkonfiguration ein <strong>Name</strong>.</li>
+      <li>
+        Wähle aus <strong>Ad Server-Antwort</strong>:
+        <ul>
+          <li><strong>GROSS</strong></li>
+          <li><strong>DFP (Anzeigenregeln)</strong></li>
+          <li><strong>Intelligente XML</strong></li>
+        </ul>
+        <aside class="bcls-aside bcls-aside--information"> Wenden Sie sich an Ihren Ad Operations Manager, um den richtigen Wert auszuwählen. </aside>
+      </li>
+      <li>Geben Sie die <strong>Anzeigen-Tag (Server-URL)</strong>.</li>
+      <li>Drücke den <strong>Speichern</strong> Taste.</li>
+    </ol>
+  </section>
+  <section class="bcls-section">
+    <h2 id="configuring-slate">Konfigurieren einer Fülltafel</h2>
+    <p>
+      Fülltafeln sind Videos, die angezeigt werden, wenn Lücken in einer Livestream-Werbeunterbrechung vorhanden sind, die nicht mit einer dynamisch geschalteten Anzeige gefüllt werden können. Wenn die angeforderte Anzeige kürzer als die Werbeunterbrechungszeit ist, wird die Fülltafel angezeigt, damit die Zuschauer keinen leeren Player sehen.
+    </p>
+    <aside class="bcls-aside bcls-aside--information"> Sie sollten mindestens eine Fülltafel konfigurieren, bevor Sie eine serverseitige Anzeige anfordern. </aside>
+    <p>Gehen Sie folgendermaßen vor, um eine Fülltafel hinzuzufügen:</p>
+    <ol class="bcls-tasklist">
+      <li>
+        Drücke den <strong>ADMINISTRATOR</strong> &gt; <strong>Live-Einstellungen</strong> Link in der Studio-Kopfzeile. <aside class="bcls-aside bcls-aside--information"> Sie müssen ein Kontoadministrator sein, um auf die <strong>ADMINISTRATOR</strong> Speisekarte. </aside>
+      </li>
+      <li>
+        Klicken <strong>+ Füllschiefer hinzufügen</strong>. Sie sollten das folgende Formular sehen:
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/live-ssai/5-fill-slate.png" />
+        </figure>
+      </li>
+      <li>Geben Sie ein <strong>Name</strong> für Ihre Fülltafel.</li>
+      <li>Geben Sie die <strong>Quell-URL</strong> für den Schiefer.</li>
+      <li>Klicken <strong>Speichern</strong>. Der Aufnahmeprozess für den Schiefer beginnt.</li>
+    </ol>
+    <p>Um eine Fülltafel zu löschen, klicken Sie auf die Schaltfläche Löschen (<img alt="" src="/assets/images/using-bcb/live-ssai/node18588-delete-icon.png" />) neben der Fülltafel.</p>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="creating-live-ssai">Erstellen eines Live-Events, das SSAI . unterstützt</h2>
+    <p>
+      Damit eine Live-Veranstaltung SSAI (Server-side Ad Insertion) verwenden kann, <strong>Serverseitige Anzeigeneinfügung (SSAI) aktivieren</strong> Die Einstellung muss beim Erstellen des Events ausgewählt werden, und eine zuvor erstellte Fülltafel sollte für die Wiedergabe ausgewählt werden.
+    </p>
+    <p>
+      Führen Sie diese Schritte aus, um ein Ereignis zu erstellen, das SSAI-Anzeigen in Brightcove Beacon unterstützt:
+    </p>
+    <ol class="bcls-tasklist">
+      <li>Öffne das <strong>Live</strong> Modul im Studio.</li>
+      <li>Von dem <strong>Ereignisse verwalten</strong> Seite, klick <strong>Ereignis erstellen</strong>.</li>
+      <li>
+        Geben Sie Ihre Veranstaltungsdetails ein. Vollständige Informationen zum Erstellen eines Live-Events mit dem Live-Modul finden Sie unter <a href="https://live.support.brightcove.com/live-module/creating-and-managing-live-events-using-live-module.html" target="_blank"> Erstellen und Verwalten von Live-Events mit dem Live-Modul</a>.
+      </li>
+      <li>Klicken <strong>ERWEITERTE OPTIONEN</strong> um die erweiterten Optionen zu erweitern.</li>
+      <li>Prüfen <strong>Serverseitige Anzeigeneinfügung (SSAI) aktivieren</strong>. Dadurch wird die serverseitige Anzeigeneinfügung aktiviert.</li>
+      <li>
+        Wählen Sie a <strong>Schiefer füllen</strong>. Die Füllliste wird angezeigt, wenn Lücken in einer Livestream-Werbeunterbrechung vorhanden sind, die nicht mit einer dynamisch geschalteten Anzeige gefüllt werden können.
+      </li>
+      <li>
+        Wenn das <strong>Anzeigenaudio</strong> Wenn die Einstellung aktiviert ist, werden die Audiopegel der Anzeigen basierend auf der eingestellten Anpassung normalisiert. Auf diese Weise kann sichergestellt werden, dass die Anzeigen nicht wesentlich lauter sind als der Inhalt. Brightcove empfiehlt, diese Option auszuwählen.
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" width="450" height="700" src="/assets/images/using-bcb/live-ssai/6-ssai-check.png" />
+        </figure>
+      </li>
+      <li>Klicken <strong>Ereignis erstellen</strong></li>
+      <li>
+        Die <strong>Kontrollraum</strong> Seite öffnet sich mit Details zum Live-Event, einschließlich der <strong>Streaming-Endpunkt (RTMP-URL)</strong> und <strong>Streamname</strong>. Diese Werte werden vom Encoder verwendet.
+      </li>
+      <li>
+        Konfigurieren Sie Ihren Encoder und starten Sie den Livestream. <aside class="bcls-aside bcls-aside--information"> Um das Streaming auf der Live-Plattform zu starten, benötigen Sie einen Encoder, für Informationen zur Verwendung eines Encoders lesen Sie bitte die folgende Dokumentation:
+          <p>
+            <a href="https://live.support.brightcove.com/get-started/step-step-using-live-module-telestream-wirecast.html" target="_blank">Schritt für Schritt: Verwenden des Live-Moduls mit Telestream Wirecast</a>
+          </p>
+          <p>
+            <a href="https://live.support.brightcove.com/get-started/step-step-using-live-module-open-broadcaster-software-obs.html" target="_blank">Schritt für Schritt: Verwenden des Live-Moduls mit Open Broadcaster Software (OBS)</a>
+          </p>
+        </aside>
+      </li>
+      <li>
+        Standardmäßig ist die <strong>Kontrollraum</strong> Vorschau-Player zeigt den werbefreien Stream. Anzeigen werden nicht im <strong>Kontrollraum</strong> es sei denn, eine Live-Anzeigenkonfiguration ist ausgewählt. Verwenden Sie das Dropdown-Menü unten für den Player, um eine Anzeigenkonfiguration auszuwählen.
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/live-ssai/7-select-ad-config.png" />
+        </figure>
+      </li>
+      <li>
+        (Optional) Klicken Sie auf die Plus-Schaltfläche (<img alt="" src="/assets/images/using-bcb/live-ssai/node18753-plus-icon.png" />), um eine zusätzliche Anzeigenkonfiguration auszuwählen. Dadurch wird ein weiterer Vorschau-Player zum hinzugefügt <strong>Kontrollraum</strong> Seite.
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/live-ssai/8-two-preview-players.png" />
+        </figure>
+        <p>
+          Klicken Sie auf die Lautstärketaste unter dem Vorschau-Player, um zu steuern, welcher Player-Audiostream aktiv ist.
+        </p>
+      </li>
+    </ol>
+  </section>
+  <section class="bcls-section">
+    <h2 id="creating-live-ssai">Anzeige anfordern</h2>
+    <p>
+      Führen Sie diese Schritte aus, um eine Anzeige im Live anzufordern <strong>Kontrollraum</strong>:
+    </p>
+    <ol class="bcls-tasklist">
+      <li>
+        Klicken <strong>Zur Anzeige</strong> und wählen Sie aus der Dropdown-Liste die Länge Ihrer gewünschten Werbeunterbrechung aus.
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" width="350" height="500" src="/assets/images/using-bcb/live-ssai/9-gotoad.png" />
+        </figure>
+      </li>
+      <li>
+        Klicken <strong>Einfügung</strong> um eine Werbeunterbrechung in den Livestream einzufügen. Wenn die Anzeige nicht die gesamte Werbeunterbrechungszeit ausfüllt, wird die Fülltafel (die beim Erstellen der Veranstaltung ausgewählt wurde) angezeigt.
+      </li>
+    </ol>
+    <p>
+      Anzeigen werden im <strong>Kontrollraum</strong> Vorschau-Player und in Playern, die mit dem Live-Modul veröffentlicht wurden. Dieses Beispiel zeigt 2 Anzeigen, die im <strong>Kontrollraum</strong>.
+    </p>
+    <figure class="bcls-figure">
+      <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/live-ssai/10-adsplayer.png" />
+    </figure>
+  </section>
+  <section class="bcls-section">
+    <h2 id="requesting-ssai">Veröffentlichen einer Live-Veranstaltung in Brightcove Beacon</h2>
+    <p>
+      Gehen Sie folgendermaßen vor, um Ihr Live-Ereignis mit serverseitigen Anzeigen in Brightcove Beacon zu veröffentlichen:
+    </p>
+    <ol class="bcls-tasklist">
+      <li>Im Live <strong>Kontrollraum</strong> klicken <strong>Veröffentlichen und einbetten</strong> in der linken Navigation.</li>
+      <li>
+        Auswählen <strong>Player-Konfiguration</strong>.
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/live-ssai/11-controlroom.png" />
+        </figure>
+      </li>
+      <li>In dem <strong>Live-Player-Optionen</strong> wähle ein <strong>Verfügbarer Spieler</strong>.</li>
+      <li>
+        Wähle Deine <strong>Anzeigenkonfiguration</strong> zuvor erstellt im <strong>Serverseitige Anzeigeneinstellungen</strong>.
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/live-ssai/12-select-player.png" />
+        </figure>
+      </li>
+      <li>
+        Nach der Auswahl Ihres <strong>Verfügbarer Spieler</strong> und <strong>Anzeigenkonfiguration</strong> , wird eine neue Player-URL generiert. Kopieren Sie den ausgewählten Teil der URL wie im Bild gezeigt, beginnend mit dem Wort <strong>Live</strong>. Beispiel: <strong>live.xxxxxxx</strong>
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/live-ssai/13-player-url.png" />
+        </figure>
+      </li>
+      <li>Rufen Sie die Brightcove Beacon-Plattform auf.</li>
+      <li>
+        Klicken Sie in Brightcove Beacon im oberen Menü auf das <strong>Werbung</strong> Tab.
+      </li>
+      <li>
+        Drücke den <strong>Neue Konfiguration hinzufügen</strong> Taste.
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/live-ssai/14-newadconfig.png" />
+        </figure>
+      </li>
+      <li>
+        Überprüfen Sie, ob Sie das sehen <strong>Neue Anzeige</strong> Form.
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/live-ssai/15-newadconfig-settings.png" />
+        </figure>
+      </li>
+      <li>Geben Sie Ihre neue Anzeigenkonfiguration a <strong>Name</strong>.</li>
+      <li>
+        In dem <strong>Live-Anzeigen-Konfigurations-ID:</strong> , füge die ein <strong>Spieler-URL-ID</strong> Sie haben gerade von der Live-Plattform kopiert, zum Beispiel: <strong>live.xxxx</strong>.
+      </li>
+      <li>Von dem <strong>Anbieter</strong> Menüauswahl <strong>Brightcove SSAI</strong>.</li>
+      <li>Klicken Sie in die <strong>Neue Anzeige erstellen</strong> Taste.</li>
+      <li>
+        Klicken Sie auf das obere Menü <strong>Veranstaltungen</strong> Registerkarte und erstellen oder wählen Sie Ihr Live-Event aus. Weitere Informationen zum Erstellen eines Brightcove Beacon-Liveereignisses finden Sie im <a href="https://beacon.support.brightcove.com/using-brightcove-beacon/streaming-live-event.html" target="_blank">Ein Live-Event streamen</a> dokumentieren. <aside class="bcls-aside bcls-aside--information"> Damit das Live-Ereignis erfolgreich in Brightcove Beacon gestreamt werden kann, müssen die <strong>Job-ID</strong> und <strong>Stream-Video-ID</strong> müssen mit den IDs des aktuellen Live-Ereignisses übereinstimmen. </aside>
+      </li>
+      <li>
+        Klicken Sie in Ihrem Brightcove Beacon-Live-Ereignis auf das <strong>Rechte &amp; Planung</strong> Tab.
+      </li>
+      <li>
+        In dem <strong>Rechtetyp</strong> Dropdown-Menü, wählen Sie <strong>Werbung - AVOD</strong>.
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/live-ssai/16-ad-avod.png" />
+        </figure>
+      </li>
+      <li>
+        In dem <strong>Anzeigenkonfiguration</strong> unteren Menü, wählen Sie Ihre zuvor erstellte Anzeigenkonfiguration aus.
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/live-ssai/17-ad-configuration.png" />
+        </figure>
+      </li>
+      <li>Drücke den <strong>Ereignis aktualisieren</strong> Taste.</li>
+      <li>
+        Klicken Sie auf die <strong>Werkzeuge</strong> (Schraubenschlüssel) oben rechts auf dem Bildschirm. Dann den Cache leeren.
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/live-ssai/18-clear-cache.png" />
+        </figure>
+      </li>
+      <li>
+        Öffnen Sie Ihre Brightcove Beacon-App und wählen Sie Ihr Ereignis aus (die Ereignisnamen und Bilder auf dem Bild dienen nur als Beispiel).
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" width="400" height="700" src="/assets/images/using-bcb/live-ssai/19-app-event.png" />
+        </figure>
+      </li>
+      <li>
+        Klicken Sie in Ihrer Brightcove Beacon-App auf das <strong>Spiel</strong> Taste. Sie sollten jetzt Ihr Live-Event-Streaming mit von SSAI aus Video Cloud eingefügten Anzeigen sehen können.
+      </li>
+    </ol>
+    <p>
+      Sobald Ihr Event endet, können Sie es ganz oder teilweise als Clip speichern, der zu einem Video-Asset in Video Cloud oder einem abspielbaren Stream wird, der in Brightcove Beacon angezeigt werden kann. Die Anzeigen des Live-Ereignisses werden nicht gespeichert, aber die Cue-Punkte, von denen die Anzeigen übertragen wurden, werden registriert, damit Sie in einem späteren VOD Ihres aufgezeichneten Live-Ereignisses neue Anzeigen hinzufügen können.
+    </p>
+    <p>
+      Weitere Informationen zum Erstellen eines Clips finden Sie im <a href="https://beacon.support.brightcove.com/using-brightcove-beacon/streaming-live-event.html#Clip" target="_blank">Erstellen eines Clips aus Ihrem Live-Event</a> Abschnitt aus dem <em>Ein Live-Event streamen</em> dokumentieren.
+    </p>
+  </section>
+</article>

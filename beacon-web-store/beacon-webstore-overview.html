@@ -1,0 +1,259 @@
+---
+title: 'Überblick: Brightcove Beacon-Webshop'
+description: Dieses Thema bietet eine Übersicht über den Brightcove Beacon Web Store-Dienst.
+parent: Beacon Web Store
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+  <section class="bcls-section">
+    <h2 id="Introduction">Einführung</h2>
+    <p>Der Beacon Web Store ist eine Konfiguration, Funktionen und API-Integration, die es Beacon-Lizenznehmern ermöglicht, Abonnements in Bring Your Own (BYO) Webstores zu implementieren. Die Content Owner implementieren die Storefront und Geschäftslogik für Vermietung und Verkauf und die Integration des Bezahlsystems in den Webshop. Eine Beacon-API stellt die Schnittstelle für den Store bereit, um die resultierenden Berechtigungsänderungen innerhalb des Beacon-CMS hinzuzufügen, zu entfernen und zu bearbeiten. Die Logik, die den Zugriff und die Anzeige der Inhaltstitel in Beacon-Apps definiert, ist unverändert.</p>
+    <p>Die Implementierung aller Finanzberichte, Dashboards und Steuerzahlungen wird nicht in Beacon verwaltet oder verfolgt und liegt in der Verantwortung des Rechteinhabers.</p>
+  </section>
+  <section class="bcls-section">
+    <h2 id="glossary_of_terms">Glossar der Begriffe</h2>
+    <p>In der folgenden Tabelle werden die in diesem Thema verwendeten Begriffe erläutert.</p>
+    <table class="bcls-table">
+      <caption class="bcls-caption--table">Glossar der Begriffe</caption>
+      <thead class="bcls-table__head">
+        <tr>
+          <th>Begriff</th>
+          <th>Erläuterung</th>
+        </tr>
+      </thead>
+      <tbody class="bcls-table__body">
+        <tr>
+          <td>Webshop</td>
+          <td>Eine BYO-Commerce-Website für den Verkauf, die Vermietung und den Verkauf von Abonnements</td>
+        </tr>
+        <tr>
+          <td>Zahlungsabwickler</td>
+          <td>Ein System, das vom Webshop verwendet wird, um Transaktionen zu verarbeiten und Einnahmen auf ein Konto einzuzahlen</td>
+        </tr>
+        <tr>
+          <td>Artikelnummer</td>
+          <td>Kennung für Beacon-Assets</td>
+        </tr>
+        <tr>
+          <td>SVOD</td>
+          <td>Abonnement VOD, wiederkehrendes Zahlungsmodell</td>
+        </tr>
+        <!-- <tr>
+          <td>TVOD</td>
+          <td>One time purchase or rental payment model</td>
+        </tr> -->
+        <tr>
+          <td>Planen</td>
+          <td>Eine SVOD-Angebotsdefinition</td>
+        </tr>
+        <tr>
+          <td>UMS</td>
+          <td>Benutzerverwaltungssystem</td>
+        </tr>
+        <tr>
+          <td>Proxy-UMS</td>
+          <td>Proxy-Kopien von Benutzern, die Masterkopien in BYO UMS zugeordnet sind. Beacon-Berechtigungen werden im Proxy-UMS-System verwaltet.</td>
+        </tr>
+        <tr>
+          <td>OIDC</td>
+          <td>Open ID Connect, ein Protokoll zur Kommunikationsautorisierung während der Authentifizierung</td>
+        </tr>
+        <tr>
+          <td>Authentifizierung</td>
+          <td>Identifizierung bestimmter Nutzer zum Zweck der Zugangsgewährung </td>
+        </tr>
+        <tr>
+          <td>Genehmigung</td>
+          <td>Kommunikation von Benutzerberechtigungen über Token bei der Anmeldung</td>
+        </tr>
+        <tr>
+          <td>In-App-Kauf (verfügbar im 2. Quartal 2021)</td>
+          <td>Für Fälle, in denen Kunden Beacon-Apps zu ihren Webstore-Produktangeboten hinzufügen und die neuen Produktkonfigurationen über App-Stores verkaufen möchten, können Beacon Stores für den App-Kauf konfiguriert werden. </td>
+        </tr>
+        <tr>
+          <td>Berechtigungen</td>
+          <td>Zugriff auf Beacon-Inhalte oder -Funktionen</td>
+        </tr>
+        <tr>
+          <td>Kaufbenachrichtigungen</td>
+          <td>Eine Nachricht, die von einem Beacon-Store an Beacon CMS gesendet wird und eine Änderung des Kaufstatus (Kauf, Kündigung) eines Abonnements oder von Asset-Rechten anzeigt</td>
+        </tr>
+        <tr>
+          <td>Angeschlossene Fernseher</td>
+          <td>HDMI-verbundene externe Geräte, die App-Verwaltungsunterstützung für Fernseher bieten: Apple TV, FireTV, Roku und Android TV STBs</td>
+        </tr>
+        <tr>
+          <td>Smart-TV</td>
+          <td>Fernseher mit integrierter Unterstützung für die App-Verwaltung</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Beacon_Store_Components">Beacon Store-Komponenten</h2>
+    <p>Alle Käufe im Beacon Store werden über Webshops getätigt. Das Verkaufsmodell erfordert, dass Zuschauer den Kunden-Webshop besuchen, Inhalte kaufen und dann als separate Aktion Beacon-Apps auf ihren unterstützten Geräten öffnen.</p>
+    <p>Die benötigten Komponenten sind:</p>
+    <table class="bcls-table">
+      <caption class="bcls-caption--table">Beacon Store-Komponenten</caption>
+      <thead class="bcls-table__head">
+          <tr>
+              <th>Komponente</th>
+              <th>Verantwortung</th>
+              <th>Beschreibung</th>
+          </tr>
+      </thead>
+      <tbody class="bcls-table__body">
+          <tr>
+              <td>Webshop</td>
+              <td>Inhaltseigentümer</td>
+              <td>Ein vom Benutzer bereitgestellter Webshop, der die Logik und den Prozess für den Verkauf und die Vermietung des Zugriffs auf einzelne Inhaltstitel und verlängerbare Abonnements implementiert.</td>
+          </tr>
+          <tr>
+              <td>Zahlungsabwickler</td>
+              <td>Inhaltseigentümer</td>
+              <td>Ein System zur Verarbeitung von Zahlungen für Artikel, die über den Webshop verkauft werden. Dieser Service wickelt Kreditkarten-Debitkarten-, E-Wallet- und QR-Code-Zahlungen in lokaler Währung ab und wird mit der Bank des Rechteinhabers abgerechnet.</td>
+          </tr>
+          <tr>
+              <td>Benutzerverwaltungssystem</td>
+              <td>Inhaltseigentümer</td>
+              <td>Es muss ein Benutzerverwaltungssystem zum Speichern von Aufzeichnungen registrierter Benutzer bereitgestellt werden. Die Besitzer bestehender Webshops möchten ihr bestehendes UMS beibehalten, da es alle historischen Informationen über ihre Kunden enthält.</td>
+          </tr>
+          <tr>
+              <td>Brightcove-Leuchtfeuer</td>
+              <td>Brightcove</td>
+              <td>Brightcove Beacon bietet die Konfiguration und das Packen von Inhalten in benannte SKUs, die im Webshop und in der Beacon-Berechtigungs-API verkauft werden, in der der Webshop Berechtigungen für bestimmte Inhaltszugriffsrechte in Betrachterdatensätzen registriert.</td>
+          </tr>
+          <tr>
+              <td>Berechtigungsbenachrichtigungen</td>
+              <td>Brightcove und Inhaltseigentümer</td>
+              <td>
+                Der Webstore sendet Benachrichtigungen über Handelsereignisse wie den Kauf oder die Kündigung von Abonnements an Beacon und Beacon aktualisiert die Benutzerberechtigungen für Beacon-Assets in der Beacon UMS.
+                <!-- <p>(Coming in Q2 2021) In cases where Beacon Store In App Purchases are required, the web store will maintain a separate entitlements database that must be updated.  Beacon will send notifications to an end point defined by the customer and their system is responsible for maintaining the matching entitlements. </p> -->
+              </td>
+          </tr>
+      </tbody>
+  </table>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Beacon_Store_Workflows_and_Configurations">Beacon Store-Workflows und -Konfigurationen</h2>
+    <p>Möglicherweise hatten Sie bereits vor der Einführung von Beacon eine Commerce-Website als integralen Bestandteil ihres Geschäfts und möchten Beacon-Abonnements zu Ihren Webshop-Produkten hinzufügen. Die Webshops bestehen aus drei Komponenten:</p>
+    <ol>
+      <li><strong>Webshop</strong> - Der Webshop ist die Commerce-Site Ihres Unternehmens. Sie stellt die Produkte, Preise und Kaufmodelle vor. </li>
+      <li><strong>Zahlungsabwickler</strong> - Der Zahlungsprozessor ist ein System, das Transaktionen verarbeitet, Zahlungen von Kreditkarten, Debitkarten und E-Wallets akzeptiert, die Zahlungen auf das Bankkonto der Organisation einzahlt und dem Käufer Quittungen sendet.</li>
+      <li><strong>Benutzerverwaltungssystem</strong> - Ihre Organisation führt eine Liste ihrer registrierten Benutzer in ihrem UMS.</li>
+    </ol>
+
+    <p>Die Beacon Store-Integration umfasst zwei Entwicklungsaktivitäten</p>
+    <ol>
+      <li><strong>Beacon erhält Benachrichtigungen über Finanztransaktionen vom Webshop</strong> - Verkäufe und Stornierungen von Beacon-Abonnements aus dem Webshop werden an eine Beacon-API gemeldet. Beacon fügt Berechtigungen basierend auf diesen Benachrichtigungen hinzu oder entfernt sie.</li>
+      <li><strong>Verbinden und synchronisieren Sie die Beacon- und Web Store-Benutzerverwaltungssysteme</strong> - Der Webstore UMS-Benutzerdatensatz enthält den Stammdatensatz und den Benutzer und ist die Quelle der gespeicherten Benutzerdaten. Für jeden der registrierten Benutzer werden in der Beacon UMS Proxy-Benutzer angelegt. Beacon weist dem Proxy-Benutzerdatensatz beim Empfang von Transaktionsbenachrichtigungen Berechtigungen zu. Änderungen in der Store-UMS wie das Hinzufügen und Löschen von Benutzern werden auf übereinstimmende Benutzerdatensätze in der Beacon-UMS angewendet.
+      </li>
+    </ol>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Beacon_Store_Configurations">Beacon Store-Konfigurationen</h2>
+    <p>Beacon Stores sind bereits bestehende, kundeneigene und betriebene BYO-Webshops, die in Beacon integriert sind, um Beacon-Abonnements zur Liste der im Webshop verkauften Produkte hinzuzufügen. Kunstorganisationen liefern ein Beispiel, das die beiden wichtigsten Verkaufsmodelle zur Unterstützung dieses Ziels veranschaulicht.</p>
+    <p>Kunstorganisationen verkaufen derzeit Abonnements, Tickets und physische Waren im Zusammenhang mit Aufführungen über ihre Webshops. Daher gibt es bestehende Webshops, Benutzerverwaltungs-, Zahlungsverarbeitungs- und Berechtigungsverfolgungssysteme, um diesen Handel zu verwalten.</p>
+    <p>Einige Organisationen haben beschlossen, ihr Publikum zu erweitern, indem sie virtuellen Zugang zu denselben Veranstaltungen sowie aufgezeichneten Inhalten einschließen. Darüber hinaus möchten sie den gesamten Commerce-Management-Prozess in ihren Webshops konsolidieren.</p>
+    <p>Eine Untergruppe von Organisationen möchte mit ihren Webshops das gleiche Ergebnis erzielen und dieselben Produkte wie bei App-Käufen in den App-Stores verkaufen (Apple Store, Google Play, Amazon, Roku und die Stripe-Integration mit der Beacon-Web-App). .</p>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Web_Store_Only_Purchases">Nur Käufe im Web Store</h2>
+    <p>Nur der Webshop-Workflow wird wie in Abbildung 1 dargestellt implementiert. Der Kunde bringt seinen eigenen Webshop, Zahlungsabwickler und UMS mit. Die Integrationspunkte sind:</p>
+    <ul>
+      <li>
+        <strong>UMS-Proxy-Benutzer</strong> - Die vollständigen Aufzeichnungen der registrierten Benutzer werden im BYO UMS des Kunden geführt und dies ist die Quelle der Wahrheit für das Benutzerkonto und die Kontoverwaltung des Benutzers. Die Benutzerauthentifizierung bei der Anmeldung erfolgt im BYO UMS. Proxy-Benutzer werden in der Beacon UMS bei Authentifizierung oder Abonnement erstellt. Wenn Benutzer aus der UMS gelöscht werden, werden auch Proxy-Benutzer aus Beacon gelöscht.
+        <p>Die Synchronisation zur Authentifizierung und Kontoverwaltung erfolgt über OIDC (<a href="https://openid.net/developers/specs/">ID-Connect öffnen</a> )-Protokoll, eine Erweiterung von OAuth 2.0. Sie müssen entweder ein System mit nativer OIDC-Unterstützung bereitstellen oder Ihre UMS-Schnittstelle aktualisieren, um OIDC zu unterstützen.</p>
+      </li>
+      <li><strong>Kaufbenachrichtigung</strong> - Der Webshop wird von Ihnen geändert, um Benachrichtigungen über Handelsereignisse an die Beacon-Berechtigungs-API zu senden. Die Benachrichtigung enthält die BENUTZER-ID und die PRODUKT-SKU. Wenn Beacon die Benachrichtigung erhält, wird die entsprechende Aktualisierung der Berechtigung im Benutzerdatensatz im Beacon UMS aufgezeichnet. Dadurch wird die Berechtigung verliehen oder widerrufen, die es dem Benutzer ermöglicht, Inhalte in Beacon-Apps anzuzeigen. Die Schnittstelle der technischen Berechtigungen API ist definiert in <a href="/beacon-web-store/integration-details.html">Details zur Beacon-Integration</a></li>
+    </ul>
+    <figure class="bcls-figure">
+      <img class="bcls-image" src="/assets/images/beacon-web-store/beacon-store.png" alt="Beacon Store">
+      <figcaption class="bcls-caption--image">Beacon Store</figcaption>
+    </figure>
+    <p>Konfigurationsdetails:</p>
+    <ul>
+      <li>Die Abonnementdefinitionen im Webstore und Beacon <strong>MUSS</strong> mit den IDENTISCHEN SKU-Namen konfiguriert werden.</li>
+      <li>Die Webstore-Benachrichtigungen werden an eine Web-Hook-URL gesendet, die vom Beacon-CMS präsentiert wird.</li>
+    </ul>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Beacon_Store_with_In_App_Purchases">Beacon Store mit In-App-Käufen</h2>
+    <p>Der Webshop innerhalb des App-Kauf-Workflows wird wie in Abbildung 2 dargestellt implementiert. In diesem Modell können In-App-Käufe in den Stores von Amazon, Apple, Google und Roku sowie Ihrem Webshop getätigt werden. Sie sind verantwortlich für:</p>
+    <ul>
+      <li>Ihr eigener Webshop</li>
+      <li>Der Zahlungsabwickler</li>
+      <li>Die UMS</li>
+      <li>Händlerkonten in den gewünschten Stores</li>
+    </ul>
+    <p>Brightcove Beacon bietet Integrationen für In-App-Käufe. Die Integrationspunkte werden gegenüber dem im vorherigen Abschnitt beschriebenen geändert, um Zahlungsbenachrichtigungen VON Beacon AN den Webstore über erfolgreiche App-Käufe einzuschließen. Die von Beacon generierten Benachrichtigungsnachrichten folgen einem ähnlichen Schema.</p>
+    <figure class="bcls-figure">
+      <img class="bcls-image" src="/assets/images/beacon-web-store/beacon-store-with-in-app-purchases.png" alt="Beacon Store with In-App Purchases">
+      <figcaption class="bcls-caption--image">Beacon Store mit In-App-Käufen</figcaption>
+    </figure>
+    <p>Konfigurationsdetails:</p>
+    <ul>
+      <li>Die Abonnementdefinitionen im Webstore und Beacon <strong>MUSS</strong> mit den IDENTISCHEN SKU-Namen konfiguriert werden.</li>
+      <li>Die Webstore-Benachrichtigungen werden an eine Web-Hook-URL gesendet, die vom Beacon-CMS präsentiert wird.</li>
+      <li>Beacon-Mitteilungen werden an eine Webhook-URL gesendet, die von einem Dienst Ihrer Wahl präsentiert wird.</li>
+    </ul>
+  </section>
+  <section class="bcls-section">
+    <h2 id="User_Management_Systems">Benutzerverwaltungssysteme</h2>
+    <p>Der typische Anwendungsfall für Beacon Stores ist die Integration von Beacon in einen bereits bestehenden, etablierten Webshop. Seltener ist die Einführung eines neuen Dienstes mit einem neuen Webshop zur Verwaltung des Handels.</p>
+    <h3>Extern verbundenes UMS</h3>
+    <p>Vorhandene Webshops sind immer in Benutzerverwaltungs- und Zahlungsabwicklungssysteme integriert. In diesem Fall besteht Ihr Ziel darin, Beacon in die bereits vorhandene Commerce-Konfiguration zu integrieren. Ihr UMS bleibt der Punkt der Authentifizierung und der Benutzerdatensatzverwaltung. Daher verwendet die Integration das UMS des Kunden, um Beacon-Benutzer zu authentifizieren und zu autorisieren. Die E-Mail-Adresse des Benutzers wird als Konto-ID verwendet und die Berechtigungen werden mit diesem Konto verknüpft. Alle personenbezogenen Daten des Benutzers werden im BYO UMS gespeichert.</p>
+    <p>Externe BYO UMS-Systeme sind über das OIDC-Schnittstellenprotokoll mit Beacon verbunden. Open ID Connect ist eine Erweiterung von OAuth, die Identitäts-Token-Schemas standardisiert.</p>
+    <h3>Mobile- und Web-UMS-Konfiguration</h3>
+    <figure class="bcls-figure">
+      <img class="bcls-image" src="/assets/images/beacon-web-store/mobile-web-ums.png" alt="Mobile and Web UMS">
+      <figcaption class="bcls-caption--image">Mobil- und Web-UMS</figcaption>
+    </figure>
+    <ol>
+      <li>Der Benutzer wählt die Anmeldung in der Beacon-App aus</li>
+      <li>Die App interagiert mit dem OIDC-Anbieter, um Benutzer durch den Anmeldevorgang zu führen. Bei Erfolg werden der App Zugriffs-, Aktualisierungs- und Identitätstoken bereitgestellt</li>
+      <li>App verwendet Zugriffstoken, um eine Verbindung zum Beacon-Backend herzustellen</li>
+      <li>Beacon-Backend validiert Zugriffstoken</li>
+    </ol>
+    <h3>Connected und SmartTV UMS-Konfiguration</h3>
+    <figure class="bcls-figure">
+      <img class="bcls-image" src="/assets/images/beacon-web-store/tv-ums.png" alt="Connected and SmartTV UMS">
+      <figcaption class="bcls-caption--image">Verbunden und SmartTV UMS</figcaption>
+    </figure>
+    <ol>
+      <li>Der Benutzer wählt die Anmeldung in der Beacon-App aus</li>
+      <li>App fordert einen Gerätecode an</li>
+      <li>Der Benutzer geht zum Mobil- oder Webgerät, gibt die Authentifizierungs-URL und den Gerätecode ein</li>
+      <li>Das Gerät interagiert mit dem OIDC-Anbieter, um den Benutzer zu authentifizieren</li>
+      <li>Connected oder Smart TV fragen kontinuierlich den OIDC-Anbieter ab, um herauszufinden, ob der Benutzer authentifiziert ist, wenn der App Zugriffs-, Aktualisierungs- und Identitätstoken bereitgestellt werden</li>
+      <li>App verwendet Zugriffstoken, um eine Verbindung zum Beacon-Backend herzustellen</li>
+      <li>Beacon-Backend validiert Zugriffstoken</li>
+    </ol>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Beacon_User_Management_Autosync">Beacon-Benutzerverwaltung Autosync</h2>
+    <p>Bei der Integration eines bestehenden UMS mit Beacon müssen Proxy-Benutzer in Beacon UMS erstellt werden, damit Berechtigungen, die durch Beacon Store-Verkaufsbenachrichtigungen erstellt wurden, dem richtigen Benutzer zugewiesen werden können.</p>
+    <p>Benutzer werden aufgrund von Ereignissen im UMS des Kunden in Beacon gepflegt. Über die OIDC-Schnittstelle werden Benutzer in Beacon angelegt, wenn sie sich in der externen UMS authentifizieren oder wenn eine Berechtigung an Beacon gesendet wird. Es ist keine manuelle Synchronisation erforderlich.</p>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Beacon_Store_Monetization_Models">Monetarisierungsmodelle für Beacon Store</h2>
+    <p>Beacon Stores sind konfigurierbar, um SVOD-Transaktionen zu unterstützen. Konfigurationsdetails:</p>
+    <h3>SVOD-Konfiguration</h3>
+    <h4>Beacon-Konfiguration</h4>
+    <ol class="bcls-tasklist-restart">
+      <li>Erstellen Sie einen SVOD-Plan in Beacon</li>
+      <li>Status in Beacon auf UNPUBLISHED setzen</li>
+      <li>Definieren Sie eine SKU für den Plan in Beacon</li>
+      <li>Weisen Sie dem Plan Inhalte zu</li>
+    </ol>
+    <h4>Konfiguration des Webshops</h4>
+    <ol class="bcls-tasklist-restart">
+      <li>Erstellen Sie einen SVOD-Plan/ein Produkt im Webshop und im Webshop-Zahlungssystem</li>
+      <li>Gib das Spiel <strong>der gleiche Name wie in Beacon</strong></li>
+      <li>Kopieren Sie die SKU von Beacon in die SKU-ID im Zahlungssystem des Webshops</li>
+    </ol>
+    <!-- <h3>TVOD configuration</h3>
+    <p>(TBD)</p> -->
+  </section>
+</article>

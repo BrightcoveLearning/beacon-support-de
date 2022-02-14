@@ -1,0 +1,108 @@
+---
+title: Beacon mit Evergent-Beschreibung konfigurieren: Dieses Thema bietet eine Schritt-für-Schritt-Anleitung zum Konfigurieren von Beacon und Evergent für die Zusammenarbeit.
+parent: Beacon Advanced Monetization
+layout: staging
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+	<section class="bcls-section">
+		<h2 id="Introduction">Einführung</h2>
+		<p>Die Konfiguration von Beacon und Evergent für die Zusammenarbeit erfordert einige Einstellungen in beiden Systemen. In einigen Fällen müssen Sie Informationen von einem System in das andere kopieren oder Informationen genau von einem System auf das andere replizieren. Wenn Sie beide Systeme nebeneinander in separaten Browserfenstern öffnen können, wird es einfacher, die folgenden Schritte erfolgreich auszuführen.</p>
+	</section>
+  <section class="bcls-section">
+    <h2 id="Beacon_part_1">Leuchtfeuer Teil 1</h2>
+		<p>Für diesen Teil benötigen Sie eine konfigurierte Beacon CMS (Customer Management System)-Instanz.</p>
+		<ol class="bcls-tasklist-restart">
+			<li>Konfigurieren Sie Evergent im Beacon CMS als <strong>Geschäft</strong>.</li>
+			<li>Auf der <strong>Einstellungen &gt; Standort</strong> Seite für den Store, legen Sie die Länder fest, in denen der Service verfügbar sein wird.</li>
+			<li>Auf der <strong>Einstellungen &gt; Währungen</strong> Seite für den Shop, definieren Sie die Währungen für jedes Land.</li>
+	</ol>
+  </section>
+	<section class="bcls-section">
+		<h2 id="Evergent_part_1">Evergent Teil 1</h2>
+		<p>Für diesen Teil müssen Sie BUs (Business Units) im Evergent Go Portal einrichten. Jede Evergent BU wird einem bestimmten Land oder einer bestimmten Region der Welt zugeordnet, und diese und die damit verbundenen Währungen sollten mit Ihrer Eingabe in das Beacon CMS übereinstimmen.</p>
+		<ol class="bcls-tasklist-restart">
+			<li>Konfigurieren Sie die Währung der BU.</li>
+			<li>Konfigurieren Sie das Land, in dem sich die BU befindet</li>
+			<li>
+				Konfigurieren Sie die Zahlungsgateways und Zahlungsmethoden für die BU:
+				<ul>
+					<li>Kreditkarte Debitkarte</li>
+					<li>E-Wallets</li>
+					<li>In-App-Käufe (iOS, Google Play, Amazon Billing, Roku Pay)</li>
+				</ul>
+			</li>
+	</ol>
+	</section>
+	<section class="bcls-section">
+		<h2 id="Beacon_part_2">Leuchtfeuer Teil 2</h2>
+		<p>Evergent BUs-IDs und Länderzuordnung müssen pro Beacon-Kunde konfiguriert werden. Dies erfolgt im Monetarisierungs-Zahlungsdienst, einem Back-End-Dienst, der dem Playback-Team gehört. (Der Plan ist, dass diese Konfiguration bis Ende Q1 21 auf Jackie Pages verschoben wird). Diese Konfigurationen sollten mit einem bestimmten Video Cloud-Kundenkonto verknüpft sein, das für Beacon verwendet wird.</p>
+	</section>
+	<section class="bcls-section">
+		<h2 id="Beacon_part_3">Leuchtfeuer Teil 4</h2>
+		<p>Ein Evergent <a href="https://en.wikipedia.org/wiki/Salt_(cryptography)">Salz</a> für diesen speziellen Beacon-Kunden muss der Monetarisierungs-Zahlungsdienst konfiguriert werden. </p>
+	</section>
+	<section class="bcls-section">
+		<h2 id="Beacon_part_5">Leuchtfeuer Teil 5</h2>
+		<p>Der Monetarisierungs-Zahlungsdienst generiert einen "Beacon_Monetization_Api"-Endpunkt (beacon.monetization.api.brightcove.com), der in die Beacon-CMS-Instanz des Kunden eingegeben werden muss. Dies sollte auf der Einstellungsseite unter "Payment Gateway Configuration" für Evergent eingegeben werden.</p>
+	</section>
+	<section class="bcls-section">
+		<h2 id="Beacon_part_6">Leuchtfeuer Teil 6</h2>
+		<ol class="bcls-tasklist-restart">
+			<li>
+				Erstellen Sie SVOD-Pläne auf der Registerkarte Beacon CMS Commerce. Definieren Sie die Monetarisierungsrichtlinien:
+				<ol style="list-style-type: lower-alpha;">
+					<li>Abrechnungshäufigkeit</li>
+					<li>Probezeit</li>
+					<li>Verlängerungsrichtlinie</li>
+					<li>
+						Wählen Sie aus, in welchen Stores der Plan angezeigt wird:
+						<ul>
+							<li>Evergent</li>
+							<li>App-Stores (iOS, Google Play, Amazon, Roku)</li>
+						</ul>
+					</li>
+					<li>Legen Sie die Geräte und Standorte fest.</li>
+					<li>Legen Sie die Verfügbarkeitsdaten fest.</li>
+					<li>
+						Konfigurieren Sie die App-Stores:
+						<ol style="list-style-type: lower-roman;">
+							<li>Konfigurieren Sie die Verfügbarkeitsdaten. </li>
+							<li>Konfigurieren Sie die Geräte.</li>
+							<li>Geben Sie den Preis und die Währungen ein.</li>
+							<li>Erstellen Sie die Store-IDs. Diese ID muss kopiert und in die Produkt-Sku in den App Stores eingefügt werden. Außerdem muss es im Evergent Go für den passenden SVOD-Plan eingetragen werden.</li>
+						</ol>
+					</li>
+				</ol>
+			</li>
+	</ol>
+	</section>
+	<section class="bcls-section">
+		<h2 id="Evergent_part_2">Evergent Teil 2</h2>
+		<p>Erstellen Sie in Evergent Go passende SVOD-Pläne. Es ist wichtig, dass die Monetarisierungsrichtlinien mit denen übereinstimmen, die im CMS von Beacon eingegeben wurden. Beachten Sie auch, dass Sie mehrere Evergent-BUs verwenden müssen, wenn Sie SVOD-Pläne in verschiedenen Währungen verkaufen möchten. Die Pläne in jeder BU werden Beacon mithilfe von SKUs zugeordnet, die im „Evergent Store“ im Beacon CMS eingegeben werden.</p>
+		<figure class="bcls-figure">
+			<img class="bcls-image" src="/assets/images/beacon-evergent/svod-plans.png" alt="Evergent SVOD Setup">
+			<figcaption class="bcls-caption--image">Evergent SVOD-Setup</figcaption>
+		</figure>
+	</section>
+	<section class="bcls-section">
+		<h2 id="Beacon_part_7">Leuchtfeuer Teil 7</h2>
+		<p>Konfigurieren Sie den Beacon Evergent Store für Ihre SVOD-Pläne:</p>
+		<ol class="bcls-tasklist-restart">
+			<li>Konfigurieren Sie die Verfügbarkeit.</li>
+			<li>Geräte konfigurieren (derzeit nur Web).</li>
+			<li>Konfigurieren Sie den Preis und die Währungen. Die Währungen sollten den Plänen in den spezifischen BUs entsprechen, die diese Währung verwenden. Wenn Sie beispielsweise einen Plan haben, den Sie in der EU mit Euro verkaufen, sollte die Evergent-ID von der EU Evergent BU stammen. In das Evergent-ID-Feld geben Sie die Evergent-SKU ein.</li>
+		</ol>
+	</section>
+	<section class="bcls-section">
+		<h2 id="Related_topics">verwandte Themen</h2>
+		<ul>
+			<li><a href="/monetization/beacon-evergent/overview-beacon-evergent.html">Überblick: Beacon Advanced Monetarisierung</a></li>
+			<li><a href="/monetization/beacon-evergent/evergent-finding-accounts.html">Auffinden von Konten im Evergent CRM</a></li>
+			<li>Evergent:<a href="/monetization/beacon-evergent/evergent-managing-account-details.html"> Kontodetails verwalten</a></li>
+			<li>Evergent:<a href="/monetization/beacon-evergent/evergent-billing-finance.html"> Abrechnung und Finanzen</a></li>
+			<li>Evergent:<a href="/monetization/beacon-evergent/emailer-coupons.html"> E-Mail und Coupons</a></li>
+		</ul>
+	</section>
+</article>

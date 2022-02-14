@@ -1,0 +1,90 @@
+---
+title: Integrieren eines Benutzerverwaltungssystems mit Beacon-
+description: In diesem Thema wird erläutert, wie ein externes Benutzerverwaltungssystem (UMS) mithilfe von OIDC für die Benutzerauthentifizierung und der Beacon-Webhook-API in Brightcove Beacon integriert werden kann, um Beacon über Benutzerberechtigungen zu informieren.
+parent: Integration published: false
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+  <section class="bcls-section">
+    <h2 id="Introduction">Einführung</h2>
+		<p>Möglicherweise verfügen Sie bereits über ein Benutzerverwaltungssystem – für einen Webshop oder einen anderen Zweck –, das Sie in Brightcove Beacon integrieren möchten, anstatt es manuell in Beacon zu replizieren und zu verwalten. Dies ist über Open ID Connect (OIDC) möglich.</p>
+  </section>
+	<section class="bcls-section">
+		<h2 id="features_of_oidc_external_authentication">Funktionen der externen OIDC-Authentifizierung</h2>
+		<ul>
+			<li>Vorhandene Datenbanken von Drittanbietern können verwendet werden, um Beacon-Benutzer zu authentifizieren.</li>  
+			<li>Beacon-Benutzer können sich über ihre Beacon-Apps registrieren, authentifizieren und Passwörter ändern.</li>
+			<li>Unterstützung von Beacon-Apps bei App-Käufen.</li> 
+			<li>Vorhandene Anwendungen und Beacon-Apps verwenden dieselbe Authentifizierungsdatenbank.</li>
+			<li>Neue Benutzer können sich im 3rd-Party-System registrieren.</li>
+			<li>Workflows zur Gerätekopplung (2. Gerät, Code auf dem Bildschirm eingeben, um die TV-App zu autorisieren).</li>
+			<li>Social Logins – wenn sie vom OIDC-Anbieter unterstützt werden.</li>
+			<li>Beacon Stream-Parallelitätsbegrenzung wird unterstützt.</li>
+			<li>Der OIDC-Anbieter kann über Benutzername und Passwort hinaus zusätzliche Authentifizierungsmethoden anbieten (mehrstufig, passwortlos, Gerätekopplung, Google-Kontokopplung).</li>
+		</ul>
+	</section>
+	<section class="bcls-section">
+		<h2 id="limitations">Einschränkungen der externen Authentifizierung</h2>
+		<ul>
+			<li>WENN der Kunde Smart-TVs und angeschlossene Fernseher benötigt, MUSS das OIDC-System Device Flow unterstützen (<a href="https://tools.ietf.org/html/rfc8628">https://tools.ietf.org/html/rfc8628</a> ) zur Authentifizierung von TV-Apps.</li>
+			<li>Passwort-Reset – NICHT UNTERSTÜTZT in der Beacon Admin-Konsole. Zuschauer können PSW über Apps aktualisieren.</li>
+			<li>Keine Beacon-Geräteverwaltung (daher wird die Begrenzung und Verwaltung der Anzahl von Geräten in einem Konto NICHT mit Authentifizierung durch Drittanbieter unterstützt)</li>
+		</ul>
+	</section>
+
+<section class="bcls-section">
+	<h2 id="Authorizing_data_retrieval">Autorisieren des Datenabrufs</h2>
+	<p>Die Autorisierung des Datenabrufs erfolgt in Brightcove Beacon auf zwei Arten: Authentifizierung und Berechtigungen für Benutzer.</p>
+	<h3>Authentifizierung</h3>
+	<p>Brightcove nutzt die folgenden OAuth 2.0-Flows für die Authentifizierung:</p>
+	<h4>Autorisierungscode mit PKCE: for <strong>iOS</strong> , <strong>Android</strong> und <strong>Netz</strong></h4>
+	<!-- <figure class="bcls-figure">
+			<img class="bcls-image" src="/assets/images/references/how-beacon-gets-data/authorization-wth-PKCE.png" alt="">
+	</figure> -->
+	<h4>Gerätefluss (OAuth 2.0-Erweiterung) für <strong>Angeschlossene Fernseher</strong> und <strong>Smart-TVs</strong>
+	</h4>
+	<!-- <figure class="bcls-figure">
+			<img class="bcls-image" src="/assets/images/references/how-beacon-gets-data/device-flow-oauth2.png" alt="">
+	</figure> -->
+	<p>Es gibt drei Token, die Brightcove Beacon zur Verfügung gestellt werden müssen:</p>
+	<ul>
+			<li><strong>Zugangstoken</strong>: Überprüft, ob sich ein Benutzer authentifizieren konnte und Zugriff auf Brightcove Beacon erhalten sollte. Das Zugriffstoken muss in . sein <strong>JWT-Format</strong> und enthalten <code translate="no">iss</code> und <code translate="no">unter</code> Behauptungen.</li>
+			<li><strong>Token aktualisieren</strong>: Ermöglicht dem Benutzer, nach Ablauf des Zugriffstokens angemeldet zu bleiben, indem ein Mechanismus bereitgestellt wird, um automatisch ein neues Zugriffstoken im Namen des Benutzers zu erhalten (solange dem Benutzer Zugriff gewährt wird). Dies ist besonders bei Fernsehern wichtig.</li>
+			<li><strong>Identitätstoken</strong>: Standardisiert die Art und Weise, wie Brightcove Benutzerinformationen erhält.</li>
+	</ul>
+	<p>Folgende Zuschussarten sollen unterstützt werden:</p>
+	<ul>
+			<li><code translate="no">Zugangscode</code></li>
+			<li>refresh_token<code translate="no"></code></li>
+			<li>urn:ietf:params:oauth:grant-type:device_code<code translate="no"></code></li>
+	</ul>
+	<p>Die folgenden Endpunkte des Authentifizierungsanbieters müssen in Brightcove Beacon konfiguriert werden. Sie müssen diese Brightcove für die ordnungsgemäße Konfiguration bereitstellen. Wenn <a href="https://swagger.io/docs/specification/authentication/openid-connect-discovery/">OpenID Connect-Erkennung</a> ist verfügbar Brightcove kann diese entdecken:</p>
+	<ul>
+			<li>Zugangstoken</li>
+			<li>Token aktualisieren</li>
+			<li>Benutzerinformation</li>
+			<li>Token widerrufen</li>
+			<li>Autorisieren</li>
+			<li>Pairing-Codes</li>
+			<li>JWKS (<a href="https://auth0.com/docs/tokens/json-web-tokens/json-web-key-sets">JSON-Webschlüsselsätze</a>)</li>
+			<li>Ausloggen</li>
+			<li><a href="https://swagger.io/docs/specification/authentication/openid-connect-discovery/">OpenID Connect-Erkennung</a> (/.well-known/openid-Konfiguration). Dies wird zur Konfiguration des Systems verwendet.</li>
+			<li>Optional (aber empfohlen) : Angepasst anfragen <code translate="no">audi</code> (Publikum) nach Client-App. Dies wird für zusätzliche Validierung verwendet.</li>
+	</ul>
+	<p>Für jede Anwendung muss Brightcove von Ihnen die <code translate="no">Kunden ID</code> in den Apps einzurichten, empfohlen pro Plattform. Brightcove wird auch die <code translate="no">redirect_uri(s)</code> für Web- und mobile Anwendungen (sofern zutreffend) zu verwenden.</p>
+
+	<h3>Berechtigungen</h3>
+	<p>Um Brightcove Beacon über Berechtigungen für Benutzer zu informieren, stellt Brightcove Beacon die folgende API bereit:</p>
+	<pre class="line-numbers"><code class="language-html">https://beacon.brightcove.com/<span class="bcls-input">{instance}</span>/webhook/beacon</code></pre>
+	<p>Der API-Schlüssel wird von Brightcove bereitgestellt.</p>
+	<p>Die Nutzlast für die über die API ausgetauschten Daten ist JSON-formatiert und sieht wie folgt aus:</p>
+	<pre class="line-numbers"><code class="language-json">[ { "package_name": "string", // Commerce package for SVOD or SKU for TVOD purchases - required "external_user_id": "string", // User identifier (username or email depending on configuration of users)- required "transaction_id": "string", // Unique transaction id for purchase - required for subscriptions (this will be used in renewal) "start_date": "string", // Start date for entitlements "end_date": "string", // End date for entitlements (applicable if a rent or a subscription) "trial_end_date": "string", // End date for a trial if applicable "effective_cancelation_date": "string", // Date by when cancellation is effective (for example, end of current subscription period) "notification_type": "new", // One of: new, renew, cancellation, buy or rent - required “payment_gateway”: “beaconstore” // One of: “beaconstore” } ]</code></pre>
+	<p>Bei Verwendung eines externen Authentifizierungssystems wird die <code translate="no">external_user_id</code> entspricht dem Betreffwert im Access-Token. Beachten Sie auch Folgendes:</p>
+	<ul>
+			<li>Der API-Schlüssel muss im gesendet werden <code translate="no">HEADER</code> in dem <code translate="no">Auth-Token</code> Schlüssel.</li>
+			<li>Es ist möglich, mehrere Datensätze gleichzeitig zu senden.</li>
+			<li>Wenn bei einem der Elemente in der JSON-Nutzlast ein Fehler auftritt, wird die gesamte Nutzlast abgelehnt.</li>
+	</ul>
+</section>
+</article>

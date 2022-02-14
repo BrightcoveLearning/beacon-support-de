@@ -1,0 +1,300 @@
+---
+title: Beschreibung des elektronischen Programmführers (EPG) erstellen: In diesem Thema erfahren Sie, wie Sie einen elektronischen Programmführer (EPG) für Brightcove Beacon erstellen.
+parent: Managing Channels
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+  <aside class="bcls-aside bcls-aside--information">HINWEIS: In diesem Thema werden alle Schritte in Beacon Classic ausgeführt.</aside>
+  <section class="bcls-section">
+    <h2 id="overview">Überblick</h2>
+    <p>
+      Ein elektronischer Programmführer (EPG) zeigt Planungsinformationen für vergangene, aktuelle und bevorstehende Sendungen an, die auf jedem Ihrer Brightcove Beacon-Kanäle verfügbar sind.
+    </p>
+    <aside class="bcls-aside bcls-aside--information">Beachten Sie, dass bei Verwendung von a <a href="/cloud-playout/cloud-playout-overview.html">Cloud-Playout-Kanal</a> Als Quelle für Ihren Beacon-Kanal erstellt Brightcove den EPG automatisch. Die restlichen Informationen in diesem Thema gelten nur, wenn Sie <strong>nicht</strong> einen Cloud Playout-Kanal verwenden.</aside>
+
+    <p>Informationen zum Erstellen von Kanälen in Brightcove Beacon finden Sie auf der <a href="https://beacon.support.brightcove.com/channels/creating-a-channel.html" target="_blank">Einen Kanal erstellen</a> Dokumentation.</p>
+
+    <p>
+      In diesem Dokument erfahren Sie, wie Sie Ihre XML-Datei strukturieren und als EPG auf Brightcove Beacon hochladen.
+    </p>
+    <p>Eine übergeordnete Ansicht des Prozesses ist:</p>
+    <ol>
+      <li>
+        Erstellen Sie eine XML-Datei mit Ihren Kanalinformationen, die dem EPG-Schema entspricht.
+      </li>
+      <li>Legen Sie die XML-Datei im von Brightcove bereitgestellten S3-Bucket ab.</li>
+      <li>
+        Nachdem die obigen Schritte abgeschlossen sind, wird die Datei automatisch in Brightcove Beacon aufgenommen. Die Informationen werden im angezeigt <strong>Kanäle</strong> Abschnitt von Brightcove Beacon.
+      </li>
+    </ol>
+    <p>
+      Der Rest dieses Dokuments enthält Details zu jedem der oben genannten Schritte.
+    </p>
+  </section>
+  <section class="bcls-section">
+    <h2 id="information_epg">Erforderliche Informationen für EPG</h2>
+    <ul>
+      <li>
+        Eine XML-Datei mit den Kanalinformationen: Diese Datei kann manuell oder automatisch erstellt werden.
+      </li>
+      <li>Der S3-Eimer <strong>Nutzername</strong> und <strong>Passwort</strong> Referenzen <em>bereitgestellt von Brghtcove</em>.</li>
+      <li>
+        Ein S3-Konto (Bucket-Name und URL-Pfad) <em>bereitgestellt von Brightcove</em>. Der tatsächliche Speicherort für die EPG-Datei.
+      </li>
+    </ul>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="xml_structure">XML-Dateistruktur</h2>
+    <p>
+      Um einen EPG für Brightcove Beacon zu generieren, müssen Sie eine XML-Datei mit allen Metadateninformationen Ihrer Kanäle wie Videotitel, Beschreibungen und Dauer erstellen und in den S3-Bucket hochladen.
+    </p>
+    <p>Hier ist ein Beispiel für die XML-Struktur:</p>
+    <pre class="line-numbers">
+<code class="language-xml" translate="No">&lt;RiGHTvEPG xmlns=&quot;http://www.orca.tv/RiGHTv/7.0/EPG&quot; 
+xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; 
+version=&quot;1.0&quot; language=&quot;en&quot; xsi:schemaLocation=&quot;http://www.orca.tv/RiGHTv/7.0/EPG 
+RiGHTvEPG.xsd&quot;&gt;    
+  &lt;ChannelsList&gt;
+    &lt;channel id=&quot;your-channel-id&quot;&gt;
+      &lt;program id=&quot;3394&quot; time=&quot;2020-04-22T01:25:00Z&quot; duration=&quot;PT01H45M&quot; 
+      delete=&quot;false&quot; pvrEnabled=&quot;false&quot; stovEnabled=&quot;false&quot; catchUpEnabled=&quot;false&quot;&gt;
+        &lt;title&gt;Video Title&lt;/title&gt;
+        &lt;description&gt;
+        &lt;![CDATA[
+        Description of your video asset.
+        ]]&gt;
+        &lt;/description&gt;
+      &lt;/program&gt;
+    &lt;/channel&gt;
+  &lt;/ChannelsList&gt;
+&lt;/RiGHTvEPG&gt;</code></pre>
+
+    <p>Für den Kopf der XML-Datei können Sie den folgenden Code verwenden:</p>
+    <pre class="line-numbers">
+<code class="language-xml" translate="No">&lt;RiGHTvEPG xmlns=&quot;http://www.orca.tv/RiGHTv/7.0/EPG&quot; 
+  xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; 
+  version=&quot;1.0&quot; language=&quot;en&quot; xsi:schemaLocation=&quot;http://www.orca.tv/RiGHTv/7.0/EPG 
+  RiGHTvEPG.xsd&quot;&gt;</code>
+  </pre>
+    <p>
+      Die <em>RIGHTvEPG.xsd</em> Datei enthält ein <em>XML-Schema</em> das die Struktur des XML-Dokuments beschreibt, und die Datei wird von Brightcove gehostet. Sie können Ihr XML mithilfe des XSD-Dateischemas in einem <a href="https://www.freeformatter.com/xml-validator-xsd.html" target="_blank">XML-Validator</a>.
+    </p>
+
+    <p>Validierungsschema RiGHTvEPG.xsd (ein Link zum Herunterladen des Schemas folgt der Auflistung):</p>
+    <pre class="line-numbers">
+  <code class="language-xml" translate="No">&lt;xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.orca.tv/RiGHTv/7.0/EPG" xmlns:xs="http://www.w3.org/2001/XMLSchema"&gt;
+    &lt;xs:element name="RiGHTvEPG"&gt;
+      &lt;xs:complexType&gt;
+        &lt;xs:sequence&gt;
+          &lt;xs:element name="ChannelsList"&gt;
+            &lt;xs:complexType&gt;
+              &lt;xs:sequence&gt;
+                &lt;xs:element name="channel"&gt;
+                  &lt;xs:complexType&gt;
+                    &lt;xs:sequence&gt;
+                      &lt;xs:element name="program" maxOccurs="unbounded" minOccurs="1"&gt;
+                        &lt;xs:complexType&gt;
+                          &lt;xs:sequence&gt;
+                            &lt;xs:element name="title"&gt;
+                              &lt;xs:simpleType&gt;
+                                &lt;xs:restriction base="xs:string"&gt;
+                                  &lt;xs:minLength value="1"/&gt;
+                                &lt;/xs:restriction&gt;
+                              &lt;/xs:simpleType&gt;
+                            &lt;/xs:element&gt;
+                            &lt;xs:element type="xs:string" name="description"/&gt;
+                          &lt;/xs:sequence&gt;
+                          &lt;xs:attribute type="xs:int" name="id" use="optional"/&gt;
+                          &lt;xs:attribute type="xs:dateTime" name="time" use="required" /&gt;
+                          &lt;xs:attribute type="xs:duration" name="duration" use="required"/&gt;
+                          &lt;xs:attribute type="xs:string" name="delete" use="optional"/&gt;
+                          &lt;xs:attribute type="xs:string" name="pvrEnabled" use="optional"/&gt;
+                          &lt;xs:attribute type="xs:string" name="stovEnabled" use="optional"/&gt;
+                          &lt;xs:attribute type="xs:string" name="catchUpEnabled" use="optional"/&gt;
+                        &lt;/xs:complexType&gt;
+                      &lt;/xs:element&gt;
+                    &lt;/xs:sequence&gt;
+                    &lt;xs:attribute type="xs:string" name="id" use="required"/&gt;
+                  &lt;/xs:complexType&gt;
+                &lt;/xs:element&gt;
+              &lt;/xs:sequence&gt;
+            &lt;/xs:complexType&gt;
+          &lt;/xs:element&gt;
+        &lt;/xs:sequence&gt;
+        &lt;xs:attribute type="xs:float" name="version"/&gt;
+        &lt;xs:attribute type="xs:string" name="language"/&gt;
+      &lt;/xs:complexType&gt;
+    &lt;/xs:element&gt;
+  &lt;/xs:schema&gt;</code>
+</pre>
+    <p>Sie können die Validierungsdatei auch hier herunterladen: <a href="/assets/files-to-download/RiGHTvEPG.xsd" download> RIGHTvEPG.xsd </a>
+    </p>
+    <p>Im Folgenden sind wichtige XML-Tags und Metadaten aufgeführt:</p>
+
+    <table class="bcls-table">
+      <thead class="bcls-table__head">
+        <tr>
+          <th>Name</th>
+          <th>Beschreibung</th>
+          <th>Beispiel</th>
+        </tr>
+      </thead>
+      <tbody class="bcls-table__body">
+        <tr>
+          <td><strong>Kanal ID</strong></td>
+          <td>Eindeutige Kennung für deinen Kanal</td>
+          <td>id="Kanal2"</td>
+        </tr>
+        <tr>
+          <td><strong>Programm-ID</strong></td>
+          <td>Eindeutige Kennung für Ihr Programmvideo-Asset</td>
+          <td>id="3344"</td>
+        </tr>
+        <tr>
+          <td><strong>Zeit</strong></td>
+          <td>
+            Die geplante Übertragungszeit für Ihr Video; die Zeiten sollten im UTC-Format sein, und alle werden in die Ortszeit jedes Ortes umgewandelt, an dem Ihre Inhalte angezeigt werden
+          </td>
+          <td>time="2020-04-22T01:25:00Z"</td>
+        </tr>
+        <tr>
+          <td><strong>löschen</strong></td>
+          <td>Erforderlich für EPG-Format, bitte immer auf false setzen</td>
+          <td>delete="false"</td>
+        </tr>
+        <tr>
+          <td>pvrEnabled<strong></strong></td>
+          <td>Erforderlich für EPG-Format, bitte immer auf false setzen</td>
+          <td>pvrEnabled="false"</td>
+        </tr>
+        <tr>
+          <td><strong>Herd aktiviert</strong></td>
+          <td>Erforderlich für EPG-Format, bitte immer auf false setzen</td>
+          <td>stovEnabled="false"</td>
+        </tr>
+        <tr>
+          <td>catchUpEnabled<strong></strong></td>
+          <td>Erforderlich für EPG-Format, bitte immer auf false setzen</td>
+          <td>catchUpEnabled="false"</td>
+        </tr>
+        <tr>
+          <td><strong>Dauer</strong></td>
+          <td>
+            Die Dauer Ihres Videoereignisses; das Dauerformat wird nach dem <a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601-Standard</a>
+          </td>
+          <td>
+            Dauer=“PT01H45M“ In diesem Format steht (PT) für die Periodenzeit von 1 Stunde (H) und 45 Minuten (M)
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Titel</strong></td>
+          <td>Der Titel Ihres Video-Events</td>
+          <td>&lt;title&gt;Dein Videotitel&lt;/title&gt;</td>
+        </tr>
+        <tr>
+          <td><strong>Bezeichnung</strong></td>
+          <td>Die Beschreibung Ihres Video-Events</td>
+          <td>
+            &lt;description&gt; &lt;![CDATA[ Die Videobeschreibung geht hier ]]&gt; &lt;/description&gt;
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <aside class="bcls-aside bcls-aside--information">
+      <ul>
+        <li>
+          Die XML-Datei sollte die Programmiermetadaten für die von Ihnen gewählte Zeitdauer enthalten. Fügen Sie beispielsweise die Zeitplanzeiten sieben Tage vor und sieben Tage nach dem Tag hinzu, an dem die Datei hochgeladen wurde.
+        </li>
+        <li>
+          Es liegt an jedem Kunden, zu definieren, wie oft die Informationen ersetzt und eine neue XML-Datei in den S3-Bucket hochgeladen werden. Beispiel: täglich, wöchentlich usw.
+        </li>
+      </ul>
+    </aside>
+    <p>
+      Sobald Ihre XML-Datei fertig ist, können Sie sie in den S3-Bucket und die Anmeldeinformationen hochladen, die Brightcove Ihnen mit einem FTP-Client oder einem automatisierten Skript bereitgestellt hat.
+    </p>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="fetching-xml">Abrufen der XML-Datei in Brightcove Beacon</h2>
+    <p>
+      Nachdem Sie die XML in den S3-Bucket hochgeladen haben, müssen Sie die Datei abrufen, wenn Sie die neuen Zeitpläne sofort in Ihre Brightcove Beacon-App übertragen möchten. Führen Sie dazu die folgenden Schritte aus:
+    </p>
+    <aside class="bcls-aside bcls-aside--information"> Denken Sie daran, dass diese Schritte nur ausgeführt werden müssen, wenn Sie Ihren neuen EPG sofort abrufen möchten. Die EPG-Datei wird auch nach einem festgelegten Aufnahmeplan aufgenommen. </aside>
+
+    <ol class="bcls-tasklist">
+      <li>Melden Sie sich bei Beacon Classic an.</li>
+      <li>
+        Klicken Sie oben rechts im Bildschirm auf die Schaltfläche Tools (Schraubenschlüssel).
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/channels/epg/fetch-xml.png" />
+        </figure>
+      </li>
+      <li>Wähle aus <strong>Einnahme</strong> Tab.</li>
+      <li>Klicken Sie auf die <strong>XML aus Ordner abrufen</strong> Taste.</li>
+      <li>
+        Wähle aus <strong>Zwischenspeicher</strong> Registerkarte aus dem linken Menü.
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/channels/epg/clear-cache.png" />
+        </figure>
+      </li>
+      <li>
+        Klicken Sie in die <strong>Cache-Bereinigung</strong> um den Cache zu leeren.
+      </li>
+    </ol>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="reviewing-schedule">Überprüfen des Zeitplans in Brightcove Beacon</h2>
+    <p>
+      In diesem Abschnitt können Sie überprüfen, ob Ihr EPG im Zeitplan des Brightcove Beacon-Kanals richtig eingestellt wurde.
+    </p>
+
+    <ol class="bcls-tasklist-restart">
+      <li>Klicken Sie in Beacon Classic auf das <strong>Kanäle</strong> Tab.</li>
+      <li>
+        Klicken Sie im linken Menü in die <strong>EPG</strong> Sektion.
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/channels/epg/1-epg-section.png" />
+        </figure>
+      </li>
+      <li>
+        In dem <strong>Zeitlicher Ablauf</strong> Abschnitt sehen Sie alle Ihre verfügbaren Kanäle.
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/channels/epg/2-available-channels.png" />
+        </figure>
+      </li>
+      <li>
+        Klicken Sie auf die blaue Schaltfläche mit dem Pfeil, um alle Zeitpläne anzuzeigen, die von der XML-Datei für den ausgewählten Kanal übermittelt wurden. <aside class="bcls-aside bcls-aside--information"> Alle Daten und Uhrzeiten werden im UTC-Format angezeigt. </aside>
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/channels/epg/4-schedule-info.png" />
+        </figure>
+      </li>
+      <li>
+        Beachten Sie das <strong>Startzeit</strong> und <strong>Endzeit</strong> Datumsangaben sind in UTC-Zeit.
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/channels/epg/5-start-times.png" />
+        </figure>
+      </li>
+      <li>
+        Um die Kanalinformationen in einer Brightcove Beacon-App anzuzeigen, klicken Sie im Menü auf das <strong>Programm</strong> Tab.
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/channels/epg/6-program-guide.png" />
+        </figure>
+      </li>
+      <li>Hier können Sie den EPG Ihrer Kanäle überprüfen.</li>
+      <li>
+        Wenn Ihr XML-Programmierplan Leerstellen enthält, füllt das Brightcove Beacon-System diese Leerstellen mit einer Beschriftung im Kanalplan.
+      </li>
+      <li>
+        Um den EPG-Zeitplan für einen anderen Tag auszuwählen, wählen Sie den gewünschten Tag im Menü aus.
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/channels/epg/7-day-preference.png" />
+        </figure>
+      </li>
+    </ol>
+  </section>
+</article>

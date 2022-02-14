@@ -1,0 +1,154 @@
+---
+title: Beschreibung der Monetarisierungsoptionen: In diesem Thema erfahren Sie mehr über die verschiedenen Monetarisierungspakete, die mit Brightcove Beacon verfügbar sind.
+parent: Monetization
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+
+
+  <section class="bcls-section">
+    <h2 id="Overview">Überblick</h2>
+    <p>
+      Ein Monetarisierungspaket definiert, wie Sie mit Ihrer App Einnahmen erzielen können, wenn Sie dies wünschen.
+    </p>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Terms">
+      Bedingungen
+    </h2>
+    <p>Hier ist eine Liste von Begriffs- und Akronymdefinitionen:</p>
+    <table class="bcls-table">
+      <thead class="bcls-table__head">
+        <tr>
+          <th>Begriff</th>
+          <th>Definition</th>
+        </tr>
+      </thead>
+      <tbody class="bcls-table__body">
+        <tr>
+          <td>AVOD</td>
+          <td>Werbebasiertes Video on Demand
+          </td>
+        </tr>
+        <tr>
+          <td>AuthVOD</td>
+          <td>Authentifiziertes Video auf Abruf<br>
+            <em>*Beachten Sie, dass AuthVOD mit und ohne Werbung implementiert werden kann</em>
+          </td>
+        </tr>
+        <tr>
+          <td>SVOD</td>
+          <td>Abo-Video auf Abruf<br>
+            <em>*Beachten Sie, dass SVOD mit und ohne Werbung implementiert werden kann</em>
+          </td>
+        </tr>
+        <!-- <tr>
+          <td>TVOD</td>
+          <td>Transactional video on demand</td>
+        </tr> -->
+        <tr>
+          <td>VOD</td>
+          <td>Video-on-Demand bezieht sich im Allgemeinen auf Video-on-Demand-Dienste über Kabelnetze.</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Monetization_packages">
+      Monetarisierungspakete
+    </h2>
+    <p>Hier sind die Pakete, die mit Brightcove Beacon angeboten werden. Wählen Sie diejenige, die Ihren Bedürfnissen am besten entspricht.</p>
+    <table class="bcls-table">
+      <thead class="bcls-table__head">
+        <tr>
+          <th style="width: 15%;">Planen</th>
+          <th>Beschreibung</th>
+        </tr>
+      </thead>
+      <tbody class="bcls-table__body">
+        <tr>
+          <td>Kostenlos</td>
+          <td>
+            <ul>
+              <li>Besucher können werbefreie Inhalte in diesem Plan ohne Authentifizierung anzeigen.</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>AVOD</td>
+          <td>
+            <ul>
+              <li>Besucher können Inhalte mit Anzeigen in diesem Plan ohne Authentifizierung anzeigen.</li>
+              <li>Im Allgemeinen kostenlos für Verbraucher, da Werbung gezeigt wird.</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>AuthVOD ohne Werbung</td>
+          <td>
+            <ul>
+              <li>Authentifizierte Benutzer können werbefreie Inhalte in diesem Plan anzeigen, indem sie sich anmelden.</li>
+              <li> Bei diesem Modell müssen sich Benutzer häufig mit Anmeldeinformationen von einer anderen Plattform, einem Dienst, einem Kabel (TVE) oder einem Mobilfunkabonnement anmelden, um auf Inhalte zuzugreifen.</li>
+              <li>Wertvoll bei der Koordination mit Partnerschaften oder der Verwaltung mehrerer Immobilien oder Markendienste.</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>AuthVOD mit Werbung</td>
+          <td>
+            <ul>
+              <li>Authentifizierte Nutzer sehen sich Inhalte an, die Anzeigen in diesem Plan enthalten, indem sie sich anmelden.</li>
+              <li>Da sich die Zuschauer authentifiziert haben, können sie beispielsweise „Watchlists“ mit Inhalten erstellen und geräteübergreifend „pausieren und fortsetzen“.</li>
+              <li>Der Diensteanbieter kann zu Marketing- und Werbezwecken mehr über den Endbetrachter erfahren.</li>
+              <li>Kann man sich als AuthVOD/AVOD-Kombination vorstellen.</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>SVOD ohne Werbung</td>
+          <td>
+            <ul>
+              <li>Abonnenten können in diesem Plan werbefreie Inhalte anzeigen.</li>
+              <li>Damit können Nutzer zu einem monatlichen Flatrate-Tarif ohne Werbung beliebig viele Inhalte konsumieren.</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>SVOD mit Werbung</td>
+          <td>
+            <ul>
+              <li>Abonnenten können Inhalte mit Anzeigen in diesem Plan anzeigen.</li>
+              <li>Abonnenten zahlen möglicherweise eine niedrigere monatliche Rate, aber mit der niedrigeren Rate müssen Anzeigen geschaltet werden.</li>
+              <li>Kann man sich als SVOD/AVOD-Kombination vorstellen.</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>Gemischt</td>
+          <td>
+            <ul>
+              <li>Abonnenten können Inhalte mit einer Mischung aus AVOD- und SVOD-Optionen anzeigen.</li>
+            </ul>
+          </td>
+        </tr>
+        <!-- <tr>
+          <td>TVOD purchase</td>
+          <td>Authenticated users can buy content in this plan.<br/>
+              Transactional video on demand, is the opposite of subscription video, where consumers purchase content on a pay-per-view basis.
+          </td>
+        </tr>
+        <tr>
+          <td>TVOD rental</td>
+          <td>Authenticated users can rent content in this plan for a limited time.<br/>
+              Transactional video on demand, is the opposite of subscription video, where consumers rent content on a pay-per-view basis.
+          </td> 
+        </tr>-->
+
+      </tbody>
+    </table>
+  </section>
+
+</article>

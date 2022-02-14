@@ -1,0 +1,258 @@
+---
+title: "Benutzerdefinierte Felder für die Monetarisierung"
+description: "In diesem Thema erfahren Sie, wie Sie benutzerdefinierte Felder erstellen, die zum Implementieren von Monetarisierungsstrategien erforderlich sind."
+parent: "Monetization"
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <section class="bcls-section">
+    <h2 id="Introduction">Einführung</h2>
+    <p>Videos, die Sie in Monetarisierungsstrategien wie AuthOVD und SVOD einfügen, müssen über einen erweiterten Satz von Metadaten verfügen. In diesem Dokument erfahren Sie, wie Sie neue benutzerdefinierte Felder erstellen, die bei der Implementierung der Monetarisierung verwendet werden.</p>
+    <p>Die Abschnitte dieses Dokuments sind wie folgt:</p>
+    <ol>
+      <li><strong>Felder für die Rechteverwaltung</strong> - Gibt die Namen und Funktionen der benutzerdefinierten Felder an, die möglicherweise für die Monetarisierungsimplementierung benötigt werden.</li>
+      <li><strong>Benutzerdefinierte Felder erstellen</strong> - Bietet Schritt-für-Schritt-Anleitungen zum Erstellen benutzerdefinierter Felder. In dieser Anleitung erstellen Sie eines der häufig verwendeten Rechteverwaltungsfelder.</li>
+      <li><strong>Details zur Implementierung benutzerdefinierter Felder</strong> - Bietet Details zur Verwaltung benutzerdefinierter Felder zu den folgenden Themen:
+        <ul>
+          <li>Benutzerdefinierte Feldnamen</li>
+          <li>Verwenden von Listenwerten für Brightcove Beacon-Metadaten</li>
+          <li>Listenwerte bearbeiten</li>
+          <li>Listenwerte löschen</li>
+          <li>Entfernen von benutzerdefinierten Feldern aus einem Konto</li>
+        </ul>
+      </li>
+    </ol>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Rights_Management_fields">Felder für die Rechteverwaltung</h2>
+    <p>
+      Um die Monetarisierungs- und Zugriffsbeschränkungen für Assets zu unterstützen, sollte eine Reihe von benutzerdefinierten Feldern verwendet werden. Da Sie mehrere Instanzen von Rechteverwaltungskonfigurationen haben können, besteht der empfohlene Ansatz darin, mehrere Sätze benutzerdefinierter Felder zu erstellen. Im Namen jeder Instanz wird ein Zähler verwendet, um zwischen ihnen zu unterscheiden. Die erste Instanz sollte den Zähler auf 0 setzen. Hier ist ein Beispiel für diese gruppierten Felder, die tatsächlich einen Zählerwert verwenden:</p>
+    <figure class="bcls-figure"> <img class="bcls-image" src="/assets/images/monetization/vc-custom-fields/rights-management.png" alt=""> </figure>
+    <p>Beispielsweise benötigen Sie möglicherweise einen Satz, um Ihre in Videos verwendete Werbung zu definieren, und einen anderen, um Sonderangebote für Feiertage wie Silvester zu definieren.</p>
+    <p>Ein konkretes Beispiel soll die Verwendung dieser Felder verdeutlichen. Der folgende Screenshot zeigt die Einstellung von Server-Side Ad Insertion (SSAI), die für ein Video verwendet wird.</p>
+    <figure class="bcls-figure"> <img class="bcls-image" src="/assets/images/monetization/vc-custom-fields/rights-mamagement-example-avod.png" alt=""> </figure>
+    <p>Aus diesem Beispiel können Sie Folgendes lernen:</p>
+    <ul>
+      <li>Nicht allen Rechteverwaltungsfeldern einer Gruppe müssen Werte zugewiesen werden. In diesem Fall nur die <em>beacon.rights.&lt;counter&gt;.adConfiguration</em> und <em>Beacon.rights.&lt;Zähler&gt;.Typ</em> werden verwendet.</li>
+      <li>Sie können die in Studio erstellte SSAI-Konfigurations-ID in den benutzerdefinierten Feldern von Brightcove Beacon verwenden.</li>
+      <li>Der Zählerwert für einen Satz von Rechteverwaltungsfeldern kann bei 0 beginnen (gelb hervorgehoben).</li>
+    </ul>
+    <p>Beachten Sie, dass keine von Ihnen erstellten Felder die <strong>Machen Sie dieses Feld als erforderlich</strong> Kontrollkästchen aktiviert.</p>
+    <p>
+      In der folgenden Tabelle werden benutzerdefinierte Felder angezeigt, die Sie möglicherweise basierend auf Ihrer Implementierung erstellen müssen.
+    </p>
+    <table class="bcls-table">
+      <thead class="bcls-table__head">
+        <tr>
+          <th>Anzeigename</th>
+          <th>Interner Name</th>
+          <th>Typ</th>
+          <th>Hinweise / Beispiele</th>
+        </tr>
+      </thead>
+      <tbody class="bcls-table__body">
+        <tr>
+          <td>Beacon.rights.&lt;Zähler&gt;.Typ</td>
+          <td>beacon_rights_ <br />&lt;Zähler&gt;_Typ</td>
+          <td>Text</td>
+          <td>
+            * Gibt an, ob die Art der Monetarisierung für den Inhalt<br> * Verwenden Sie für den Wert einen der folgenden Werte: <ul>
+              <li>KOSTENLOS</li>
+              <li>AVOD</li>
+              <li>SVOD</li>
+              <li>ERBEN</li>
+            </ul>
+            * Standardwert: <strong>KOSTENLOS</strong><br> * Die <strong>ERBEN</strong> Wert gilt nur für <em>Folge</em> Vermögenswerte </td>
+        </tr>
+        <tr>
+          <td>
+            Beacon.Rechte.<br />
+            &lt;Zähler&gt;.<br />
+            Startdatum
+          </td>
+          <td>
+            beacon_rights_ <br />
+            &lt;Zähler&gt;_<br />
+            Startdatum
+          </td>
+          <td>Text</td>
+          <td>
+            * Datum, an dem der Inhalt gemäß den Zugriffsbeschränkungen und Monetarisierungsoptionen in diesem bestimmten Set verfügbar gemacht werden soll<br> * Format: Datum jjjj-mm-tt hh:mm:ss<br> * Standardwert: Wenn nicht festgelegt, wird standardmäßig das Startdatum der Videoverfügbarkeit verwendet </td>
+        </tr>
+        <tr>
+          <td>beacon.rights.&lt;counter&gt;.endDate</td>
+          <td>
+            beacon_rights_ <br />
+            &lt;Zähler&gt;_Enddatum
+          </td>
+          <td>Text</td>
+          <td>
+            * Datum, an dem der Inhalt gemäß den Zugriffsbeschränkungen und Monetarisierungsoptionen in diesem bestimmten Set nicht mehr verfügbar sein sollte<br> * Format: Datum jjjj-mm-tt hh:mm:ss<br> * Standardwert: Wenn nicht festgelegt, wird standardmäßig das Enddatum der Videoverfügbarkeit verwendet </td>
+        </tr>
+        <tr>
+          <td>beacon.rights.&lt;counter&gt;.devices</td>
+          <td>
+            beacon_rights_ <br />
+            &lt;Zähler&gt;_Geräte
+          </td>
+          <td>Text</td>
+          <td>
+            * Durch Kommas getrennte Liste der von Brightcove Beacon unterstützten Geräte, denen das Asset gemäß den Zugriffsbeschränkungen und Monetarisierungsoptionen in diesem speziellen Set ausgesetzt werden soll<br> * Kommagetrennte Liste von: <ul>
+              <li>iOS</li>
+              <li>Android</li>
+              <li>Netz</li>
+              <li>Roku</li>
+              <li>STV</li>
+              <li>Firetv</li>
+              <!-- <li>LGTV</li> -->
+              <li>Samsung</li>
+              <li>Apple TV</li>
+              <li>androidtv</li>
+              <!-- li>panasonic</li> -->
+            </ul>
+            * Standardwert: Wenn nicht festgelegt, werden standardmäßig alle von Brightcove Beacon unterstützten Geräte verwendet </td>
+        </tr>
+        <tr>
+          <td>
+            Beacon.Rechte.<br />
+            &lt;Zähler&gt;.<br />
+            StandortePermit
+          </td>
+          <td>
+            beacon_rights_ <br />
+            &lt;Zähler&gt;_<br />
+            standortzulassung
+          </td>
+          <td>Text</td>
+          <td>
+            * Durch Kommas getrennte Liste von Standorten, die in Brightcove Beacon definiert sind und denen das Asset gemäß den Zugriffsbeschränkungen und Monetarisierungsoptionen in diesem bestimmten Set ausgesetzt werden soll<br> * Standardwert: Wenn nicht festgelegt, werden standardmäßig alle in Brightcove Beacon unterstützten Standorte verwendet </td>
+        </tr>
+        <tr>
+          <td>
+            beacon.rights.&lt;Zähler&gt;.<br /> StandorteAblehnen </td>
+          <td>
+            beacon_rights_ <br />
+            &lt;Zähler&gt;_<br />
+            Standorte verweigern
+          </td>
+          <td>Text</td>
+          <td>
+            * Durch Kommas getrennte Liste von Standorten, die in Brightcove Beacon definiert sind und denen das Asset gemäß den Zugriffsbeschränkungen und Monetarisierungsoptionen in diesem bestimmten Set NICHT ausgesetzt werden sollte<br> * Kein Standardwert </td>
+        </tr>
+        <tr>
+          <td>
+            Beacon.Rechte.<br />
+            &lt;Zähler&gt;.<br />
+            Paketnamen
+          </td>
+          <td>
+            beacon_rights_ <br />
+            &lt;Zähler&gt;_<br />
+            Paketnamen
+          </td>
+          <td>Text</td>
+          <td>
+            * Ein Wert für dieses Feld MUSS eingegeben werden, wenn die <strong>Beacon.rights.&lt;Zähler&gt;.Typ</strong> Feldwert ist auf . gesetzt <strong>SVOD</strong><br> * Eine durch Kommas getrennte Liste von Paketnamen, wie in Brightcove Beacon definiert<br> * Beispiele: <em>Premium-Sport, Actionfilme, Earth Day Movies</em><br> * Kein Standardwert </td>
+        </tr>
+        <tr>
+          <td>
+            Beacon.Rechte.<br />
+            &lt;Zähler&gt;.<br />
+            Anzeigenkonfiguration
+          </td>
+          <td>
+            beacon_rights_ <br />
+            &lt;Zähler&gt;_<br />
+            Anzeigenkonfiguration
+          </td>
+          <td>Text</td>
+          <td>
+            * Ein Wert für dieses Feld MUSS eingegeben werden, wenn die <strong>Beacon.rights.&lt;Zähler&gt;.Typ</strong> Feldwert ist auf . gesetzt <strong>AVOD</strong><br> * Kennung einer Anzeigenkonfiguration in Brightcove Beacon<br> * Kein Standardwert </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Creating_custom_fields">Benutzerdefinierte Felder erstellen</h2>
+    <p>Gehen Sie folgendermaßen vor, um benutzerdefinierte Felder zu erstellen.</p>
+    <ol class="bcls-tasklist">
+      <li>Melden Sie sich bei Beacon Studio an.</li>
+      <li>
+        Klicken Sie in der Hauptnavigation auf <strong>ADMINISTRATOR</strong> und dann <strong>Videofelder</strong>. Beachten Sie, dass Sie ein Kontoadministrator sein müssen, um auf das ADMIN-Menü zugreifen zu können.
+      </li>
+      <li>
+        Auf der Seite Videofelder werden Ihre benutzerdefinierten Felder und alle standardmäßigen Videometadatenfelder angezeigt, wie im folgenden Screenshot gezeigt (in diesem Fall wurden noch keine benutzerdefinierten Felder erstellt): <figure class="bcls-figure"> <img class="bcls-image" src="/assets/images/monetization/vc-custom-fields/custom-fields-overview1.png" alt="" /> </figure>
+      </li>
+      <li>
+        Klicken <strong>Benutzerdefiniertes Feld hinzufügen</strong>.
+        <figure class="bcls-figure"> <img class="bcls-image" src="/assets/images/monetization/vc-custom-fields/new-custom-field1.png" alt="" /> </figure>
+      </li>
+      <li>
+        Für die <strong>Anzeigename</strong> , Eintreten <samp>beacon.rights.0.adConfiguration</samp>. Dies ist ein häufig benötigtes benutzerdefiniertes Feld für Ihre erste Monetarisierungsimplementierung, die benutzerdefinierte Felder benötigt. Beachten Sie, dass dieser Wert als Beschriftung für das Feld im Medienmodul angezeigt wird. Ein <strong>Interner Name</strong> wird automatisch für das Feld basierend auf dem Anzeigenamen erstellt.
+      </li>
+      <li>
+        Für die <strong>Typ</strong> auswählen <strong>Text</strong>. Beachten Sie bei den Werten für die möglichen Typen Folgendes:
+        <ul>
+          <li>
+            <strong>Text</strong> - Der Benutzer kann bis zu 1024 Einzelbyte-Zeichen (oder 512 Doppelbyte-Zeichen) in das Feld eingeben.
+          </li>
+          <li>
+            <strong>Aufführen</strong> - Der Benutzer wählt aus einer Liste von Werten aus. Listen können nicht mehr als 150 mögliche Werte haben und jeder Wert in der Liste darf nicht länger als 100 Zeichen sein.
+          </li>
+        </ul>
+      </li>
+      <li>
+        Geben Sie ein <strong>Beschreibung</strong>. Für dieses Feld ist eine gute Beschreibung <samp>Ein Wert für dieses Feld MUSS eingegeben werden, wenn der Feldwert beacon.rights.&lt;counter&gt;.type auf AVOD gesetzt ist.</samp> Das Beschreibungsfeld wird als Hinweis in der Studio-Benutzeroberfläche angezeigt.
+      </li>
+      <li>
+        Machen Sie dieses Feld NICHT zu einem Pflichtfeld.
+      </li>
+      <li>Überprüfen Sie, ob Ihr Formular wie folgt aussieht:
+        <figure class="bcls-figure"> <img class="bcls-image" src="/assets/images/monetization/vc-custom-fields/new-custom-field-added.png" alt="" /> </figure>
+      </li>
+      <li>
+        Klicken <strong>Feld speichern</strong> um die Änderungen zu speichern. Klicken <strong>Speichern und weitere hinzufügen</strong> , um das Feld zu speichern und ein weiteres Feld zu erstellen.
+      </li>
+    </ol>
+    <p>
+      Von Ihnen erstellte benutzerdefinierte Felder sind sofort verfügbar und im Medienmodul sichtbar.
+    </p>
+    <p>
+      Es können bis zu 10 benutzerdefinierte Felder erstellt werden. Wenn Sie mehr als 10 Felder benötigen, klicken Sie auf <strong>Benötigen Sie weitere Felder?</strong> Link auf der Seite Videofelder, um den Brightcove-Kundensupport mit einer Anfrage zu kontaktieren. Publisher sind auf 50 benutzerdefinierte Felder beschränkt.
+    </p>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Custom_field_implementation_details">Details zur Implementierung benutzerdefinierter Felder</h2>
+    <h3>Benutzerdefinierte Feldnamen</h3>
+    <p>
+      Die nächsten drei Abschnitte dieses Dokuments behandeln benutzerdefinierte Felder, die Sie möglicherweise basierend auf Ihrem speziellen Anwendungsfall für die Implementierung erstellen müssen. Jedes benutzerdefinierte Feld hat beide a <strong>Anzeigename</strong> und ein <strong>Interner Name</strong>. Wenn Sie das Gefühl haben, einen aussagekräftigeren Namen für die <strong>Anzeigename</strong> Option können Sie das verwenden, aber die <strong>Interner Name</strong> MUSS genau übereinstimmen.
+    </p>
+
+    <h3>Verwenden von Listenwerten für Brightcove Beacon-Metadaten </h3>
+    <p>
+      In der oben gezeigten Wertetabelle für die benutzerdefinierten Felder für die Rechteverwaltung können Sie Folgendes berücksichtigen: <strong>Beacon.rights.&lt;Zähler&gt;.Typ</strong> vom Typ sein <strong>Aufführen</strong>. Beachten Sie, dass ALLE <strong>Typen</strong> sind <strong>Text</strong>. Es kann die Monetarisierungsimplementierer entlasten, wenn sie aus einer Liste auswählen können, anstatt Text eingeben zu müssen. Außerdem hilft es unweigerlich, die Dateneingabe konsistenter zu halten, wenn Werte aus einer Liste ausgewählt werden können, anstatt sie einzugeben. Wenn Sie also ein finden <strong>Aufführen</strong> in einigen Geschäftsfällen funktioniert, kann eine Liste verwendet werden.
+    </p>
+
+    <h3 id="edit">Listenwerte bearbeiten</h3>
+    <p>
+      Sie können einem benutzerdefinierten Feld vom Listentyp zusätzliche Werte hinzufügen. Klicken Sie auf den Link für den benutzerdefinierten Feldnamen, fügen Sie die Werte hinzu und klicken Sie dann auf <strong>Zur Liste hinzufügen</strong>. Wenn Sie fertig sind, klicken Sie auf <strong>Feld speichern</strong>.
+    </p>
+
+    <h3 id="delete">Listenwerte löschen</h3>
+    <p>
+      Sie können vorhandene Werte aus einem benutzerdefinierten Feld des Listentyps hinzufügen und entfernen. Klicken Sie auf den Link für den benutzerdefinierten Feldnamen, klicken Sie auf das mit dem Wert verknüpfte Löschsymbol und dann auf <strong>Feld speichern</strong>.
+    </p>
+    <p>
+      Wenn ein Listenwert entfernt wird, behalten alle Videos, denen dieser Wert zuvor zugewiesen wurde, den Wert. Wenn jedoch ein Video mit dem gelöschten Wert bearbeitet wird, wird der Wert gelöscht und ein neuer Wert muss ausgewählt werden.
+    </p>
+
+    <h3 id="remove">Entfernen von benutzerdefinierten Feldern aus einem Konto</h3>
+    <p>
+      Um ein benutzerdefiniertes Feld aus Ihrem Konto zu entfernen, müssen Sie <a href="https://supportportal.brightcove.com/s/login/"> Wenden Sie sich an den Brightcove-Support</a>. Beachten Sie, dass sich das Änderungsdatum für alle Videos ändert, in denen ein Wert vorhanden war, wenn Sie vom Brightcove-Support benutzerdefinierte Felder löschen lassen.
+    </p>
+  </section>
+
+</article>

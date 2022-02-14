@@ -1,505 +1,40 @@
-﻿<!doctype html>
-<html lang="de">
-
-<head>
-  <meta charset="utf-8">
-  <meta name="robots" content="noindex,nofollow"> 
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="In diesem Thema erfahren Sie, wie Sie Ihre Geräte-App beim LG Store einreichen.">
-  
-  <title>Einreichen von Apps an den LG (webOS) Store</title>
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">  
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/prism.css">
-  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/styles.css">
-  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/landing-page.css">
-  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/tabs.css">
-  <link rel="stylesheet" href="/assets/css/local.css">
-  <link data-react-helmet="true" rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500&display=swap">
-  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/381443caa8.js" crossorigin="anonymous"></script>
-  <script src="https://support.brightcove.com/site-assets/js/site/google-analytics.js"></script>
-  <script src="/assets/js/sajari-head.js"></script>
-</head>
-
-<body class="body">
-
-<header>
-  <div class="div-header">
-    <a href="/"><img class="product-logo" src="https://support.brightcove.com/site-assets/images/site/product-logos/Beacon_Logo.svg" alt="Produkt-Logo" style="max-height: 100px;max-width: 232px;"/></a>
-<!-- GTranslate: https://gtranslate.io/ -->
-<select onchange="doGTranslate(this);"><option value="">Sprache wählen</option><option value="en|en" translate="No">English</option><option value="en|zh-TW" translate="No">繁體中文</option><option value="en|fr" translate="No">Français</option><option value="en|de" translate="No">Deutsche</option><option value="en|ja" translate="No">日本語</option><option value="en|ko" translate="No">한국어</option><option value="en|es" translate="No">Español</option></select>
-
-<script>
-/* <![CDATA[ */
-function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];var plang=location.hostname.split('.')[0];if(plang.length !=2 && plang.toLowerCase() != 'zh-cn' && plang.toLowerCase() != 'zh-tw')plang='en';location.href=location.protocol+'//'+(lang == 'en' ? '' : lang+'.')+location.hostname.replace('www.', '').replace(RegExp('^' + plang + '\\.'), '')+location.pathname+location.search;}
-/* ]]> */
-</script>
-
-    
-
-
-    <span class="secondary-nav"><a href="https://supportportal.brightcove.com/s/login/?"><img src="https://support.brightcove.com/site-assets/images/site/support.png" alt="Support"/> Kontaktieren Sie Support</a> <span style="vertical-align: top;margin-left:1em;margin-right:1em;">|</span> <a href="https://status.brightcove.com/"><img src="https://support.brightcove.com/site-assets/images/site/status.png" alt="Systemstatus"/> Systemstatus</a></span> <br/>
-    
-  </div>
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb arr-right">
-      
-      <li class="breadcrumb-item"><a href="/">Nach Hause</a></li>
-      
-      
-      
-      <li class="breadcrumb-item"><a href="/creating-your-apps/lg/">LG</a></li>
-      
-      <li class="breadcrumb-item active" aria-current="page">Einreichen von Apps an den LG (webOS) Store</li>
-    </ol>
-  </nav>
-</header>
-<div class="container">
-  <div class="row">
-          <div class="col-sm-3 left-side-bar">
-        <select id="site_select" class="bcls-select" style="margin-right: 1rem;">
-          <option value="">Weitere Brightcove Docs</option>
-          
-            
-              <option value="https://support.brightcove.com">Dokumentation Home</option>
-            
-          
-            
-              <option value="https://audience.support.brightcove.com">Brightcove Publikum</option>
-            
-          
-            
-              <option value="https://beacon.support.brightcove.com">Brightcove Leuchtfeuer</option>
-            
-          
-            
-              <option value="https://campaign.support.brightcove.com">Brightcove Kampagne</option>
-            
-          
-            
-              <option value="https://engage.support.brightcove.com">Brightcove Engage</option>
-            
-          
-            
-              <option value="https://live.support.brightcove.com">Brightcove Live</option>
-            
-          
-            
-              <option value="https://gallery.support.brightcove.com">Brightcove Gallery</option>
-            
-          
-            
-              <option value="https://ssai.support.brightcove.com">Brightcove SSAI</option>
-            
-          
-            
-              <option value="https://social.support.brightcove.com">Brightcove Social</option>
-            
-          
-            
-              <option value="https://studio.support.brightcove.com">Video Cloud Studio</option>
-            
-          
-            
-              <option value="https://player.support.brightcove.com">Brightcove Spieler-Entwicklung</option>
-            
-          
-            
-              <option value="https://apis.support.brightcove.com">APIs für Video Cloud-Plattform</option>
-            
-          
-            
-              <option value="https://sdks.support.brightcove.com">Videocloud-Geräte-SDKs</option>
-            
-          
-            
-              <option value="https://integrations.support.brightcove.com">Integrationen und CMS-Konnektoren</option>
-            
-          
-            
-              <option value="https://general.support.brightcove.com">Video Cloud — Allgemeine Informationen</option>
-            
-          
-            
-              <option value="https://zencoder.support.brightcove.com">Zencoder</option>
-            
-          
-        </select>
-
-      <nav class="sidenav" id="side_nav">
-        
-        
-        <h5><a href="/index.html">Nach Hause</a></h5>
-        
-        
-        
-        <h5 class="submenu-header"><a href="/getting-started/index.html">Erste Schritte <strong>+</strong></a></h5>
-        <ul class="sidenav-submenu" style="display:none;">
-          
-          
-          <li><a href="/getting-started/learning-guide-bc-beacon.html">Leitfaden für das</a></li>
-          
-          
-          
-          <li><a href="/getting-started/implementation-phases.html">Phasen der Implementierung</a></li>
-          
-          
-          
-          <li><a href="/getting-started/app-design-considerations.html">Überlegungen zum Anwendungsdesign</a></li>
-          
-          
-          
-          <li><a href="/getting-started/creating-your-app-design-info-architecture.html">App-Design - Info-Architektur</a></li>
-          
-          
-          
-          <li><a href="/getting-started/creating-your-app-design-layout-options.html">App-Design — Layout-Optionen</a></li>
-          
-          
-          
-          <li><a href="/getting-started/design-best-practices.html">Best Practices</a></li>
-          
-          
-        </ul>
-        
-        
-        
-        <h5 class="submenu-header"><a href="/syncing-with-video-cloud/index.html">Synchronisierung mit Video Cloud <strong>+</strong></a></h5>
-        <ul class="sidenav-submenu" style="display:none;">
-          
-          
-          <li><a href="/syncing-with-video-cloud/vc-custom-fields.html">Erstellen benutzerdefinierter Felder für die Vide</a></li>
-          
-          
-          
-          <li><a href="/syncing-with-video-cloud/forcing-a-sync.html">Erzwingen einer Synchronisierung</a></li>
-          
-          
-        </ul>
-        
-        
-        
-        <h5 class="submenu-header"><a href="/using-brightcove-beacon/index.html">Verwenden von Brightcove Beacon <strong>+</strong></a></h5>
-        <ul class="sidenav-submenu" style="display:none;">
-          
-          
-          <li><a href="/using-brightcove-beacon/adding-to-page.html">Hinzufügen eines Karussells zu einer Seite</a></li>
-          
-          
-          
-          <li><a href="/using-brightcove-beacon/creating-a-channel.html">Einen Channel erstellen</a></li>
-          
-          
-          
-          <li><a href="/using-brightcove-beacon/electronic-program-guides.html">Erstellen eines elektronischen Programmleitfadens (EPG)</a></li>
-          
-          
-          
-          <li><a href="/using-brightcove-beacon/creating-a-page.html">Eine neue Seite erstellen</a></li>
-          
-          
-          
-          <li><a href="/using-brightcove-beacon/creating-a-playlist.html">Erstellen einer Playlist</a></li>
-          
-          
-          
-          <li><a href="/using-brightcove-beacon/creating-subscription-package.html">Erstellen eines Abonnementpakets</a></li>
-          
-          
-          
-          <li><a href="/using-brightcove-beacon/promo-codes.html">Erstellen von Promo-Codes</a></li>
-          
-          
-          
-          <li><a href="/using-brightcove-beacon/series-seasons-episodes.html">Erstellen von Serie/Saisonen/Episoden</a></li>
-          
-          
-          
-          <li><a href="/using-brightcove-beacon/configuring-server-side-ad-settings.html">Konfigurieren der serverseitigen Anzeigeneinstellungen</a></li>
-          
-          
-          
-          <li><a href="/using-brightcove-beacon/implementing-authvod.html">Implementierung von AuthVod</a></li>
-          
-          
-          
-          <li><a href="/using-brightcove-beacon/live-ssai.html">Implementierung von Live-SSAI</a></li>
-          
-          
-          
-          <li><a href="/using-brightcove-beacon/vod-ssai.html">Implementierung von VOD SSAI</a></li>
-          
-          
-          
-          <li><a href="/using-brightcove-beacon/including-non-configurable-pages.html">Einschließlich nicht konfigurierbarer Seiten</a></li>
-          
-          
-          
-          <li><a href="/using-brightcove-beacon/introducing-pages.html">Einführung von Seiten</a></li>
-          
-          
-          
-          <li><a href="/using-brightcove-beacon/streaming-live-event.html">Streaming eines Live-Events</a></li>
-          
-          
-          
-          <li><a href="/using-brightcove-beacon/streaming-vods-to-a-channel.html">VODs auf einen Channel streamen</a></li>
-          
-          
-          
-          <li><a href="/using-brightcove-beacon/monetization-options.html">Verstehen der Monetarisierungsoptionen</a></li>
-          
-          
-          
-          <li><a href="/using-brightcove-beacon/using-subscription-package.html">Verwendung eines Abonnementpakets</a></li>
-          
-          
-          
-          <li><a href="/using-brightcove-beacon/tools.html">Verwenden der Tools</a></li>
-          
-          
-          
-          <li><a href="/using-brightcove-beacon/viewing-analytics-data.html">Analytics-Daten anzeigen</a></li>
-          
-          
-        </ul>
-        
-        
-        
-        <h5 class="submenu-header"><a href="/creating-your-apps/index.html">Erstellen Sie Ihre Apps <strong>+</strong></a></h5>
-        <ul class="sidenav-submenu" style="display:none;">
-          
-          
-          <li class="submenu-header">
-            <a href="/creating-your-apps/android/index.html">Androide <strong>+</strong></a>
-            <ul class="sidenav-subsubmenu" style="display:none;">
-              
-              <li><a href="/creating-your-apps/android/submitting-to-android.html">Neue Apps beim Android Store einreichen</a></li>
-              
-              <li><a href="/creating-your-apps/android/updating-android-apps-to-bcb.html">Aktualisieren von Android-Apps auf Brightcove Beacon</a></li>
-              
-              <li><a href="/creating-your-apps/android/adding-subscriptions-in-android.html">Hinzufügen von Abonnements zu Android</a></li>
-              
-              <li><a href="/creating-your-apps/android/improving-relevance-android.html">Verbesserung der Search-Relevanz im Android Play Store</a></li>
-              
-              <li><a href="/creating-your-apps/android/installing-android-test-build.html">Installieren eines Android Test-Builds</a></li>
-              
-            </ul>
-          </li>
-          
-          
-          
-          <li class="submenu-header">
-            <a href="/creating-your-apps/fire-tv/index.html">Feuer TV <strong>+</strong></a>
-            <ul class="sidenav-subsubmenu" style="display:none;">
-              
-              <li><a href="/creating-your-apps/fire-tv/installing-fire-tv-test-build.html">Installieren eines Fire TV Test Builds</a></li>
-              
-              <li><a href="/creating-your-apps/fire-tv/submitting-to-amazon.html">Einreichung an den Amazon-Shop</a></li>
-              
-            </ul>
-          </li>
-          
-          
-          
-          <li class="submenu-header">
-            <a href="/creating-your-apps/ios-tvos/index.html">iOS/tvOS <strong>+</strong></a>
-            <ul class="sidenav-subsubmenu" style="display:none;">
-              
-              <li><a href="/creating-your-apps/ios-tvos/installing-ios-test-build.html">Installieren eines iOS/tvOS-Test-Builds</a></li>
-              
-              <li><a href="/creating-your-apps/ios-tvos/submitting-to-apple.html">Einreichen im Apple Store</a></li>
-              
-            </ul>
-          </li>
-          
-          
-          
-          <li class="submenu-header">
-            <a href="/creating-your-apps/panasonic/index.html"> <strong>Panasonik+</strong></a>
-            <ul class="sidenav-subsubmenu" style="display:none;">
-              
-              <li><a href="/creating-your-apps/panasonic/submitting-to-panasonic.html">Einreichen beim Panasonic Store</a></li>
-              
-            </ul>
-          </li>
-          
-          
-          
-          <li class="submenu-header">
-            <a href="/creating-your-apps/roku/index.html"> <strong>roku+</strong></a>
-            <ul class="sidenav-subsubmenu" style="display:none;">
-              
-              <li><a href="/creating-your-apps/roku/configuring-inchannel-products.html">Konfigurieren von In-Kanal-Produkten in Roku</a></li>
-              
-              <li><a href="/creating-your-apps/roku/installing-roku-test-build.html">Installieren eines Roku-Test-Builds</a></li>
-              
-              <li><a href="/creating-your-apps/roku/submitting-to-roku.html">Einreichung an den Roku Store</a></li>
-              
-            </ul>
-          </li>
-          
-          
-          
-          <li class="submenu-header">
-            <a href="/creating-your-apps/samsung/index.html"> <strong>Samsung+</strong></a>
-            <ul class="sidenav-subsubmenu" style="display:none;">
-              
-              <li><a href="/creating-your-apps/samsung/samsung-partner.html">Ein Samsung-Partner werden</a></li>
-              
-              <li><a href="/creating-your-apps/samsung/submitting-to-samsung.html">Einreichung an den Samsung Store</a></li>
-              
-            </ul>
-          </li>
-          
-          
-          
-          <li><a href="/creating-your-apps/common-required-info.html">Allgemeine erforderliche Informationen</a></li>
-          
-          
-          
-          <li><a href="/creating-your-apps/device-apps-validation-guide.html">Leitfaden zur Validierung von Dev</a></li>
-          
-          
-        </ul>
-        
-        
-        
-        <h5 class="submenu-header"><a href="/references/index.html">Referenzen <strong>+</strong></a></h5>
-        <ul class="sidenav-submenu" style="display:none;">
-          
-          
-          <li><a href="/references/common-configuration-settings.html">Allgemeine Konfigurationseinstellungen</a></li>
-          
-          
-          
-          <li><a href="/references/creating-stripe-account.html">Erstellen eines Stripe-Kontos</a></li>
-          
-          
-          
-          <li><a href="/references/glossary.html">Glossar</a></li>
-          
-          
-          
-          <li><a href="/references/image-requirements.html">Bilder und ihre Spezifikationen</a></li>
-          
-          
-          
-          <li><a href="/references/known-issues.html">Bekannte Probleme</a></li>
-          
-          
-          
-          <li><a href="/references/product-updates.html">Produkt-Updates</a></li>
-          
-          
-        </ul>
-        
-        
-        
-        <h5 class="submenu-header"><a href="/training/index.html">Schulung <strong>+</strong></a></h5>
-        <ul class="sidenav-submenu" style="display:none;">
-          
-          
-          <li><a href="/training/training-demand-custom-fields.html">Verwenden von Video Cloud-Videos/benutzerdefinierten Feldern</a></li>
-          
-          
-          
-          <li><a href="/training/training-demand-design-layout.html">Entwerfen des Anwendungslayouts</a></li>
-          
-          
-          
-          <li><a href="/training/training-demand-playlists.html">Erstellen und Verwenden von Wiedergabelisten</a></li>
-          
-          
-          
-          <li><a href="/training/training-demand-series-seasons-episodes.html">Erstellen von Serien, Staffeln und Episoden</a></li>
-          
-          
-          
-          <li><a href="/training/training-demand-vod-ssai.html">Implementierung von serverseitigen VOD-Anzeigen</a></li>
-          
-          
-          
-          <li><a href="/training/training-demand-publish-android-app.html">Veröffentlichen der Android App im Play Store</a></li>
-          
-          
-          
-          <li><a href="/training/training-demand-viewing-analytics.html">Analytics-Daten anzeigen</a></li>
-          
-          
-        </ul>
-        
-        
-        
-        <h5 class="submenu-header"><a href="/support/index.html">unterstützung <strong>+</strong></a></h5>
-        <ul class="sidenav-submenu" style="display:none;">
-          
-          
-          
-          
-          
-          
-          <li><a href="/support/viewing-brightcove-system-status-page.html">Anzeigen der Seite „Systemstatus von Brightcove“</a></li>
-          
-          
-          
-          <li><a href="/support/contact-sales.html">Kontakt mit dem Vertrieb</a></li>
-          
-          
-          
-          <li><a href="/support/opening-case-with-brightcove-support.html">Einen Supportfall öffnen</a></li>
-          
-          
-        </ul>
-        
-        
-      </nav>
-    </div>
-    <div class="col-lg-7" style="background-color: white;color: #333333;margin-top: -1em;margin-bottom: -1em;padding-bottom:1em;">
-      <!-- bootstrap layout -->
-<p id="bc_veggie_burger_wrapper" style="display: none;"><img id="bc_veggie_burger" src="/assets/images/feather/menu.svg" alt="Menü „Navigation"/></p>
-
-<!-- search bar -->
-<div id="nav-search-box" style="margin-top: 1rem;"></div>
-<!-- in-page navigation for narrow screens -->
-<details class="centered-inpage-nav" id="centered_inpage_nav">
-  <summary><h6 class="toc">Inhalt der Seite</h6></summary>
-  <nav id="centered_toc"></nav>
-  <ul id="centered_in_page_toc" class="list-none"></ul>
-</details>
-<!-- open in new tab/window -->
-<a id="open_new_tab" href="#" target="_blank" style="display: none;"><img src="/assets/images/feather/external-link.svg" alt="in neuem Tab öffnen" style="margin-top:4em;width: 1.5em;"/></a>
-
-
-<h1>Einreichen von Apps an den LG (webOS) Store</h1>
+---
+title: 'Senden von Apps an den LG (webOS) Store'
+description: 'In diesem Thema erfahren Sie, wie Sie Ihre Geräte-App an den LG Store senden.'
+parent: 'LG' 
+grandparent: 'Creating Your Apps'
+layout: 'staging'
+---
+ <h1>{{ page.title }}</h1>
 <article class="bcls-article">
-  <summary>In diesem Thema erfahren Sie, wie Sie Ihre Geräte-App beim LG Store einreichen.</summary>
+  <summary>{{ page.description }}</summary>
   <section class="bcls-section">
     <h2 id="Introduction">Einführung</h2>
     <p>
-      Dieses Dokument hilft Ihnen bei der Übermittlung Ihrer Brightcove Beacon-App an den LG Store. Der erste Abschnitt dieses Dokuments, der diesen nicht enthält, listet Informationen/Assets auf, die Sie benötigen, wenn Sie mit dem Einreichungsvorgang beginnen.
+      Dieses Dokument unterstützt Sie bei der Übermittlung Ihrer Brightcove Beacon-App an den LG Store. Der erste Abschnitt dieses Dokuments, dieser nicht eingeschlossen, listet Informationen/Assets auf, die Sie benötigen, wenn Sie mit dem Abschluss des Einreichungsprozesses beginnen.
     </p>
     <p>
-      Nach dieser Liste finden Sie eine schrittweise Anleitung für den Einreichungsprozess. Nachdem Sie Ihr Konto erstellt haben, geben Sie Informationen für die Einreichung an. Der Abschnitt <em>LG SellerLounge &gt;</em> <em>App Management</em> wird wie folgt angezeigt, und die Bereiche, in die Sie Informationen eingeben müssen, sind gelb hervorgehoben:
+      Im Anschluss an diese Liste finden Sie eine Schritt-für-Schritt-Anleitung für den Einreichungsprozess. Nachdem Sie Ihr Konto erstellt haben, geben Sie die Informationen für die Einreichung ein. Die <em>LG SellerLounge</em> &gt;
+      <em>App-Verwaltung</em> Der Abschnitt sieht wie folgt aus, und die Bereiche, in denen Sie Informationen eingeben müssen, sind gelb hervorgehoben:
       <figure class="bcls-figure">
-        <img class="bcls-image" src="/assets/images/creating-your-apps/lg/four-tabs.png" alt="Abschnitt zur App-Verwaltung der Seller"/>
+        <img
+          class="bcls-image"
+          src="/assets/images/creating-your-apps/lg/four-tabs.png"
+          alt="seller lounge app management section"
+        />
       </figure>
     </p>
   </section>
 
   <section class="bcls-section">
-    <h2 id="Required_information">Erforderliche Informationen</h2>
+    <h2 id="Required_information">Benötigte Information</h2>
     <p>
-      Die folgenden Informationen/Assets sind bei der Einreichung an den LG-Shop erforderlich.
+      Die folgenden Informationen/Assets werden für die Übermittlung an den LG Store benötigt.
     </p>
-    <h3>Hilfreiche Informationen</h3>
+    <h3>Hilfreiche Information</h3>
     <ul>
       <li>
-        Angaben zum Geschäft: <a href="http://seller.lgappstv.com/seller/main/Main.lge"> http://seller.lgappstv.com/seller/main/Main.lge </a>
+        Shop-Details: <a href="http://seller.lgappstv.com/seller/main/Main.lge"> http://seller.lgappstv.com/seller/main/Main.lge </a>
       </li>
       <li>
         Einrichtung des Entwicklerkontos: <a href="http://webostv.developer.lge.com/develop/app-test/#preparingAccount"> http://webostv.developer.lge.com/develop/app-test/#preparingAccount </a>
@@ -507,15 +42,15 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
       <li>
         Einreichungsprozess: <a href="http://webostv.developer.lge.com/distribute/app-submission-process/"> http://webostv.developer.lge.com/distribute/app-submission-process/ </a>
       </li>
-      <li>Vorgeschlagene Vorlaufzeit für die Genehmigung Drei Wochen</li>
+      <li>Vorgeschlagene Vorlaufzeit für die Genehmigung: Drei Wochen</li>
     </ul>
-    <h3 id="required_images">Erforderliche Vermögens</h3>
+    <h3 id="required_images">Erforderliche Vermögenswerte</h3>
     <ul>
-      <li>Bezeichnung der Anwendung</li>
-      <li>Beschreibung der Anwendung</li>
-      <li>IPK (von Brightcove bereitgestellt) und Deeplink URL</li>
+      <li>Anwendungsname</li>
+      <li>Anwendungsbeschreibung</li>
+      <li>IPK (von Brightcove bereitgestellt) und Deeplink-URL</li>
       <li>
-        Deeplink URL (Standort für die App während des Tests muss ein Internetstandort sein, der unter Ihrer Kontrolle steht)
+        Deeplink-URL (Standort für die App während des Tests, muss ein Internet-Standort unter Ihrer Kontrolle sein)
       </li>
       <li>
         Bilder und grafische Assets
@@ -523,54 +58,62 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
           <li>
             App-Symbol
             <ul>
-              <li>Empfohlen: 400x400 Pixel oder höher (nur quadratischer Typ)</li>
+              <li>Empfohlen: 400 x 400 Pixel oder höher (nur quadratischer Typ)</li>
               <li>Verfügbare Datei: JPG, GIF, PNG (max. 5 MB)</li>
             </ul>
           </li>
           <li>
-            App-Kachel-Farbe
+            Farbe der App-Kacheln
             <ul>
-              <li>Symbol zur Anzeige einer festen Hintergrundfarbe</li>
+              <li>Symbol zur Anzeige einer durchgehenden Hintergrundfarbe</li>
               <li>
-                Das Logo sollte eine flache Hintergrundfarbe haben und der Kunde muss Brightcove mit dem exakt gleichen Hexadezimalwert dieser Hintergrundfarbe für das flache Logo in LG webOS TV versehen.
+                Das Logo sollte eine flache Hintergrundfarbe haben und der Kunde muss Brightcove den exakt gleichen Hexadezimalwert dieser Hintergrundfarbe für das flache Logo in LG webOS TV angeben.
               </li>
             </ul>
           </li>
           <li>
-            Primärer Bildschirmfoto
+            Primärer Screenshot
             <ul>
               <li>
-                Empfohlene Bildgröße: 960x540, 1280x720 Pixel (nur quadratischer Typ)
+                Empfohlene Bildgröße: 960 x 540, 1280 x 720 Pixel (nur quadratischer Typ)
               </li>
               <li>Verfügbare Datei: JPG, GIF, PNG (max. 5 MB)</li>
             </ul>
           </li>
           <li>
-            Sekundäre Screen
+            Sekundäre Screenshots
             <ul>
               <li>
-                Es müssen mindestens zwei (und maximal fünf) sekundäre Screenshots mit den gleichen Richtlinien wie der primäre Screenshot hochgeladen werden.
+                Mindestens zwei (und maximal fünf) sekundäre Screenshots müssen hochgeladen werden, wobei die gleichen Richtlinien wie beim primären Screenshot gelten.
               </li>
             </ul>
           </li>
           <li>
             Launcher-Hintergrundbild
             <ul>
-              <li>Empfehlenswert: 1920 x 1080 Pixel</li>
-              <li>Typ der Datei: JPG, PNG (max. 10 MB)</li>
+              <li>Empfohlen : 1920x1080 Pixel</li>
+              <li>Dateityp: JPG, PNG (max. 10 MB)</li>
             </ul>
             <figure class="bcls-figure">
-              <img class="bcls-image" src="/assets/images/creating-your-apps/lg/background-image.png" alt="Hintergrundbild"/>
+              <img
+                class="bcls-image"
+                src="/assets/images/creating-your-apps/lg/background-image.png"
+                alt="background image"
+              />
             </figure>
           </li>
           <li>
-            Hintergrundbild des Begrüßungsbild
+            Hintergrundbild für den Begrüßungsbildschirm
             <ul>
-              <li>Empfehlenswert: 1920 x 1080 Pixel</li>
-              <li>Typ der Datei: JPG, PNG (max. 10 MB)</li>
+              <li>Empfohlen : 1920x1080 Pixel</li>
+              <li>Dateityp: JPG, PNG (max. 10 MB)</li>
             </ul>
             <figure class="bcls-figure">
-              <img class="bcls-image" src="/assets/images/creating-your-apps/lg/splash-screen.png" alt="Begrüßungsbildschirm"/>
+              <img
+                class="bcls-image"
+                src="/assets/images/creating-your-apps/lg/splash-screen.png"
+                alt="splash screen"
+              />
             </figure>
           </li>
         </ul>
@@ -579,10 +122,10 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
         Dokumentation
         <ul>
           <li>
-            <strong>Liste der Selbstprüfungsdateien Datei</strong>: Dies ist eine Tabelle mit einer Liste von Testelementen, mit denen Sie Ihre App testen. Dieser Punkt wird im <a href="#Completing_the_Test_Info_section">Abschnitt „Testinfo abschließen</a> “ in diesem Dokument beschrieben.
+            <strong>Selbstcheckliste Datei</strong>: Dies ist eine Tabelle mit einer Liste von Testelementen, mit denen Sie Ihre App testen. Dieser Artikel ist detailliert in der <a href="#Completing_the_Test_Info_section">Ausfüllen der Testinfo. Sektion</a> dieses Dokuments.
           </li>
           <li>
-            <strong>UX-Szenario-Datei</strong> Dies ist eine PowerPoint-Präsentation, in der Sie dokumentieren, was passieren sollte, wenn jemand die App verwendet. Dieser Punkt wird im <a href="#Completing_the_Test_Info_section">Abschnitt „Testinfo abschließen</a> “ in diesem Dokument beschrieben.
+            <strong>UX-Szenariodatei</strong>: Dies ist eine PowerPoint-Präsentation, in der Sie dokumentieren, was passieren soll, wenn jemand die App verwendet. Dieser Artikel ist detailliert in der <a href="#Completing_the_Test_Info_section">Ausfüllen der Testinfo. Sektion</a> dieses Dokuments.
           </li>
         </ul>
       </li>
@@ -591,43 +134,63 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
 
   <section class="bcls-section">
     <h2 id="Getting_started">
-      Erste Schritte
+      Einstieg
     </h2>
     <ol class="bcls-tasklist">
       <li>
-        Navigieren Sie zur <a href="https://www.lgaccount.com/join/terms">Seite zur Kontoerstellung</a>. Die Seite wird wie folgt angezeigt, und Sie müssen die vier Schritte ausführen.
+        Navigieren Sie zu den <a href="https://www.lgaccount.com/join/terms">Seite zur Kontoerstellung</a>. Die Seite sieht wie folgt aus und Sie müssen die vier Schritte ausführen.
         <figure class="bcls-figure">
-          <img class="bcls-image" src="/assets/images/creating-your-apps/lg/create-account.png" alt="Konto erstellen"/>
+          <img
+            class="bcls-image"
+            src="/assets/images/creating-your-apps/lg/create-account.png"
+            alt="create account"
+          />
         </figure>
       </li>
       <li>
-        Wenn Sie diese Kontoeinrichtung abgeschlossen haben, navigieren Sie zur <a href="http://seller.lgappstv.com/seller/member/register/memberMain.lge">SellerLounge-Anmeldung</a>. Sie müssen hier ein anderes Konto erstellen.
+        Wenn Sie die Kontoeinrichtung abgeschlossen haben, navigieren Sie zu <a href="http://seller.lgappstv.com/seller/member/register/memberMain.lge">Anmeldung bei SellerLounge</a>. Hier müssen Sie ein weiteres Konto erstellen.
       </li>
       <li>
-        Nachdem Sie die zweite Kontoregistrierung abgeschlossen haben, können Sie zur <a href="http://seller.lgappstv.com/seller/main/Main.lge">SellerLounge</a> gehen und sich anmelden.
+        Nachdem Sie die zweite Kontoanmeldung abgeschlossen haben, können Sie zum <a href="http://seller.lgappstv.com/seller/main/Main.lge">VerkäuferLounge</a> und melden Sie sich an.
       </li>
       <li>
-        Klicken Sie in der <em>SellerLounge</em> auf den Tab <strong>APP-MANAGEMENT</strong>. 
+        Einmal im <em>VerkäuferLounge</em>, klicken Sie auf die <strong>APP-VERWALTUNG</strong> Tab.
         <figure class="bcls-figure">
-          <img class="bcls-image" src="/assets/images/creating-your-apps/lg/app-management-tab.png" alt="Registerkarte „App-Verwaltung"/>
+          <img
+            class="bcls-image"
+            src="/assets/images/creating-your-apps/lg/app-management-tab.png"
+            alt="app management tab"
+          />
         </figure>
       </li>
       <li>
-        Um mit der App-Übermittlung zu beginnen, klicken Sie auf die Schaltfläche „ <strong>Los</strong> “.
+        Um den App-Einreichungsprozess zu starten, klicken Sie auf das <strong>gehen</strong> Taste.
         <figure class="bcls-figure">
-          <img class="bcls-image" src="/assets/images/creating-your-apps/lg/seller-lounge-index.png" alt="go-Knopf"/>
+          <img
+            class="bcls-image"
+            src="/assets/images/creating-your-apps/lg/seller-lounge-index.png"
+            alt="go button"
+          />
         </figure>
       </li>
       <li>
-        Vergewissern Sie sich, dass Sie die vier Registerkarten (gelb hervorgehoben) sehen, auf denen Sie Ihre App-Informationen eingeben.
+        Vergewissern Sie sich, dass Sie die vier Registerkarten (gelb hervorgehoben) sehen, in die Sie Ihre App-Informationen eingeben.
         <figure class="bcls-figure">
-          <img class="bcls-image" src="/assets/images/creating-your-apps/lg/four-tabs.png" alt="vier Reiter"/>
+          <img
+            class="bcls-image"
+            src="/assets/images/creating-your-apps/lg/four-tabs.png"
+            alt="four tabs"
+          />
         </figure>
       </li>
       <li>
-        Klicken Sie im linken Navigationsbereich auf die Schaltfläche <strong>LG Seller Lounge Guide Download</strong> . Dadurch wird eine hervorragende Anleitung zum Ausfüllen der App-Eingabeformulare heruntergeladen. Auf das heruntergeladene PDF wird später in diesem Dokument verwiesen.
+        Klicken Sie in der linken Navigation auf das <strong>LG Seller Lounge Guide herunterladen</strong> Taste. Hiermit wird eine hervorragende Anleitung zum Ausfüllen der App-Einreichungsformulare heruntergeladen. Auf das heruntergeladene PDF wird später in diesem Dokument verwiesen.
         <figure class="bcls-figure">
-          <img class="bcls-image" src="/assets/images/creating-your-apps/lg/sellerlounge-guide-download.png" alt="Anleitung für Verkäufer-Loun"/>
+          <img
+            class="bcls-image"
+            src="/assets/images/creating-your-apps/lg/sellerlounge-guide-download.png"
+            alt="seller lounge guide download"
+          />
         </figure>
       </li>
     </ol>
@@ -635,327 +198,187 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
 
   <section class="bcls-section">
     <h2 id="Completing_the_File_Upload_section">
-      Abschließen des Abschnitts „ <em>Datei hochladen</em> 
+      Abschluss der <em>Datei-Upload</em> Sektion
     </h2>
-    <aside class="bcls-aside bcls-aside--tip language-editable">
-      Wie auf der eigentlichen Webseite angegeben, <img src="/assets/images/creating-your-apps/lg/question-mark.png"/> enthält das Klicken auf das weiße Fragezeichen im schwarzen Kreis Details zu den angeforderten Informationen. Es ist ziemlich hilfreich.
-    </aside>
+    <aside class="bcls-aside bcls-aside--tip"> Wie auf der eigentlichen Webseite angegeben, klicken Sie auf das weiße Fragezeichen im schwarzen Kreis
+      <img src="/assets/images/creating-your-apps/lg/question-mark.png" />
+      enthält Einzelheiten zu den angeforderten Informationen. Es ist ziemlich hilfreich. </aside>
     <p>
-      Im Bereich „ <strong>Datei-Upload</strong> “ laden Sie die <strong>IPK-Datei</strong> hoch, die Ihnen Brightcove für den LG Store gegeben hat. Details für diesen Prozess folgen:
+      In dem <strong>Datei-Upload</strong> Abschnitt werden Sie die hochladen <strong>ipk</strong> Datei, die Ihnen von Brightcove für den LG Store zur Verfügung gestellt wurde. Details zu diesem Prozess folgen:
     </p>
     <ol class="bcls-tasklist">
       <li>
-        Geben Sie die <strong>App-ID</strong>ein. Dies ist der interne Name Ihrer App. Diese ID kann zu einem späteren Zeitpunkt nicht geändert werden.
+        Geben Sie die <strong>App-ID</strong>. Dies ist der interne Name Ihrer App. Diese ID kann zu einem späteren Zeitpunkt nicht mehr geändert werden.
       </li>
       <li>
-        Klicken Sie für die <strong>Service Platforms</strong> auf das Optionsfeld für <strong>webOS</strong>. Zu diesem Zeitpunkt wird ein Formular erweitert, um Informationen über die Datei zu erhalten.
+        Für die <strong>Serviceplattformen</strong> Klicken Sie auf das Optionsfeld für <strong>webOS</strong>. An diesem Punkt wird ein Formular für Informationen über die Datei erweitert.
         <figure class="bcls-figure">
-          <img class="bcls-image" src="/assets/images/creating-your-apps/lg/file-upload.png" alt="Datei-Upload-Bildschirm"/>
+          <img
+            class="bcls-image"
+            src="/assets/images/creating-your-apps/lg/file-upload.png"
+            alt="file upload screen"
+          />
         </figure>
       </li>
       <li>
-        Füllen Sie das Formular aus. Details für jedes Feld folgen:
+        Fülle das Formular aus. Details für jedes Feld folgen:
         <table class="bcls-table">
           <thead class="bcls-table__head">
             <tr>
-              <th>Feld</th>
-              <th>Bezeichnung/Anleitungen</th>
+              <th>Gebiet</th>
+              <th>Beschreibung/Anleitung</th>
               <th></th>
               <th></th>
             </tr>
           </thead>
           <tbody class="bcls-table__body">
             <tr>
-              <td>File</td>
+              <td>Datei</td>
               <td>
-                Klicken Sie auf die Schaltfläche „ <strong>Datei auswählen</strong> “ und laden Sie die von Brightcove bereitgestellte Datei hoch
+                Drücke den <strong>Datei wählen</strong> und laden Sie die von Brightcove bereitgestellte Datei hoch
               </td>
             </tr>
             <tr>
               <td>Dateityp</td>
-              <td>Automatisch beim Hochladen von Dateien ausgefüllt</td>
+              <td>Beim Dateiupload automatisch ausgefüllt</td>
             </tr>
             <tr>
-              <td>Auflösung des Grafikdisplays</td>
-              <td>Entscheiden Sie <strong>1280.720: (FHD-Gerät)</strong></td>
+              <td>Auflösung der grafischen Anzeige</td>
+              <td>Wählen <strong>1280.720 : (FHD-Gerät)</strong></td>
             </tr>
             <tr>
               <td>Serviceplattform &amp; SDK Ver.</td>
               <td></td>
             </tr>
             <tr>
-              <td>Deeplink-URL</td>
+              <td>Deep-Link-URL</td>
               <td>
-                Stellen Sie zunächst sicher, dass <strong>Default</strong> im Dropdown-Menü ausgewählt ist. Geben Sie als Nächstes eine URL an, über die die App zum Testen gehostet werden kann
+                Seien Sie zuerst sicher <strong>Standard</strong> wird in der Dropdown-Liste ausgewählt; Geben Sie als Nächstes eine URL an, unter der die App zum Testen gehostet werden kann
               </td>
             </tr>
             <tr>
-              <td>Titel der Datei</td>
+              <td>Dateititel</td>
               <td>
-                Der Name der Datei; Sie sehen dies in der SellerLounge
+                Der Name der Datei; Sie werden dies in der SellerLounge aufgelistet sehen
               </td>
             </tr>
             <tr>
-              <td>Datei-Version</td>
+              <td>Dateiversion</td>
               <td>Geben Sie die Version ein, die Sie zuweisen</td>
             </tr>
           </tbody>
         </table>
       </li>
-      <li>Klicken Sie auf die Schaltfläche <strong>ADD FILE</strong> .</li>
-      <li>Klicken Sie auf den Button <strong>Speichern</strong> .</li>
+      <li>Drücke den <strong>DATEI HINZUFÜGEN</strong> Taste.</li>
+      <li>Drücke den <strong>Speichern</strong> Taste.</li>
     </ol>
   </section>
 
   <section class="bcls-section">
     <h2 id="Completing_the_Image_section">
-      Abschluss des Abschnitts „ <em>Bilder</em> “
+      Abschluss der <em>Bilder</em> Sektion
     </h2>
     <p>
-      Laden Sie die Bilder hoch, die im Abschnitt <a href="#required_images">Erforderliche Assets</a> in diesem Dokument aufgeführt sind. Die Bildnamen in diesem Abschnitt stimmen mit den Namen im Formular überein.
+      Laden Sie die Bilder hoch, die in der <a href="#required_images">Erforderliche Vermögenswerte</a> Abschnitt dieses Dokuments. Die Bildnamen in diesem Abschnitt stimmen mit den Namen im Formular überein.
     </p>
     <p>
-      Vergessen Sie nicht, beim Hochladen von Bildern auf die Schaltfläche <strong>Speichern</strong> zu klicken.
+      Vergiss nicht auf zu klicken <strong>Speichern</strong> Schaltfläche, wenn Sie mit dem Hochladen von Bildern fertig sind.
     </p>
   </section>
 
   <section class="bcls-section">
     <h2 id="Completing_the_Service_Info_section">
-      Vervollständigung der <em>Serviceinformationen</em> Abschnitt
+      Abschluss der <em>Service-Info.</em> Sektion
     </h2>
     <p>
-      Um diesen Abschnitt zu vervollständigen, lesen Sie den zuvor heruntergeladenen SellerLounge-Guide auf den Seiten 49-52. Beachten Sie, dass Sie keine Informationen für das <strong>DIAL-Feld</strong> eingeben.
+      Um diesen Abschnitt zu vervollständigen, lesen Sie den zuvor heruntergeladenen SellerLounge Guide, Seiten 49-52. Beachten Sie, dass Sie keine Informationen für die <strong>WÄHLEN</strong> Gebiet.
     </p>
     <p>
-      Vergessen Sie nicht, beim Hochladen von Bildern auf die Schaltfläche <strong>Speichern</strong> zu klicken.
+      Vergiss nicht auf zu klicken <strong>Speichern</strong> Schaltfläche, wenn Sie mit dem Hochladen von Bildern fertig sind.
     </p>
   </section>
 
   <section class="bcls-section">
     <h2 id="Completing_the_Test_Info_section">
-      Vervollständigung der <em>Test-Info</em> Abschnitt
+      Abschluss der <em>Testinfo.</em> Sektion
     </h2>
     <p>
-      Um diesen Abschnitt zu vervollständigen, lesen Sie den zuvor heruntergeladenen SellerLounge-Guide auf den Seiten 53-57. Der folgende Inhalt klärt einige Felder, die zu Verwirrung führen können:
+      Um diesen Abschnitt zu vervollständigen, lesen Sie den zuvor heruntergeladenen SellerLounge Guide, Seiten 53-57. Der folgende Inhalt klärt einige Felder, die Verwirrung stiften können:
     </p>
     <ul>
       <li>
-        <strong>Liste der Selbstprüfungsdateien Datei</strong>: Dies ist eine Tabelle mit einer Liste von Testelementen, mit denen Sie Ihre App testen. Für jeden Artikel markieren Sie ihn entweder als bestanden oder N/A.
+        <strong>Selbstcheckliste Datei</strong>: Dies ist eine Tabelle mit einer Liste von Testelementen, mit denen Sie Ihre App testen. Für jedes Element markieren Sie es entweder als bestanden oder nicht zutreffend.
         <ul>
           <li>
-            Klicken Sie auf die Schaltfläche <strong>Vorlage</strong> , um die Vorlage herunterzuladen.
+            Drücke den <strong>Vorlage</strong> Schaltfläche zum Herunterladen der Vorlage.
             <figure class="bcls-figure">
-              <img class="bcls-image" src="/assets/images/creating-your-apps/lg/self-check-list-button.png" alt="Schaltfläche für Selbstüberprüfungsliste"/>
+              <img
+                class="bcls-image"
+                src="/assets/images/creating-your-apps/lg/self-check-list-button.png"
+                alt="self check list button"
+              />
             </figure>
           </li>
           <li>
-            Weitere Informationen zu dieser Anforderung finden Sie hier auf dem Infobildschirm aus der SellerLounge:
+            Für weitere Informationen zu dieser Anforderung hier der Infoscreen der SellerLounge:
             <figure class="bcls-figure">
-              <img class="bcls-image" src="/assets/images/creating-your-apps/lg/self-check-info.png" alt="selbst überprüfen Info"/>
+              <img
+                class="bcls-image"
+                src="/assets/images/creating-your-apps/lg/self-check-info.png"
+                alt="self check info"
+              />
             </figure>
           </li>
           <li>
-            Einfach zu Ihrer Information finden Sie hier Beispiele für einige Testobjekte.
+            Zu Ihrer Information finden Sie hier Beispiele für einige Testobjekte.
             <figure class="bcls-figure">
-              <img class="bcls-image" src="/assets/images/creating-your-apps/lg/self-check-list.png" alt=""/>
+              <img
+                class="bcls-image"
+                src="/assets/images/creating-your-apps/lg/self-check-list.png"
+                alt=""
+              />
             </figure>
           </li>
         </ul>
       </li>
       <li>
-        <strong>UX-Szenario-Datei</strong> Dies ist eine PowerPoint-Präsentation, in der Sie das erwartete Verhalten der App dokumentieren.
+        <strong>UX-Szenariodatei</strong>: Dies ist eine PowerPoint-Präsentation, in der Sie das erwartete Verhalten der App dokumentieren.
         <ul>
           <li>
-            Klicken Sie auf die Schaltfläche <strong>Vorlage</strong> , um die Vorlage herunterzuladen.
+            Drücke den <strong>Vorlage</strong> Schaltfläche zum Herunterladen der Vorlage.
             <figure class="bcls-figure">
-              <img class="bcls-image" src="/assets/images/creating-your-apps/lg/scenario-button.png" alt="Schaltfläche „Szenario"/>
+              <img
+                class="bcls-image"
+                src="/assets/images/creating-your-apps/lg/scenario-button.png"
+                alt="scenario button"
+              />
             </figure>
           </li>
           <li>
-            Weitere Informationen zu dieser Anforderung finden Sie hier auf dem Infobildschirm aus der SellerLounge:
+            Für weitere Informationen zu dieser Anforderung hier der Infoscreen der SellerLounge:
             <figure class="bcls-figure">
-              <img class="bcls-image" src="/assets/images/creating-your-apps/lg/scenario-info.png" alt="selbst überprüfen Info"/>
+              <img
+                class="bcls-image"
+                src="/assets/images/creating-your-apps/lg/scenario-info.png"
+                alt="self check info"
+              />
             </figure>
           </li>
           <li>
             Hier ist die Liste der Bereiche, für die Sie das erwartete Verhalten dokumentieren müssen.
             <figure class="bcls-figure">
-              <img class="bcls-image" src="/assets/images/creating-your-apps/lg/ux-scenario-file.png" alt="Inhaltsverzeichnis von Verhaltensweisen"/>
+              <img
+                class="bcls-image"
+                src="/assets/images/creating-your-apps/lg/ux-scenario-file.png"
+                alt="table of contents of behaviors"
+              />
             </figure>
           </li>
         </ul>
       </li>
     </ul>
     <p>
-      Vergessen Sie nicht, beim Hochladen von Bildern auf die Schaltfläche <strong>Speichern</strong> zu klicken.
+      Vergiss nicht auf zu klicken <strong>Speichern</strong> Schaltfläche, wenn Sie mit dem Hochladen von Bildern fertig sind.
     </p>
   </section>
 </article>
-
-<!-- complete bootstrap layout -->
-    </div>
-    <div class="col-sm-2 right-side-bar">
-      
-      <nav class="right-side-nav" id="right_side_nav">
-        <h6 class="toc">Inhalt der Seite</h6>
-        <ul id="in_page_nav" class="list-none"></ul>
-      </nav>
-      
-    </div>
-  </div>
-</div>
-
-<hr>
-<div class="last-updated">
-  Seite zuletzt aktualisiert am 12 Juni 2020
-</div>
-
-
-
-<footer class="bcls-footer" role="contentinfo">
-  <div class="row">
-    <div class="region region-footer-top-center col-md-12">
-      <nav role="navigation" aria-labelledby="block-brightcovesupport-menu" id="block-brightcovesupport" class="footer-menu">
-
-        <h2>Brightcove Support-Service</h2>
-
-        <ul class="menu">
-          <li>
-            <a href="https://status.brightcove.com">Systemstatus</a>
-          </li>
-          <li>
-            <a href="https://supportportal.brightcove.com/s/login/?">Kontakt mit dem Support</a>
-          </li>
-          <li>
-            <a href="https://support.brightcove.com/">DOKUMENTATION</a>
-          </li>
-        </ul>
-
-      </nav>
-      <nav role="navigation" aria-labelledby="block-training-menu" id="block-training" class="footer-menu">
-
-        <h2>Schulungen</h2>
-
-        <ul class="menu">
-          <li>
-            <a href="https://studio.support.brightcove.com/training/online-training-courses.html">Online-Kurse</a>
-          </li>
-          <li>
-            <a href="https://studio.support.brightcove.com/training/register-training.html">Für einen Kurs anmelden</a>
-          </li>
-          <li>
-            <a href="https://university.brightcove.com/">Brightcove Universität</a>
-          </li>
-        </ul>
-
-      </nav>
-      <nav role="navigation" aria-labelledby="block-brightcove-menu" class="footer-menu">
-
-        <h2>Brightcove</h2>
-
-        <ul class="menu">
-          <li>
-            <a href="https://www.brightcove.com">brightcove.com</a>
-          </li>
-          <li>
-            <a href="https://supportportal.brightcove.com/s/login/?">Kontaktiere uns</a>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  </div>
-  <div class="row">
-    <div class="region region-footer-bottom-center col-md-12">
-      <div class="bcls-copyright footer-menu">
-        <table>
-          <tr>
-            <td>
-              <div id="bc_copyright" class="field field--name-field-copyright-year field--type-string field--label-hidden field--item" style="float: left;"> Brightcove Inc. Alle Rechte vorbehalten.</div>
-            </td>
-            <td><a href="https://www.brightcove.com/en/legal/privacy">Privacy</a> | <a href="https://www.brightcove.com/en/terms-and-conditions">Allgemeine Geschäftsbedingungen</a></td>
-            <td>
-              <div class="gf-links-cols footer-menu">
-                <div class="gf-social"><a href="https://www.linkedin.com/company/16439" title="LinkedIn" newtab="newtab" class="gf-social-linkedin"><i class="fab fa-linkedin-in" style="font-size: 1.5rem;"></i></a><a href="https://twitter.com/brightcove" title="Twitter" newtab="newtab" class="gf-social-twitter"><i class="fab fa-twitter" style="font-size: 1.5rem;"></i></a><a href="https://www.facebook.com/Brightcove" title="Facebook" newtab="newtab" class="gf-social-facebook"><i class="fab fa-facebook-f" style="font-size: 1.5rem;"></i></a>
-                </div>
-              </div>
-            </td>
-          </tr>
-        </table>
-      </div>
-    </div>
-  </div>
-</footer>
-<div id="talla_wrapper">
-  <p style="text-align: right;position: relative;"><button style="background:rgb(2, 28, 146);color:Snow;padding:.3rem;position:fixed;right:0;bottom:1em;z-index:9999999" onclick="javascript:displayChat()">Fragen? </button> </p>
-  <div id="talla_chat">
-</div>
-</div>
-<script>
-      
-  var searchBox = sajari.init({
-    mode: "search-box",
-    project: "1588255093746585379", // Set this to your project.
-    collection: "brightcove-documenation", // Set this to your collection.
-    instantPipeline: "autocomplete", // Pipeline used as you type
-    inputPlaceholder: "Search", // Input element placeholder
-    maxSuggestions: 5, // Maximum number of suggestions to show
-    attachSearchBox: document.getElementById("nav-search-box") // DOM element to attach to
-  });
-  
-    searchBox("sub", "pipeline.search-sent", function (_, query) {
-      window.location = "/search.html?q=" + encodeURIComponent(query.q);
-    });
-  
-
-</script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  <script src="https://support.brightcove.com/site-assets/js/site/https-fix.js"></script>
-  <script src="https://support.brightcove.com/site-assets/js/site/setDate.js"></script>
-  
-  <script src="https://support.brightcove.com/site-assets/js/site/prism.js"></script>
-  
-  <script src="https://support.brightcove.com/site-assets/js/site/site.js"></script>
-  <script src="https://support.brightcove.com/site-assets/js/site/tabs.js"></script>
-  <script src="https://support.brightcove.com/site-assets/js/site/toc.js"></script>
-  <script src="/assets/js/sites_nav.js"></script>
-  <script src="https://support.brightcove.com/site-assets/js/site/bcls-utils.js"></script>
-  <script src="https://support.brightcove.com/site-assets/js/site/local-link-fix.js"></script>
-  <script src="/assets/js/feedback.js"></script>
-  
-  <script src="/assets/js/sajari-search-foot.js"></script>
-  
-  <!-- <script src="/assets/js/sajari-index.js"></script> -->
-  <script src="https://assets.talla.com/latest/embeddedjs/talla.js"></script>
-  <script src="/assets/js/talla-init.js"></script>
-  <style>
-    a.sj-paginator__page-number.sj-paginator__page-number--current.css-so0ov7 {
-      background-color: lightblue;
-    }
-    div.sj-tabs__tab {
-      margin-top: 3rem;
-      margin-left: .3rem;
-      border-top-left-radius: .4rem;
-      border-top-right-radius: .4rem;
-      background-color:#e8e8e8;
-    }
-
-    div.sj-tabs__tab.sj-tabs__tab--selected {
-      border-bottom-color: crimson;
-      background-color: #f8f8f8;
-    }
-
-    p.sj-results__result__description.css-p9jvyt {
-      font-size: 1rem;
-    }
-
-    .sj-result__text.css-31l7gp h3 {
-      color: navy;
-      font-size: 1.4rem;
-    }
-    </style>
-
-</body>
-
-</html>

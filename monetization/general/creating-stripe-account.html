@@ -1,0 +1,88 @@
+---
+title: Erstellen einer Stripe-Konto
+description: In diesem Thema erfahren Sie, wie Sie ein Stripe-Konto für Zahlungen erstellen und es mit Ihrer Brightcove Beacon Experience verknüpfen.
+parent: Monetization
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+  <section class="bcls-section">
+    <h2 id="Overview">Überblick</h2>
+    <p>
+      Ein Stripe-Konto ist erforderlich, um Zahlungen von Kunden für die folgenden Plattformen zu ermöglichen:
+    </p>
+    <ul>
+      <li>Netz</li>
+      <!-- <li>LG Smart TV</li>
+      <li>Panasonic Smart TV</li> -->
+      <li>Samsung Smart-TV</li>
+      <li>Sony Smart-TV</li>
+      <li>Toshiba-Smart-TV</li>
+    </ul>
+    <p>
+      Das bedeutet, dass Stripe für die Web-App und alle Smart-TV-Apps benötigt wird <em>außer</em> Android-TV und Fire-TV.
+    </p>
+    <p>
+      Die folgenden Schritte bieten einen Überblick über den Prozess der Verwendung von Stripe mit Brightcove Beacon:
+    </p>
+    <ol>
+      <li>
+        Erstellen Sie Ihr Konto, indem Sie grundlegende Informationen (E-Mail, Name, Passwort) angeben.
+      </li>
+      <li>
+        Aktivieren Sie Ihr Konto, indem Sie Informationen zu Ihrem Unternehmen angeben.
+      </li>
+      <li>Rufen Sie Ihre Stripe-API-Schlüssel ab.</li>
+      <li>
+        Stellen Sie dem Brightcove-Personal die API-Schlüssel zur Verfügung, damit sie der Brightcove Beacon Experience hinzugefügt werden können.
+      </li>
+    </ol>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Creating_the_Stripe_account"> Erstellen und Aktivieren des Stripe-Kontos </h2>
+    <p></p>
+    <ol class="bcls-tasklist">
+      <li>Navigieren Sie zu den <a href="https://stripe.com/">Stripe-Startseite</a>.</li>
+      <li>Drücke den <strong>JETZT ANFANGEN</strong> Taste.</li>
+      <li>
+        Geben Sie Ihre grundlegenden Informationen ein, um das Konto zu erstellen.
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/references/creating-stripe-account/info-create-account.png" alt="basic info to create account" />
+        </figure>
+      </li>
+      <li>
+        Überprüfen Sie, ob Ihnen das Stripe-Dashboard angezeigt wurde.
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/references/creating-stripe-account/stripe-dashboard.png" alt="stipe dashboard" />
+        </figure>
+      </li>
+      <li>Drücke den <strong>Aktivieren Sie Ihr Stripe-Konto</strong> Möglichkeit.</li>
+      <li>Drücke den <strong>Jetzt anfangen</strong> Taste, um den Vorgang zu starten.</li>
+      <li>Sie müssen Ihre E-Mail-Adresse bestätigen.</li>
+      <li>
+        Nachdem Sie Ihre E-Mail-Adresse bestätigt haben, sehen Sie das Formular, das Sie ausfüllen müssen, um Ihr Konto zu aktivieren. Gelb markiert sind die wichtigsten Abschnitte des Formulars.
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/references/creating-stripe-account/activate-account-form.png" alt="form to activate account" />
+        </figure>
+      </li>
+      <li>
+        Klicken Sie nach dem Ausfüllen des Formulars auf <strong>Bewerbung einreichen</strong> Taste.
+      </li>
+    </ol>
+  </section>
+  <section class="bcls-section">
+    <h2 id="section-name">Abrufen Ihrer Stripe-API-Schlüssel</h2>
+    <p>
+      Die Verbindung zwischen Ihrem Stripe-Konto und Brightcove Beacon erfolgt über die Stripe-API-Schlüssel. Auf dem Screenshot des oben gezeigten Dashboards sehen Sie einen Link zu <strong>Holen Sie sich Ihre Live-API-Schlüssel</strong>. Beachten Sie, dass Sie bis zur Aktivierung eines Kontos nur Test-API-Schlüssel erhalten können.
+    </p>
+    <p>
+      Klicken Sie im Dashboard auf das <strong>Holen Sie sich Ihre Live-API-Schlüssel</strong> und befolgen Sie die Anweisungen, um sie herunterzuladen.
+    </p>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Connecting_Stripe_to_Brightcove_Beacon"> Verbinden von Stripe mit Brightcove Beacon </h2>
+    <p>
+      Sobald Sie Ihre Stripe-API-Schlüssel haben, geben Sie sie an Brightcove-Mitarbeiter weiter, die Ihre Brightcove Beacon Experience konfigurieren. Sie verknüpfen Ihre Stripe-API-Schlüssel mit Ihrer Brightcove Beacon Experience, sodass Stripe bei der Konfiguration für die Verwendung in Ihren Apps mit Ihrem Konto verknüpft wird.
+    </p>
+  </section>
+</article>
